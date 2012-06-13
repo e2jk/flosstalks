@@ -2,7 +2,7 @@ from django.db import models
 
 class Project(models.Model):
     name = models.CharField(max_length=100)
-    description = models.CharField(max_length=2000)
+    description = models.TextField()
     url = models.URLField()
     ohloh_name = models.CharField(max_length=100)
     STATUSES = (
@@ -16,8 +16,8 @@ class Project(models.Model):
 
 class Series(models.Model):
     name = models.CharField(max_length=100)
-    description = models.CharField(max_length=2000)
-    url = models.URLField()
+    description = models.TextField()
+    url = models.URLField("Website")
     MODES = (
         ('AU', 'Auto-add'),
         ('QU', 'Queue'),
@@ -30,7 +30,7 @@ class Series(models.Model):
 
 class Resource(models.Model):
     name = models.CharField(max_length=100)
-    description = models.CharField(max_length=2000)
+    description = models.TextField()
     project = models.ForeignKey(Project)
     series = models.ForeignKey(Series)
     STATUSES = (
@@ -45,12 +45,22 @@ class Resource(models.Model):
         return self.name
 
 class GenericURL(models.Model):
-    url = models.URLField()
     MEDIA_TYPES = (
-        ('AU', 'Audio'),
-        ('VI', 'Video'),
+        ('Audio', (
+                ('AUS', 'Audio'),
+                ('AUL', 'Audio (low quality)'),
+                ('AUH', 'Audio (high quality)'),
+            )
+        ),
+        ('Video', (
+                ('VIS', 'Video'),
+                ('VIL', 'Video (low quality)'),
+                ('VIH', 'Video (high quality)'),
+            )
+        ),
     )
-    media_type = models.CharField(max_length=2, choices=MEDIA_TYPES)
+    media_type = models.CharField(max_length=3, choices=MEDIA_TYPES)
+    url = models.URLField()
 
 class SeriesFeedURL(GenericURL):
     series = models.ForeignKey(Series)
