@@ -23,6 +23,8 @@ class Series(models.Model):
         ('QU', 'Queue'),
     )
     mode = models.CharField(max_length=2, choices=MODES)
+    class Meta:
+        verbose_name_plural = "series"
     def __unicode__(self):
         return self.name
 
