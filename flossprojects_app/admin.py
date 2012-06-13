@@ -1,4 +1,4 @@
-from flossprojects_app.models import Series, SeriesFeedURL
+from flossprojects_app.models import Series, SeriesFeedURL, Project
 from django.contrib import admin
 
 class SeriesFeedURLInline(admin.TabularInline):
@@ -9,4 +9,5 @@ class SeriesAdmin(admin.ModelAdmin):
     inlines = [SeriesFeedURLInline]
 
 admin.site.register(Series, SeriesAdmin)
+admin.site.register(Project)
 

@@ -3,8 +3,8 @@ from django.db import models
 class Project(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    url = models.URLField()
-    ohloh_name = models.CharField(max_length=100)
+    url = models.URLField("Website")
+    ohloh_id = models.IntegerField("Ohloh ID")
     STATUSES = (
         ('NW', 'New'),
         ('VF', 'Verified'),
