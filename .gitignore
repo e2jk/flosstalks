@@ -1,4 +1,4 @@
 *~
 *.pyc
 flossprojects/settings.py
-
+data/flossprojects.sqlite
