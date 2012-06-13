@@ -64,6 +64,8 @@ class GenericURL(models.Model):
 
 class SeriesFeedURL(GenericURL):
     series = models.ForeignKey(Series)
+    def __unicode__(self):
+        return "%s's %s feed" % (self.series.name, self.get_media_type_display())
 
 class ResourceDownloadURL(GenericURL):
     resource = models.ForeignKey(Resource)
