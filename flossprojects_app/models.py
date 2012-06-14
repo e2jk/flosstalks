@@ -72,10 +72,21 @@ class GenericURL(models.Model):
 class SeriesFeedURL(GenericURL):
     series = models.ForeignKey(Series)
 
+    class Meta:
+        verbose_name = "series' feed URL"
+        verbose_name_plural = "series' feed URLs"
+
     def __unicode__(self):
         return "%s's %s feed" % (self.series.name, self.get_media_type_display())
 
 class ResourceDownloadURL(GenericURL):
     resource = models.ForeignKey(Resource)
-    length = models.CharField(max_length=10)
+    length = models.CharField(max_length=10, blank=True)
+
+    class Meta:
+        verbose_name = "resource download URL"
+        verbose_name_plural = "resource download URLs"
+
+    def __unicode__(self):
+        return "%s for %s" % (self.get_media_type_display(), self.resource.name)
 

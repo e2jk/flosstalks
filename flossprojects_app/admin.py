@@ -1,4 +1,5 @@
-from flossprojects_app.models import Series, SeriesFeedURL, Project, Resource
+from flossprojects_app.models import Series, SeriesFeedURL, Project, \
+        Resource, ResourceDownloadURL
 from django.contrib import admin
 
 class SeriesFeedURLInline(admin.TabularInline):
@@ -15,7 +16,12 @@ class ProjectAdmin(admin.ModelAdmin):
 
 admin.site.register(Project, ProjectAdmin)
 
+class ResourceDownloadURLInline(admin.TabularInline):
+    model = ResourceDownloadURL
+    extra = 1
+
 class ResourceAdmin(admin.ModelAdmin):
+    inlines = [ResourceDownloadURLInline]
     list_display = ("name", "project", "series")
     list_filter = ["pub_date"]
     search_fields = ["name", "description"]
