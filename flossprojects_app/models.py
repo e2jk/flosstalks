@@ -15,6 +15,9 @@ class Project(models.Model):
     def __unicode__(self):
         return self.name
 
+    def number_of_resources(self):
+        return self.resource_set.count()
+
 class Series(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()

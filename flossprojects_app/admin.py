@@ -9,7 +9,11 @@ class SeriesAdmin(admin.ModelAdmin):
     inlines = [SeriesFeedURLInline]
 
 admin.site.register(Series, SeriesAdmin)
-admin.site.register(Project)
+
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ("name", "number_of_resources")
+
+admin.site.register(Project, ProjectAdmin)
 
 class ResourceAdmin(admin.ModelAdmin):
     list_display = ("name", "project", "series")
