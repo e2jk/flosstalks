@@ -2,3 +2,5 @@
 *.pyc
 flossprojects/settings.py
 data/*
+.project
+.pydevproject
