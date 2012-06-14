@@ -11,6 +11,7 @@ class Project(models.Model):
         ('HD', 'Hidden'),
     )
     status = models.CharField(max_length=2, choices=STATUSES)
+
     def __unicode__(self):
         return self.name
 
@@ -23,8 +24,10 @@ class Series(models.Model):
         ('QU', 'Queue'),
     )
     mode = models.CharField(max_length=2, choices=MODES)
+
     class Meta:
         verbose_name_plural = "series"
+
     def __unicode__(self):
         return self.name
 
@@ -41,6 +44,7 @@ class Resource(models.Model):
     )
     status = models.CharField(max_length=2, choices=STATUSES)
     pub_date = models.DateTimeField("Date published")
+
     def __unicode__(self):
         return self.name
 
@@ -64,6 +68,7 @@ class GenericURL(models.Model):
 
 class SeriesFeedURL(GenericURL):
     series = models.ForeignKey(Series)
+
     def __unicode__(self):
         return "%s's %s feed" % (self.series.name, self.get_media_type_display())
 
