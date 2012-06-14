@@ -8,6 +8,7 @@ class SeriesFeedURLInline(admin.TabularInline):
 
 class SeriesAdmin(admin.ModelAdmin):
     inlines = [SeriesFeedURLInline]
+    list_display = ("name", "number_of_resources")
 
 admin.site.register(Series, SeriesAdmin)
 
