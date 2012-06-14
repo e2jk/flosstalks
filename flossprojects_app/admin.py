@@ -2,6 +2,7 @@ from flossprojects_app.models import Series, SeriesFeedURL, Project, \
         Resource, ResourceDownloadURL
 from django.contrib import admin
 
+# Series-related admin
 class SeriesFeedURLInline(admin.TabularInline):
     model = SeriesFeedURL
     extra = 2
@@ -12,11 +13,15 @@ class SeriesAdmin(admin.ModelAdmin):
 
 admin.site.register(Series, SeriesAdmin)
 
+
+# Project-related admin
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ("name", "number_of_resources")
 
 admin.site.register(Project, ProjectAdmin)
 
+
+# Resource-related admin
 class ResourceDownloadURLInline(admin.TabularInline):
     model = ResourceDownloadURL
     extra = 1
