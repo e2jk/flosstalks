@@ -1,6 +1,6 @@
 *~
 *.pyc
-flossprojects/settings.py
+flosstalks/settings.py
 data/*
 .project
 .pydevproject

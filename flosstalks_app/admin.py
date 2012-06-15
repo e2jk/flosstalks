@@ -1,4 +1,4 @@
-from flossprojects_app.models import Series, SeriesFeedURL, Project, \
+from flosstalks_app.models import Series, SeriesFeedURL, Project, \
         Resource, ResourceDownloadURL
 from django.contrib import admin
 
