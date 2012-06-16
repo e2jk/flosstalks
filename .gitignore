@@ -4,3 +4,4 @@ flosstalks/settings.py
 data/*
 .project
 .pydevproject
+flosstalks/static/*
