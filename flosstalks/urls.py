@@ -9,8 +9,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     #url(r'^$', 'flosstalks_app.views.index'),
-    url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
-    # url(r'^flosstalks/', include('flosstalks.foo.urls')),
+    url(r'^', include('flosstalks_app.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
