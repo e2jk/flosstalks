@@ -9,6 +9,7 @@ urlpatterns = patterns('',
 #            context_object_name='latest_poll_list',
 #            template_name='polls/index.html')),
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
+    url(r'^about$', TemplateView.as_view(template_name='about.html'), name='about'),
     url(r'^contact$', TemplateView.as_view(template_name='contact.html'), name='contact'),
     url(r'^p/(?P<pk>\d+)/$',
         DetailView.as_view(
