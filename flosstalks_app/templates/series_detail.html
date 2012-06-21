@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{series.name}} - {% endblock %}
+
+{% block container %}<!-- Main hero unit -->
+      <div class="hero-unit">
+        <h1>{{series.name}}</h1>
+        <p>{{series.description}}</p>
+        <p><a class="btn btn-primary btn-large" href="{{series.url}}">Learn more &raquo;</a></p>
+        <hr>
+        {%if not series.resource_set.all%}
+        <p>There a no known resources yet.</p>
+        {% else %}
+        <p>There are {{series.resource_set.all.count}} resources:</p>
+        <ul>
+            {% for r in series.resource_set.all %}
+            <li>{{r.name}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+      </div>{% endblock %}

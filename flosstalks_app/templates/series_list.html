@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Series - {% endblock %}
+
+{% block container %}<!-- Main hero unit -->
+      <div class="hero-unit">
+        <h1>Series</h1>
+        <p>The following series are available:</p>
+        <ul>
+            {% for s in series_list %}
+            <li><a href="{%url series s.pk%}">{{s.name}}</a></li>
+            {% endfor %}
+        </ul>
+      </div>{% endblock %}
