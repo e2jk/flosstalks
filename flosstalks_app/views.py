@@ -6,3 +6,10 @@ class TemplateView(generic_views.TemplateView):
         context = super(TemplateView, self).get_context_data(**kwargs)
         context['this_page'] = self.template_name.split(".html")[0]
         return context
+
+class ListView(generic_views.ListView):
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(ListView, self).get_context_data(**kwargs)
+        context['this_page'] = self.template_name.split(".html")[0]
+        return context

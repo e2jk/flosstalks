@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Projects - {% endblock %}
+
+{% block container %}<!-- Main hero unit -->
+      <div class="hero-unit">
+        <h1>Projects</h1>
+        <p>The following projects are available:</p>
+        <ul>
+            {% for p in projects_list %}
+            <li><a href="{%url project p.pk%}">{{p.name}}</a></li>
+            {% endfor %}
+        </ul>
+      </div>{% endblock %}
