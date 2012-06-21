@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
-from django.views.generic import TemplateView, DetailView, ListView
+from django.views.generic import DetailView, ListView
 from flosstalks_app.models import Project
+from flosstalks_app.views import TemplateView
 
 urlpatterns = patterns('',
 #    url(r'^$',
