@@ -1,4 +1,4 @@
-<!doctype html>
+{% load i18n %}<!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -38,11 +38,11 @@
           <a class="brand" href="{% url home %}">FLOSS Talks</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li{%if this_page == "index"%} class="active"{%endif%}><a href="{%url home%}">Home</a></li>
-              <li{%if this_page == "projects_list"%} class="active"{%endif%}><a href="{%url projects%}">Projects</a></li>
-              <li{%if this_page == "series_list"%} class="active"{%endif%}><a href="{%url series_list%}">Series</a></li>
-              <li{%if this_page == "about"%} class="active"{%endif%}><a href="{%url about%}">About</a></li>
-              <li{%if this_page == "contact"%} class="active"{%endif%}><a href="{%url contact%}">Contact</a></li>
+              <li{%if this_page == "index"%} class="active"{%endif%}><a href="{%url home%}">{%trans "Home"%}</a></li>
+              <li{%if this_page == "projects_list"%} class="active"{%endif%}><a href="{%url projects%}">{%trans "Projects"%}</a></li>
+              <li{%if this_page == "series_list"%} class="active"{%endif%}><a href="{%url series_list%}">{%trans "Series"%}</a></li>
+              <li{%if this_page == "about"%} class="active"{%endif%}><a href="{%url about%}">{%trans "About"%}</a></li>
+              <li{%if this_page == "contact"%} class="active"{%endif%}><a href="{%url contact%}">{%trans "Contact"%}</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
