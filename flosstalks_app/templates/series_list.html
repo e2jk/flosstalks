@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Series - {% endblock %}
+{% block title %}{%trans "Series"%} - FLOSS Talks{% endblock %}
 
 {% block container %}<!-- Main hero unit -->
       <div class="hero-unit">
-        <h1>Series</h1>
-        <p>The following series are available:</p>
+        <h1>{%trans "Series"%}</h1>
+        <p>{%trans "Choose one of the following series:"%}</p>
         <ul>
             {% for s in series_list %}
             <li><a href="{%url series s.pk%}">{{s.name}}</a></li>

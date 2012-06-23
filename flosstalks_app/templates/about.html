@@ -1,9 +1,11 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}About {% endblock %}
+{% comment %}Translators: "About FLOSS Talks" in English{% endcomment %}
+{% block title %}{% blocktrans with name="FLOSS Talks"%}About {{name}}{% endblocktrans %}{% endblock %}
 
 {% block container %}<!-- Main hero unit -->
       <div class="hero-unit">
-        <h1>About FLOSS Talks</h1>
+        <h1>{%blocktrans with name="FLOSS Talks"%}About {{name}}{% endblocktrans %}</h1>
         <p>More information.</p>
       </div>{% endblock %}

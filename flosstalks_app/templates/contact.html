@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Contact us - {% endblock %}
+{% block title %}{%trans "Contact us"%} - FLOSS Talks{% endblock %}
 
 {% block container %}<!-- Main hero unit -->
       <div class="hero-unit">
-        <h1>Contact us</h1>
-        <p>Get in touch with us by sending us an email at <a href="mailto:info@flosstalks.org">info@flosstalks.org</a>.</p>
+        <h1>{%trans "Contact us"%}</h1>
+        <p>{%blocktrans with email_address="<a href='mailto:info@flosstalks.org'>info@flosstalks.org</a>"%}Get in touch with us by sending us an email at {{email_address}}.{% endblocktrans %}</p>
       </div>{% endblock %}

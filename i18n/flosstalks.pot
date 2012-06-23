@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-22 22:04+0200\n"
+"POT-Creation-Date: 2012-06-23 22:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. Translators: "About FLOSS Talks" in English
+#: flosstalks_app/templates/about.html:5 flosstalks_app/templates/about.html:9
+#, python-format
+msgid "About %(name)s"
+msgstr ""
+
 #: flosstalks_app/templates/base.html:41
 msgid "Home"
 msgstr ""
 
 #: flosstalks_app/templates/base.html:42
+#: flosstalks_app/templates/projects_list.html:4
+#: flosstalks_app/templates/projects_list.html:8
 msgid "Projects"
 msgstr ""
 
 #: flosstalks_app/templates/base.html:43
+#: flosstalks_app/templates/series_list.html:4
+#: flosstalks_app/templates/series_list.html:8
 msgid "Series"
 msgstr ""
 
@@ -35,4 +45,41 @@ msgstr ""
 
 #: flosstalks_app/templates/base.html:45
 msgid "Contact"
+msgstr ""
+
+#: flosstalks_app/templates/contact.html:4
+#: flosstalks_app/templates/contact.html:8
+msgid "Contact us"
+msgstr ""
+
+#: flosstalks_app/templates/contact.html:9
+#, python-format
+msgid "Get in touch with us by sending us an email at %(email_address)s."
+msgstr ""
+
+#: flosstalks_app/templates/index.html:8
+#: flosstalks_app/templates/project_detail.html:10
+#: flosstalks_app/templates/series_detail.html:10
+msgid "Learn more"
+msgstr ""
+
+#: flosstalks_app/templates/project_detail.html:13
+#: flosstalks_app/templates/series_detail.html:13
+msgid "There are no known resources yet."
+msgstr ""
+
+#: flosstalks_app/templates/project_detail.html:15
+#: flosstalks_app/templates/series_detail.html:15
+#, python-format
+msgid "There is one resource:"
+msgid_plural "There are %(num_resources)s resources:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: flosstalks_app/templates/projects_list.html:9
+msgid "Choose one of the following projects:"
+msgstr ""
+
+#: flosstalks_app/templates/series_list.html:9
+msgid "Choose one of the following series:"
 msgstr ""

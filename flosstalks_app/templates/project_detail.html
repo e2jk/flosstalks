@@ -1,17 +1,18 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}{{project.name}} - {% endblock %}
+{% block title %}{{project.name}} - FLOSS Talks{% endblock %}
 
 {% block container %}<!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <h1>{{project.name}}</h1>
         <p>{{project.description}}</p>
-        <p><a class="btn btn-primary btn-large" href="{{project.url}}">Learn more &raquo;</a></p>
+        <p><a class="btn btn-primary btn-large" href="{{project.url}}">{%trans "Learn more"%} &raquo;</a></p>
         <hr>
         {%if not project.resource_set.all%}
-        <p>There a no known resources yet.</p>
+        <p>{%trans "There are no known resources yet."%}</p>
         {% else %}
-        <p>There are {{project.resource_set.all.count}} resources:</p>
+        <p>{%blocktrans count num_resources=project.resource_set.all.count%}There is one resource:{%plural%}There are {{num_resources}} resources:{%endblocktrans%}</p>
         <ul>
             {% for r in project.resource_set.all %}
             <li>{{r.name}}</li>

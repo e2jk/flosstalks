@@ -1,17 +1,18 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}{{series.name}} - {% endblock %}
+{% block title %}{{series.name}} - FLOSS Talks{% endblock %}
 
 {% block container %}<!-- Main hero unit -->
       <div class="hero-unit">
         <h1>{{series.name}}</h1>
         <p>{{series.description}}</p>
-        <p><a class="btn btn-primary btn-large" href="{{series.url}}">Learn more &raquo;</a></p>
+        <p><a class="btn btn-primary btn-large" href="{{series.url}}">{%trans "Learn more"%} &raquo;</a></p>
         <hr>
         {%if not series.resource_set.all%}
-        <p>There a no known resources yet.</p>
+        <p>{%trans "There are no known resources yet."%}</p>
         {% else %}
-        <p>There are {{series.resource_set.all.count}} resources:</p>
+        <p>{%blocktrans count num_resources=series.resource_set.all.count%}There is one resource:{%plural%}There are {{num_resources}} resources:{%endblocktrans%}</p>
         <ul>
             {% for r in series.resource_set.all %}
             <li>{{r.name}}</li>

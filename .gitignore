@@ -6,3 +6,4 @@ data/*
 .pydevproject
 .settings
 flosstalks/static/*
+locale
