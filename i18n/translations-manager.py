@@ -75,9 +75,19 @@ def main():
     os.system("python manage.py makemessages -a")
 
     # Update the .pot template (i.e. move the "en" .po file to flosstalks.pot)
+    # Only do that if real changes have been made to the translations
+    # Make sure we start with a clean .pot file
+    os.system("git checkout -- i18n/flosstalks.pot")
     src = "%s/django.po" % (langFolder % "en")
     dst = "%s/flosstalks.pot" % poFolder
-    shutil.copy(src, dst)
+
+    cmd = "diff --ignore-matching-lines='POT-Creation-Date' %s %s > /dev/null" % (src, dst)
+    if os.system(cmd):
+        # The diff returns a non-null value, so there is at least one
+        # meaningful difference between the .pot and the English .po file
+        print "Changes have been made to the translation template"
+        shutil.copy(src, dst)
+
     #TODO: Check if the charset in the .pot file should be set to "utf-8"
 
     # Remove the "en" folder
