@@ -49,6 +49,11 @@ def main():
         if f[-3:] == ".po":
             languages.append(f.replace(".po", ""))
 
+    # Get the list of languages in the conf/settings.py file
+    confLangs = []
+    for ll in settings.LANGUAGES:
+        confLangs.append(ll[0])
+
     localeFolder = "./locale/"
     langFolder = localeFolder + "%s/LC_MESSAGES"
     for l in languages:
@@ -56,7 +61,7 @@ def main():
         try: os.makedirs(langFolder % l)
         except: pass
         # Check if the language is enabled in './flosstalks/settings.py'
-        if l not in settings.LANGUAGES:
+        if l not in confLangs:
             print "NOTE: '%s' is a new language, it should be added to './flosstalks/settings.py'" % l
         # Copy the XX.po file to the django.po, where Django can access it
         src = "%s/%s.po" % (poFolder, l)
