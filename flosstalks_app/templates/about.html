@@ -7,5 +7,10 @@
 {% block container %}<!-- Main hero unit -->
       <div class="hero-unit">
         <h1>{%blocktrans with name="FLOSS Talks"%}About {{name}}{% endblocktrans %}</h1>
-        <p>More information.</p>
-      </div>{% endblock %}
+        <p>FLOSS = Free/Libre/Open-Source Software</p>
+        <p>{%trans "FLOSS Talks itself is FLOSS... So start contributing!"%}</p>
+        {% comment %}Translators: "Fork the code on GitHub" in English - "Fork" will be replaced by a button, and "GitHub" will be a link, so don't translate any of these terms{% endcomment %}
+        <p>{%blocktrans with forklink='<a href="https://github.com/e2jk/flosstalks" class="gitforked-button gitforked-forks gitforked-watchers">Fork</a>' githublink='<a href="https://github.com/e2jk/flosstalks">GitHub</a>'%}{{forklink}} the code on {{githublink}}.{% endblocktrans %}</p>
+      </div>
+      
+      <script src="http://gitforked.com/api/1.1/button.js" type="text/javascript"></script>{% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-23 22:54+0200\n"
+"POT-Creation-Date: 2012-07-01 18:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,6 +21,17 @@ msgstr ""
 #: flosstalks_app/templates/about.html:5 flosstalks_app/templates/about.html:9
 #, python-format
 msgid "About %(name)s"
+msgstr ""
+
+#: flosstalks_app/templates/about.html:11
+#: flosstalks_app/templates/base.html:58
+msgid "FLOSS Talks itself is FLOSS... So start contributing!"
+msgstr ""
+
+#. Translators: "Fork the code on GitHub" in English - "Fork" will be replaced by a button, and "GitHub" will be a link, so don't translate any of these terms
+#: flosstalks_app/templates/about.html:13
+#, python-format
+msgid "%(forklink)s the code on %(githublink)s."
 msgstr ""
 
 #: flosstalks_app/templates/base.html:41
@@ -47,6 +58,10 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
+#: flosstalks_app/templates/base.html:58
+msgid "Get the code!"
+msgstr ""
+
 #: flosstalks_app/templates/contact.html:4
 #: flosstalks_app/templates/contact.html:8
 msgid "Contact us"
@@ -55,6 +70,13 @@ msgstr ""
 #: flosstalks_app/templates/contact.html:9
 #, python-format
 msgid "Get in touch with us by sending us an email at %(email_address)s."
+msgstr ""
+
+#. Translators:  %(githubissuelink)s will be replaced with a link that says "GitHub"
+#: flosstalks_app/templates/contact.html:11
+#, python-format
+msgid ""
+"If you'd like to report a bug, please file an issue on %(githubissuelink)s."
 msgstr ""
 
 #: flosstalks_app/templates/index.html:8
