@@ -15,6 +15,7 @@
 #
 #    You should have received a copy of the GNU Affero General Public License
 #    along with FLOSS Talks.  If not, see <http://www.gnu.org/licenses/>.
+import datetime
 from django.db import models
 
 class Project(models.Model):
@@ -27,7 +28,7 @@ class Project(models.Model):
         ('VF', 'Verified'),
         ('HD', 'Hidden'),
     )
-    status = models.CharField(max_length=2, choices=STATUSES)
+    status = models.CharField(max_length=2, choices=STATUSES, default="VF")
 
     def __unicode__(self):
         return self.name
@@ -43,7 +44,7 @@ class Series(models.Model):
         ('AU', 'Auto-add'),
         ('QU', 'Queue'),
     )
-    mode = models.CharField(max_length=2, choices=MODES)
+    mode = models.CharField(max_length=2, choices=MODES, default="QU")
 
     class Meta:
         verbose_name_plural = "series"
@@ -65,8 +66,9 @@ class Resource(models.Model):
         ('PD', 'Pending'),
         ('IG', 'Ignored'),
     )
-    status = models.CharField(max_length=2, choices=STATUSES)
-    pub_date = models.DateTimeField("Date published")
+    status = models.CharField(max_length=2, choices=STATUSES, default="VF")
+    pub_date = models.DateTimeField("Date published"
+                                    , default=datetime.datetime.now())
 
     def __unicode__(self):
         return self.name
