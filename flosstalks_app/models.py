@@ -57,7 +57,7 @@ class Series(models.Model):
 class Resource(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    project = models.ForeignKey(Project)
+    projects = models.ManyToManyField(Project)
     series = models.ForeignKey(Series)
     STATUSES = (
         ('NW', 'New'),
@@ -70,6 +70,12 @@ class Resource(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def list_of_projects(self):
+        projects = []
+        for p in self.projects.get_query_set():
+            projects.append(p.name)
+        return ", ".join(projects)
 
 class GenericURL(models.Model):
     MEDIA_TYPES = (

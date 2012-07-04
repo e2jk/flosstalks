@@ -45,7 +45,7 @@ class ResourceDownloadURLInline(admin.TabularInline):
 
 class ResourceAdmin(admin.ModelAdmin):
     inlines = [ResourceDownloadURLInline]
-    list_display = ("name", "project", "series")
+    list_display = ("name", "list_of_projects", "series")
     list_filter = ["pub_date"]
     search_fields = ["name", "description"]
     date_hierarchy = "pub_date"
