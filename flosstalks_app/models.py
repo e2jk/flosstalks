@@ -20,8 +20,8 @@ from django.db import models
 class Project(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    url = models.URLField("Website")
-    ohloh_id = models.IntegerField("Ohloh ID")
+    url = models.URLField("Website", blank=True)
+    ohloh_id = models.IntegerField("Ohloh ID", blank=True)
     STATUSES = (
         ('NW', 'New'),
         ('VF', 'Verified'),
@@ -38,7 +38,7 @@ class Project(models.Model):
 class Series(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    url = models.URLField("Website")
+    url = models.URLField("Website", blank=True)
     MODES = (
         ('AU', 'Auto-add'),
         ('QU', 'Queue'),
