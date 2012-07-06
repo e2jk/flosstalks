@@ -21,8 +21,8 @@ from django.db import models
 class Project(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    url = models.URLField("Website", blank=True)
-    ohloh_id = models.IntegerField("Ohloh ID", blank=True)
+    url = models.URLField("Website", null=True, blank=True)
+    ohloh_id = models.IntegerField("Ohloh ID", null=True, blank=True)
     STATUSES = (
         ('NW', 'New'),
         ('VF', 'Verified'),
@@ -39,7 +39,7 @@ class Project(models.Model):
 class Series(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    url = models.URLField("Website", blank=True)
+    url = models.URLField("Website", null=True, blank=True)
     MODES = (
         ('AU', 'Auto-add'),
         ('QU', 'Queue'),
@@ -109,7 +109,7 @@ class SeriesFeedURL(GenericURL):
 
 class ResourceDownloadURL(GenericURL):
     resource = models.ForeignKey(Resource)
-    length = models.CharField(max_length=10, blank=True)
+    length = models.CharField(max_length=10, null=True, blank=True)
 
     class Meta:
         verbose_name = "resource download URL"
