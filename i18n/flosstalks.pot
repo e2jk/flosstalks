@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-04 18:10+0200\n"
+"POT-Creation-Date: 2012-07-06 23:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,17 +88,21 @@ msgid ""
 msgstr ""
 
 #: flosstalks_app/templates/index.html:8
-#: flosstalks_app/templates/project_detail.html:10
+#: flosstalks_app/templates/project_detail.html:11
 #: flosstalks_app/templates/series_detail.html:10
 msgid "Learn more"
 msgstr ""
 
 #: flosstalks_app/templates/project_detail.html:13
+msgid "The project's website is currently unknown."
+msgstr ""
+
+#: flosstalks_app/templates/project_detail.html:17
 #: flosstalks_app/templates/series_detail.html:13
 msgid "There are no known resources yet."
 msgstr ""
 
-#: flosstalks_app/templates/project_detail.html:15
+#: flosstalks_app/templates/project_detail.html:19
 #: flosstalks_app/templates/series_detail.html:15
 #, python-format
 msgid "There is one resource:"

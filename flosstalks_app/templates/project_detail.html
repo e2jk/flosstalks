@@ -7,7 +7,11 @@
       <div class="hero-unit">
         <h1>{{project.name}}</h1>
         <p>{{project.description}}</p>
-        <p><a class="btn btn-primary btn-large" href="{{project.url}}">{%trans "Learn more"%} &raquo;</a></p>
+        <p>{%if project.url%}
+        <a class="btn btn-primary btn-large" href="{{project.url}}">{%trans "Learn more"%} &raquo;</a>
+        {% else %}
+        {%trans "The project's website is currently unknown."%}
+        {% endif %}</p>
         <hr>
         {%if not project.resource_set.all%}
         <p>{%trans "There are no known resources yet."%}</p>
