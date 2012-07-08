@@ -97,6 +97,21 @@ class GenericURL(models.Model):
         ),
     )
     media_type = models.CharField(max_length=3, choices=MEDIA_TYPES)
+    FORMATS = (
+        ('Audio', (
+                ('UNA', 'Unspecified audio format'),
+                ('OGA', 'Ogg'),
+                ('MP3', 'MP3'),
+            )
+        ),
+        ('Video', (
+                ('UNV', 'Unspecified video format'),
+                ('OGV', 'Ogg'),
+                ('MP4', 'MP4'),
+            )
+        ),
+    )
+    format = models.CharField(max_length=3, choices=FORMATS)
     url = models.URLField()
 
 class SeriesFeedURL(GenericURL):

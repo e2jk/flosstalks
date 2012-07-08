@@ -83,6 +83,7 @@ class Command(BaseCommand):
                     if 0 == len(ResourceDownloadURL.objects.filter(url=e.link)):
                         # Save the download URL
                         u = ResourceDownloadURL(media_type=f.media_type,
+                                                format=f.format,
                                                 url=e.link,
                                                 resource=r,)
                         u.save()
