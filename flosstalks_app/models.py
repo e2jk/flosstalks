@@ -67,6 +67,8 @@ class Resource(models.Model):
         ('IG', 'Ignored'),
     )
     status = models.CharField(max_length=2, choices=STATUSES, default="VF")
+    external_id = models.CharField(max_length=200)
+    length = models.CharField(max_length=10, null=True, blank=True)
     pub_date = models.DateTimeField("Date published"
                                     , default=datetime.datetime.now())
 
@@ -109,7 +111,6 @@ class SeriesFeedURL(GenericURL):
 
 class ResourceDownloadURL(GenericURL):
     resource = models.ForeignKey(Resource)
-    length = models.CharField(max_length=10, null=True, blank=True)
 
     class Meta:
         verbose_name = "resource download URL"
