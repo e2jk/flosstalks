@@ -104,16 +104,17 @@ class Command(BaseCommand):
             else:
                 self.stdout.write("\n\n- Updating %d feeds for %s" % (len(feeds), s))
             for f in ss.feeds:
-                self.stdout.write("\n\n%s (%s): %s \n" % (f, f.format, f.url))
+                self.stdout.write("\n\n%s (%s): %s" % (f, f.format, f.url))
                 d = feedparser.parse(f.url)
                 # Check last updated, d["updated"] or d["updated_parsed"]
                 for e in d.entries:
+                    self.stdout.write("\n%s:\t" % e.title)
                     # Check if this download is already known
                     entry_link = ss.get_entry_link(e)
                     if 0 != len(ResourceDownloadURL.objects.filter(url=entry_link)):
-                        self.stdout.write("\nDownload link already known for %s\n" % e.title)
+                        self.stdout.write(u"\u2714")
                         continue
-                    self.stdout.write("\nCreating download link for %s\n" % e.title)
+                    self.stdout.write("U")
                     u = ResourceDownloadURL(media_type=f.media_type,
                                             format=f.format,
                                             url=entry_link,)
@@ -122,15 +123,13 @@ class Command(BaseCommand):
                     # Check if this resource is already known
                     try:
                         r = Resource.objects.get(external_id=entry_id)
-                        self.stdout.write("Resource already known for %s\n" % e.title)
                         u.resource = r
                         u.save()
                         # The new download url is linked to the
                         # already-existing resource, nothing left to do
                         continue
                     except Resource.DoesNotExist:
-                        pass
-                    self.stdout.write("Creating resource for %s\n" % e.title)
+                        self.stdout.write(" R")
                     r = Resource(name=e.title,
                                  description=e.subtitle_detail.value,
                                  series=s,
@@ -146,16 +145,16 @@ class Command(BaseCommand):
                     # Check if this project is already known
                     try:
                         p = Project.objects.get(name=project_name)
-                        self.stdout.write("Project %s already known\n" % project_name)
                         # Link the resource to the project
                         r.projects.add(p)
                         continue
                     except Project.DoesNotExist:
+                        self.stdout.write(" P")
                         # Project does not exist, create it
-                        self.stdout.write("Creating project %s\n" % project_name)
                         p = Project(name=project_name,
                                     description=e.subtitle_detail.value,
                                     status="NW")
                         p.save()
                         # Link the resource to the project
                         r.projects.add(p)
+            self.stdout.write("\n")
