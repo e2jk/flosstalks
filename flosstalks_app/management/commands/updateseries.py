@@ -21,71 +21,141 @@ from time import strftime
 from django.core.management.base import BaseCommand, CommandError
 from flosstalks_app.models import Series, Project, Resource, ResourceDownloadURL
 
+class GenericSeries(object):
+    def __init__(self, feeds):
+        self.feeds = feeds
+
+    def testmode(self):
+        i = 0
+        for f in self.feeds:
+            f.url = self.sample_feeds[i]
+            i += 1
+
+    def get_entry_link(self, entry):
+        print "NOT IMPLEMENTED"
+
+    def get_project_name_and_entry_id(self, series, feed, entry):
+        print "NOT IMPLEMENTED"
+
+
+class FLOSSWeekly(GenericSeries):
+    sample_feeds = [
+        "file:///home/emilien/devel/flosstalks/data/samples/floss.rss",
+        "file:///home/emilien/devel/flosstalks/data/samples/floss_video_small.rss",
+        "file:///home/emilien/devel/flosstalks/data/samples/floss_video_large.rss",
+    ]
+    def __init__(self, feeds):
+        super(FLOSSWeekly, self).__init__(feeds)
+
+    def get_entry_link(self, entry):
+        return entry.link
+
+    def get_project_name_and_entry_id(self, series, feed, entry):
+        rep = re.compile("FLOSS Weekly \d+: (.+)")
+        return (rep.match(entry.title).groups()[0],
+                # Use the series' url as default base URI for the
+                # resource's ID instead of the feed's base URI
+                entry.id.replace(feed.url.rsplit("/", 1)[0], series.url))
+
+
+class Sourcetrunk(GenericSeries):
+    sample_feeds = [
+        "file:///home/emilien/devel/flosstalks/data/samples/sourcetrunk_ogg.rss",
+        "file:///home/emilien/devel/flosstalks/data/samples/sourcetrunk.rss",
+    ]
+    def __init__(self, feeds):
+        super(Sourcetrunk, self).__init__(feeds)
+
+    def get_entry_link(self, entry):
+        return entry.links[1].href
+
+    def get_project_name_and_entry_id(self, series, feed, entry):
+        rep = re.compile("(\d+) Sourcetrunk : (.+)")
+        return (rep.match(entry.title).groups()[1],
+                # Create a unique resource ID, since there's none
+                # specified in Sourcetrunk's feed
+                "%s%s" % (series.url, rep.match(entry.title).groups()[0]))
+
+
 class Command(BaseCommand):
     help = 'Updates all series'
 
     def handle(self, *args, **options):
-        if 0 != len(args):
-            raise CommandError('This command does not take any argument')
+        testmode = False
+        if 1 == len(args) and "testmode" == args[0]:
+            testmode = True
+            self.stdout.write("TEST MODE ON\n\n")
+        elif 0 != len(args):
+            raise CommandError('Invalid argument')
         self.stdout.write("Updating all series:\n")
         for s in Series.objects.all():
             feeds = s.seriesfeedurl_set.all()
-            if 0 == len(feeds):
-                self.stdout.write("Skipping series that has no feed...")
+            if "FLOSS Weekly" == s.name:
+                ss = FLOSSWeekly(feeds)
+            elif "Sourcetrunk" == s.name:
+                ss = Sourcetrunk(feeds)
             else:
-                self.stdout.write("\n\n- Updating %d feeds for %s\n" % (len(feeds), s))
-#            i = 0
-            for f in feeds:
-#                if i == 0:
-#                    f.url = "file:///home/emilien/devel/flosstalks/data/samples/floss.rss"
-#                elif i == 1:
-#                    f.url = "file:///home/emilien/devel/flosstalks/data/samples/floss_video_small.rss"
-#                elif i == 2:
-#                    f.url = "file:///home/emilien/devel/flosstalks/data/samples/floss_video_large.rss"
-#                i += 1
-                self.stdout.write("%s: %s \n" % (f, f.url))
+                self.stdout.write("Series not supported yet")
+            if testmode:
+                # In test mode, use the sample RSS feeds instead of the real ones
+                ss.testmode()
+            if 0 == len(feeds):
+                self.stdout.write("Skipping series that has no feed...\n")
+            else:
+                self.stdout.write("\n\n- Updating %d feeds for %s" % (len(feeds), s))
+            for f in ss.feeds:
+                self.stdout.write("\n\n%s (%s): %s \n" % (f, f.format, f.url))
                 d = feedparser.parse(f.url)
                 # Check last updated, d["updated"] or d["updated_parsed"]
                 for e in d.entries:
-                    # Get the project's name
-                    rep = re.compile("FLOSS Weekly \d+: (.+)")
-                    project_name = rep.match(e.title).groups()[0]
-                    self.stdout.write("Project: %s\n" % project_name)
-                    # Use the series' url as default base URI for the
-                    # resource's ID instead of the feed's base URI
-                    e.id = e.id.replace(f.url.rsplit("/", 1)[0], s.url)
-                    # Retrieve the project and resource from the database
-                    r = None
+                    # Check if this download is already known
+                    entry_link = ss.get_entry_link(e)
+                    if 0 != len(ResourceDownloadURL.objects.filter(url=entry_link)):
+                        self.stdout.write("\nDownload link already known for %s\n" % e.title)
+                        continue
+                    self.stdout.write("\nCreating download link for %s\n" % e.title)
+                    u = ResourceDownloadURL(media_type=f.media_type,
+                                            format=f.format,
+                                            url=entry_link,)
+                    # Get the project's name and the entry's id
+                    (project_name, entry_id) = ss.get_project_name_and_entry_id(s, f, e)
+                    # Check if this resource is already known
+                    try:
+                        r = Resource.objects.get(external_id=entry_id)
+                        self.stdout.write("Resource already known for %s\n" % e.title)
+                        u.resource = r
+                        u.save()
+                        # The new download url is linked to the
+                        # already-existing resource, nothing left to do
+                        continue
+                    except Resource.DoesNotExist:
+                        pass
+                    self.stdout.write("Creating resource for %s\n" % e.title)
+                    r = Resource(name=e.title,
+                                 description=e.subtitle_detail.value,
+                                 series=s,
+                                 status="NW",
+                                 external_id=entry_id,
+                                 pub_date=strftime("%Y-%m-%d %H:%M:%S+00:00", e.updated_parsed),)
+                    if e.has_key("itunes_duration"):
+                        r.length = e.itunes_duration
+                    r.save()
+                    # Link the download URL to the resource
+                    u.resource = r
+                    u.save()
+                    # Check if this project is already known
                     try:
                         p = Project.objects.get(name=project_name)
-                        r = Resource.objects.get(external_id=e.id)
+                        self.stdout.write("Project %s already known\n" % project_name)
+                        # Link the resource to the project
+                        r.projects.add(p)
+                        continue
                     except Project.DoesNotExist:
                         # Project does not exist, create it
+                        self.stdout.write("Creating project %s\n" % project_name)
                         p = Project(name=project_name,
                                     description=e.subtitle_detail.value,
                                     status="NW")
                         p.save()
-                    except Resource.DoesNotExist:
-                        pass
-                    if not r:
-                        # Resource does not exist, create it
-                        r = Resource(name=e.title,
-                                     description=e.subtitle_detail.value,
-                                     series=s,
-                                     status="NW",
-                                     external_id=e.id,
-                                     length=e.itunes_duration,
-                                     pub_date=strftime("%Y-%m-%d %H:%M:%S+00:00", e.updated_parsed),)
-                        r.save()
                         # Link the resource to the project
                         r.projects.add(p)
-                    # Check if we already know of this download
-                    if 0 == len(ResourceDownloadURL.objects.filter(url=e.link)):
-                        # Save the download URL
-                        u = ResourceDownloadURL(media_type=f.media_type,
-                                                format=f.format,
-                                                url=e.link,
-                                                resource=r,)
-                        u.save()
-#                    break
-#                break
