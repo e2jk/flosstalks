@@ -20,7 +20,8 @@
         <ul>
             {% for r in project.resource_set.all %}
             <li>
-                {{r.name}}
+                {% url series r.series.id as series_url %}
+                {%blocktrans with resource_name=r.name series_name=r.series%}{{resource_name}} (from the <a href="{{series_url}}">{{series_name}}</a> series){%endblocktrans%}
                 <ul>
                     {% for u in r.resourcedownloadurl_set.all %}
                     <li><a href="{{u.url}}">{{u}} ({{u.get_format_display}})</a></li>
