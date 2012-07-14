@@ -15,7 +15,7 @@
         <p>{%blocktrans count num_resources=series.resource_set.all.count%}There is one resource:{%plural%}There are {{num_resources}} resources:{%endblocktrans%}</p>
         <ul>
             {% for r in series.resource_set.all %}
-            <li>{{r.name}}</li>
+            {%if r.status != "IG"%}<li>{{r.name}} {{r.status}}</li>{%endif%}
             {% endfor %}
         </ul>
         {% endif %}
