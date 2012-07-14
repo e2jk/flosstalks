@@ -1,34 +1,39 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{{project.name}} - FLOSS Talks{% endblock %}
+{% block title %}{%if project.status != "HD"%}{{project.name}}{% else %}{%trans "Deactivated project"%}{%endif%} - FLOSS Talks{% endblock %}
 
 {% block container %}<!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-        <h1>{{project.name}}</h1>
-        <p>{{project.description}}</p>
-        <p>{%if project.url%}
-        <a class="btn btn-primary btn-large" href="{{project.url}}">{%trans "Learn more"%} &raquo;</a>
+        {%if project.status != "HD"%}
+            <h1>{{project.name}}</h1>
+            <p>{{project.description}}</p>
+            <p>{%if project.url%}
+            <a class="btn btn-primary btn-large" href="{{project.url}}">{%trans "Learn more"%} &raquo;</a>
+            {% else %}
+            {%trans "The project's website is currently unknown."%}
+            {% endif %}</p>
+            <hr>
+            {%if not project.resource_set.all%}
+            <p>{%trans "There are no known resources yet."%}</p>
+            {% else %}
+            <p>{%blocktrans count num_resources=project.resource_set.all.count%}There is one resource:{%plural%}There are {{num_resources}} resources:{%endblocktrans%}</p>
+            <ul>
+                {% for r in project.resource_set.all %}
+                <li>
+                    {% url series r.series.id as series_url %}
+                    {%blocktrans with resource_name=r.name series_name=r.series%}{{resource_name}} (from the <a href="{{series_url}}">{{series_name}}</a> series){%endblocktrans%}
+                    <ul>
+                        {% for u in r.resourcedownloadurl_set.all %}
+                        <li><a href="{{u.url}}">{{u}} ({{u.get_format_display}})</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         {% else %}
-        {%trans "The project's website is currently unknown."%}
-        {% endif %}</p>
-        <hr>
-        {%if not project.resource_set.all%}
-        <p>{%trans "There are no known resources yet."%}</p>
-        {% else %}
-        <p>{%blocktrans count num_resources=project.resource_set.all.count%}There is one resource:{%plural%}There are {{num_resources}} resources:{%endblocktrans%}</p>
-        <ul>
-            {% for r in project.resource_set.all %}
-            <li>
-                {% url series r.series.id as series_url %}
-                {%blocktrans with resource_name=r.name series_name=r.series%}{{resource_name}} (from the <a href="{{series_url}}">{{series_name}}</a> series){%endblocktrans%}
-                <ul>
-                    {% for u in r.resourcedownloadurl_set.all %}
-                    <li><a href="{{u.url}}">{{u}} ({{u.get_format_display}})</a></li>
-                    {% endfor %}
-                </ul>
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+            <h1>{%trans "Deactivated project"%}</h1>
+            <p>{%trans "This project is no longer available."%}</p>
+        {%endif%}
       </div>{% endblock %}
