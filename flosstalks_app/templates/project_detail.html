@@ -19,7 +19,14 @@
         <p>{%blocktrans count num_resources=project.resource_set.all.count%}There is one resource:{%plural%}There are {{num_resources}} resources:{%endblocktrans%}</p>
         <ul>
             {% for r in project.resource_set.all %}
-            <li>{{r.name}}</li>
+            <li>
+                {{r.name}}
+                <ul>
+                    {% for u in r.resourcedownloadurl_set.all %}
+                    <li><a href="{{u.url}}">{{u}} ({{u.get_format_display}})</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
             {% endfor %}
         </ul>
         {% endif %}
