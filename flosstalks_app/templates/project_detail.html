@@ -3,10 +3,12 @@
 
 {% block title %}{%if project.status != "HD"%}{{project.name}}{% else %}{%trans "Deactivated project"%}{%endif%} - FLOSS Talks{% endblock %}
 
-{% block container %}<!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
+{% block container %}
+        <div class="page-header">
         {%if project.status != "HD"%}
             <h1>{{project.name}}</h1>
+        </div>
+        <div>
             <p>{{project.description}}</p>
             <p>{%if project.url%}
             <a class="btn btn-primary btn-large" href="{{project.url}}">{%trans "Learn more"%} &raquo;</a>
@@ -34,6 +36,8 @@
             {% endif %}
         {% else %}
             <h1>{%trans "Deactivated project"%}</h1>
+        </div>
+        <div>
             <p>{%trans "This project is no longer available."%}</p>
         {%endif%}
-      </div>{% endblock %}
+        </div>{% endblock %}

@@ -3,9 +3,11 @@
 
 {% block title %}{%trans "Contact us"%} - FLOSS Talks{% endblock %}
 
-{% block container %}<!-- Main hero unit -->
-      <div class="hero-unit">
+{% block container %}
+      <div class="page-header">
         <h1>{%trans "Contact us"%}</h1>
+      </div>
+      <div>
         <p>{%blocktrans with email_address="<a href='mailto:info@flosstalks.org'>info@flosstalks.org</a>"%}Get in touch with us by sending us an email at {{email_address}}.{% endblocktrans %}</p>
         {% comment %}Translators:  %(githubissuelink)s will be replaced with a link that says "GitHub"{% endcomment %}
         <p>{%blocktrans with githubissuelink="<a href='https://github.com/e2jk/flosstalks/issues'>GitHub</a>"%}If you'd like to report a bug, please file an issue on {{githubissuelink}}.{% endblocktrans %}</p>

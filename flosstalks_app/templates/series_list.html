@@ -3,9 +3,11 @@
 
 {% block title %}{%trans "Series"%} - FLOSS Talks{% endblock %}
 
-{% block container %}<!-- Main hero unit -->
-      <div class="hero-unit">
+{% block container %}
+      <div class="page-header">
         <h1>{%trans "Series"%}</h1>
+      </div>
+      <div>
         <p>{%trans "Choose one of the following series:"%}</p>
         <ul>
             {% for s in series_list %}

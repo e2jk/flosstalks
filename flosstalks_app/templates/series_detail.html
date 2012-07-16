@@ -3,9 +3,11 @@
 
 {% block title %}{{series.name}} - FLOSS Talks{% endblock %}
 
-{% block container %}<!-- Main hero unit -->
-      <div class="hero-unit">
+{% block container %}
+      <div class="page-header">
         <h1>{{series.name}}</h1>
+      </div>
+      <div>
         <p>{{series.description}}</p>
         <p><a class="btn btn-primary btn-large" href="{{series.url}}">{%trans "Learn more"%} &raquo;</a></p>
         <hr>

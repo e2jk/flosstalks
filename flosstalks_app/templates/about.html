@@ -4,9 +4,11 @@
 {% comment %}Translators: "About FLOSS Talks" in English{% endcomment %}
 {% block title %}{% blocktrans with name="FLOSS Talks"%}About {{name}}{% endblocktrans %}{% endblock %}
 
-{% block container %}<!-- Main hero unit -->
-      <div class="hero-unit">
+{% block container %}
+      <div class="page-header">
         <h1>{%blocktrans with name="FLOSS Talks"%}About {{name}}{% endblocktrans %}</h1>
+      </div>
+      <div>
         <p>FLOSS = Free/Libre/Open-Source Software</p>
         <p>{%trans "FLOSS Talks itself is FLOSS... So start contributing!"%}</p>
         {% comment %}Translators: "Fork the code on GitHub" in English - "Fork" will be replaced by a button, and "GitHub" will be a link, so don't translate any of these terms{% endcomment %}
