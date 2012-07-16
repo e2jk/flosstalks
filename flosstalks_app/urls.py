@@ -16,9 +16,8 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with FLOSS Talks.  If not, see <http://www.gnu.org/licenses/>.
 from django.conf.urls import patterns, include, url
-from django.views.generic import DetailView
 from flosstalks_app.models import Project, Series
-from flosstalks_app.views import TemplateView, ListView
+from flosstalks_app.views import TemplateView, ListView, DetailView
 
 urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
