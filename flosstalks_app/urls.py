@@ -45,10 +45,4 @@ urlpatterns = patterns('',
             model=Series,
             template_name='series_detail.html'),
         name='series'),
-#    url(r'^(?P<pk>\d+)/results/$',
-#        DetailView.as_view(
-#            model=Poll,
-#            template_name='polls/results.html'),
-#        name='poll_results'),
-#    url(r'^(?P<poll_id>\d+)/vote/$', 'polls.views.vote'),
 )
