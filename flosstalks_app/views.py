@@ -16,6 +16,9 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with FLOSS Talks.  If not, see <http://www.gnu.org/licenses/>.
 import django.views.generic as generic_views
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+from flosstalks_app.models import Project, Series
 
 class TemplateView(generic_views.TemplateView):
     def get_context_data(self, **kwargs):
@@ -37,3 +40,16 @@ class DetailView(generic_views.DetailView):
         context = super(DetailView, self).get_context_data(**kwargs)
         context['this_page'] = self.template_name.split(".html")[0]
         return context
+
+def search(request):
+    search_term = request.GET.get("ft-search")
+    projects = Project.objects.filter(name__icontains=search_term) if \
+                        search_term else None
+    series = Series.objects.filter(name__icontains=search_term) if \
+                        search_term else None
+    c = RequestContext(request, {
+        'search_term': search_term,
+        'projects': projects,
+        'series': series,
+    })
+    return render_to_response('search.html', c)

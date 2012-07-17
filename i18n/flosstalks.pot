@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-17 10:03+0200\n"
+"POT-Creation-Date: 2012-07-17 15:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,16 +49,22 @@ msgstr ""
 #: flosstalks_app/templates/base.html:42
 #: flosstalks_app/templates/projects_list.html:4
 #: flosstalks_app/templates/projects_list.html:8
+#: flosstalks_app/templates/search.html:13
 msgid "Projects"
 msgstr ""
 
 #: flosstalks_app/templates/base.html:43
+#: flosstalks_app/templates/search.html:21
 #: flosstalks_app/templates/series_list.html:4
 #: flosstalks_app/templates/series_list.html:8
 msgid "Series"
 msgstr ""
 
 #: flosstalks_app/templates/base.html:46
+#: flosstalks_app/templates/search.html:4
+#: flosstalks_app/templates/search.html:31
+#: flosstalks_app/templates/search.html:36
+#: flosstalks_app/templates/search.html:37
 msgid "Search"
 msgstr ""
 
@@ -132,6 +138,26 @@ msgstr ""
 
 #: flosstalks_app/templates/projects_list.html:11
 msgid "Choose one of the following projects:"
+msgstr ""
+
+#: flosstalks_app/templates/search.html:4
+#: flosstalks_app/templates/search.html:9
+#, python-format
+msgid "Searching for %(search_term)s"
+msgstr ""
+
+#: flosstalks_app/templates/search.html:17
+#, python-format
+msgid "No projects have been found while searching for %(search_term)s."
+msgstr ""
+
+#: flosstalks_app/templates/search.html:25
+#, python-format
+msgid "No series have been found while searching for %(search_term)s."
+msgstr ""
+
+#: flosstalks_app/templates/search.html:34
+msgid "Please enter the name of the project or series you are looking for:"
 msgstr ""
 
 #: flosstalks_app/templates/series_list.html:11
