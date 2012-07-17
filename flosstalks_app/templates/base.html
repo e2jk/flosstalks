@@ -42,6 +42,9 @@
               <li{%if this_page == "projects_list" or this_page == "project_detail"%} class="active"{%endif%}><a href="{%url projects%}">{%trans "Projects"%}</a></li>
               <li{%if this_page == "series_list" or this_page == "series_detail"%} class="active"{%endif%}><a href="{%url series_list%}">{%trans "Series"%}</a></li>
             </ul>
+            <form class="navbar-search pull-left" method="get" action="/search">
+                <input name="search" id="search" type="text" class="search-query" placeholder="{%trans "Search"%}" data-provide="typeahead" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
+            </form>
             <ul class="nav pull-right">
               <li{%if this_page == "about"%} class="active"{%endif%}><a href="{%url about%}">{%trans "About"%}</a></li>
               <li class="divider-vertical"></li>
