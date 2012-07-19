@@ -43,7 +43,7 @@
               <li{%if this_page == "series_list" or this_page == "series_detail"%} class="active"{%endif%}><a href="{%url series_list%}">{%trans "Series"%}</a></li>
             </ul>
             <form class="navbar-search pull-left" method="get" action="/search">
-                <input name="q" id="ft-search-navbar" type="text" class="search-query" placeholder="{%trans "Search"%}" data-provide="typeahead" data-source='{{search_values|safe}}' autocomplete="off">
+                <input name="q" type="text" class="search-query typeahead" placeholder="{%trans "Search"%}" autocomplete="off">
             </form>
             <ul class="nav pull-right">
               <li{%if this_page == "about"%} class="active"{%endif%}><a href="{%url about%}">{%trans "About"%}</a></li>

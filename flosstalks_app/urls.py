@@ -46,4 +46,5 @@ urlpatterns = patterns('',
             template_name='series_detail.html'),
         name='series'),
     url(r'^search$', 'flosstalks_app.views.search'),
+    url(r'^search-values.json$', 'flosstalks_app.views.get_search_values'),
 )

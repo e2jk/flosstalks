@@ -15,5 +15,9 @@
     along with FLOSS Talks.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-//Initialize the Typeahead in the navbar
-$('.typeahead').typeahead();
+//Initialize the Typeahead in the navbar and on the search page
+$.getJSON("/search-values.json", function(data) {
+    $('.typeahead').typeahead({
+        source: data
+    });
+});

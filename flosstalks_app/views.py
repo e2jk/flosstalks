@@ -18,25 +18,26 @@
 import django.views.generic as generic_views
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.http import HttpResponse
 from flosstalks_app.models import Project, Series
 import json
 
-def get_search_values():
+def get_search_values(request):
     #TODO: Keep these values in cache for performance reasons
     search_values = []
     for p in Project.objects.exclude(status="HD"):
         search_values.append(p.name)
     for s in Series.objects.all():
         search_values.append(s.name)
-    #TODO: handle names that have a ' in them
-    return json.dumps(search_values).replace("'", " ")
+    json_response = json.dumps(sorted(search_values))
+    return HttpResponse(json_response, mimetype='application/json')
+
 
 class TemplateView(generic_views.TemplateView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super(TemplateView, self).get_context_data(**kwargs)
         context['this_page'] = self.template_name.split(".html")[0]
-        context['search_values'] = get_search_values()
         return context
 
 class ListView(generic_views.ListView):
@@ -44,7 +45,6 @@ class ListView(generic_views.ListView):
         # Call the base implementation first to get a context
         context = super(ListView, self).get_context_data(**kwargs)
         context['this_page'] = self.template_name.split(".html")[0]
-        context['search_values'] = get_search_values()
         return context
 
 class DetailView(generic_views.DetailView):
@@ -52,7 +52,6 @@ class DetailView(generic_views.DetailView):
         # Call the base implementation first to get a context
         context = super(DetailView, self).get_context_data(**kwargs)
         context['this_page'] = self.template_name.split(".html")[0]
-        context['search_values'] = get_search_values()
         return context
 
 def search(request):
@@ -65,6 +64,5 @@ def search(request):
         'search_term': search_term,
         'projects': projects,
         'series': series,
-        'search_values': get_search_values(),
     })
     return render_to_response('search.html', c)
