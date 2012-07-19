@@ -33,7 +33,7 @@
       <div class="well">
         <p>{%trans "Please enter the name of the project or series you are looking for:"%}</p>
         <form class="form-search">
-            <input name="ft-search" id="ft-search-page" type="text" class="input-medium search-query span3" placeholder="{%trans "Search"%}" data-provide="typeahead" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
+            <input name="ft-search" id="ft-search-page" type="text" class="input-medium search-query span3" placeholder="{%trans "Search"%}" data-provide="typeahead" data-source='{{search_values|safe}}'>
             <button type="submit" class="btn">{%trans "Search"%}</button>
         </form>
       </div>
