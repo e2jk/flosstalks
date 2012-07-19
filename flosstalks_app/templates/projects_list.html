@@ -9,9 +9,24 @@
       </div>
       <div>
         <p>{%trans "Choose one of the following projects:"%}</p>
-        <ul>
+        
+        <div class="accordion" id="projectlist">
             {% for p in projects_list %}
-            <li><a href="{%url project p.pk%}">{{p.name}}</a></li>
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#projectlist" href="#project{{forloop.counter0}}">
+                  <h2>{{p.name}}</h2>
+                </a>
+              </div>
+              <div id="project{{forloop.counter0}}" class="accordion-body collapse{%if forloop.first%} in{%endif%}">
+                <div class="accordion-inner">
+                  {{p.description}}
+                  <br/>
+                  <a href="{%url project p.pk%}" class="btn">{%blocktrans with project_name=p.name%}Learn more about {{project_name}}{%endblocktrans%} &gt;&gt;</a>
+                </div>
+              </div>
+            </div>
             {% endfor %}
-        </ul>
+        </div>
+        
       </div>{% endblock %}
