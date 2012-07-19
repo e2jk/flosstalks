@@ -19,6 +19,7 @@ import django.views.generic as generic_views
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse
+from django.core.urlresolvers import reverse
 from flosstalks_app.models import Project, Series
 import json
 
@@ -26,9 +27,9 @@ def get_search_values(request):
     #TODO: Keep these values in cache for performance reasons
     search_values = []
     for p in Project.objects.exclude(status="HD"):
-        search_values.append(p.name)
+        search_values.append({"value": p.name, "url": reverse('project', args=[p.pk])})
     for s in Series.objects.all():
-        search_values.append(s.name)
+        search_values.append({"value": s.name, "url": reverse('series', args=[s.pk])})
     json_response = json.dumps(sorted(search_values))
     return HttpResponse(json_response, mimetype='application/json')
 

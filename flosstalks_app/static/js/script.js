@@ -18,6 +18,10 @@
 //Initialize the Typeahead in the navbar and on the search page
 $.getJSON("/search-values.json", function(data) {
     $('.typeahead').typeahead({
-        source: data
+        source: data,
+        onselect: function(obj) {
+            // Redirect to the page of the selected project or series
+            window.location.href = obj["url"];
+        }
     });
 });
