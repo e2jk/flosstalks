@@ -56,7 +56,7 @@ class DetailView(generic_views.DetailView):
         return context
 
 def search(request):
-    search_term = request.GET.get("ft-search")
+    search_term = request.GET.get("q")
     projects = Project.objects.filter(name__icontains=search_term) if \
                         search_term else None
     series = Series.objects.filter(name__icontains=search_term) if \
