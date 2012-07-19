@@ -33,7 +33,7 @@
       <div class="well">
         <p>{%trans "Please enter the name of the project or series you are looking for:"%}</p>
         <form class="form-search">
-            <input name="ft-search" id="ft-search-page" type="text" class="input-medium search-query span3" placeholder="{%trans "Search"%}" data-provide="typeahead" data-source='{{search_values|safe}}'>
+            <input name="ft-search" id="ft-search-page" type="text" class="input-medium search-query span3" placeholder="{%trans "Search"%}" data-provide="typeahead" data-source='{{search_values|safe}}' autocomplete="off">
             <button type="submit" class="btn">{%trans "Search"%}</button>
         </form>
       </div>
