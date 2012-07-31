@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     url(r'^projects$',
         ListView.as_view(
             queryset=Project.objects.exclude(status="HD").order_by('name'),
+            paginate_by=25,
             context_object_name='projects_list',
             template_name='projects_list.html'),
         name='projects'),
