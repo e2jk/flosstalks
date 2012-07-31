@@ -32,7 +32,7 @@
         {%if is_paginated%}
         <div class="pagination pagination-centered">
             <ul>
-                <li{% if not page_obj.has_previous%} class="disabled"{%endif%}><a href="{% if page_obj.has_previous%}?page={{page_obj.previous_page_number}}{%else%}#{%endif%}">{%trans "Prev"%}</a></li>
+                <li{% if not page_obj.has_previous%} class="disabled"{%endif%}><a href="{% if page_obj.has_previous%}?page={{page_obj.previous_page_number}}{%else%}#{%endif%}"><i class="icon-arrow-left"></i> {%trans "Prev"%}</a></li>
             {% for p in paginator.page_range %}
                 {%if page_obj.number == p%}
                 <li class="active"><a href="?page={{p}}">{%blocktrans with num=page_obj.number num_pages=paginator.num_pages%}Page {{num}} of {{num_pages}}{%endblocktrans%}</a></li>
@@ -40,7 +40,7 @@
                 <li><a href="?page={{p}}">{{p}}</a></li>
                 {%endif%}
             {% endfor %}
-                <li{% if not page_obj.has_next%} class="disabled"{%endif%}><a href="{% if page_obj.has_next%}?page={{page_obj.next_page_number}}{%else%}#{%endif%}">{%trans "Next"%}</a></li>
+                <li{% if not page_obj.has_next%} class="disabled"{%endif%}><a href="{% if page_obj.has_next%}?page={{page_obj.next_page_number}}{%else%}#{%endif%}">{%trans "Next"%} <i class="icon-arrow-right"></i></a></li>
             </ul>
         </div>
         {%endif%}
