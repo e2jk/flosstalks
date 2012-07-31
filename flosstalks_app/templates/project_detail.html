@@ -27,7 +27,10 @@
                     {%blocktrans with resource_name=r.name series_name=r.series%}{{resource_name}} (from the <a href="{{series_url}}">{{series_name}}</a> series){%endblocktrans%}
                     <ul>
                         {% for u in r.resourcedownloadurl_set.all %}
-                        <li><a href="{{u.url}}">{{u}} ({{u.get_format_display}})</a></li>
+                        <li>
+                            <a href="{{u.url}}"><i class="icon-{% if u.media_type|slice:":2" == "AU" %}headphones{%else%}film{%endif%}" title="{{u.get_media_type_display}}"></i></a> 
+                            <a href="{{u.url}}">{{u}} ({{u.get_format_display}})</a>
+                        </li>
                         {% endfor %}
                     </ul>
                 </li>
