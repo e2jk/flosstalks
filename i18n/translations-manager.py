@@ -81,7 +81,7 @@ def main():
     src = "%s/django.po" % (langFolder % "en")
     dst = "%s/flosstalks.pot" % poFolder
 
-    cmd = "diff --ignore-matching-lines='POT-Creation-Date' %s %s > /dev/null" % (src, dst)
+    cmd = "diff --ignore-matching-lines='POT-Creation-Date' --ignore-matching-lines='#: ' %s %s > /dev/null" % (src, dst)
     if os.system(cmd):
         # The diff returns a non-null value, so there is at least one
         # meaningful difference between the .pot and the English .po file
