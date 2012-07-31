@@ -9,7 +9,7 @@
       </div>
       <div>
         <p>{{series.description}}</p>
-        <p><a class="btn btn-primary btn-large" href="{{series.url}}">{%trans "Learn more"%} &raquo;</a></p>
+        <p><a class="btn btn-primary btn-large" href="{{series.url}}">{%trans "Learn more"%} <i class="icon-info-sign icon-white"></i></a></p>
         <hr>
         {%if not series.resource_set.all%}
         <p>{%trans "There are no known resources yet."%}</p>
