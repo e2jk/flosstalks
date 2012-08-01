@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-01 11:27+0200\n"
+"POT-Creation-Date: 2012-08-01 17:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,14 +103,35 @@ msgid ""
 msgstr ""
 
 #: flosstalks_app/templates/index.html:8
-#: flosstalks_app/templates/project_detail.html:14
-#: flosstalks_app/templates/series_detail.html:12
-msgid "Learn more"
+msgid ""
+"Videos, talks and podcasts about your favorite free, libre and open source "
+"projects"
+msgstr ""
+
+#: flosstalks_app/templates/index.html:11
+msgid ""
+"The place where you'll find audio and video resources about the FLOSS "
+"projects you are interested in."
+msgstr ""
+
+#: flosstalks_app/templates/index.html:13
+msgid ""
+"Select one of the projects below, or search for you favorite one in the "
+"search bar on top."
+msgstr ""
+
+#: flosstalks_app/templates/index.html:15
+msgid "Learn more about FLOSS Talks"
 msgstr ""
 
 #: flosstalks_app/templates/project_detail.html:4
 #: flosstalks_app/templates/project_detail.html:42
 msgid "Deactivated project"
+msgstr ""
+
+#: flosstalks_app/templates/project_detail.html:14
+#: flosstalks_app/templates/series_detail.html:12
+msgid "Learn more"
 msgstr ""
 
 #: flosstalks_app/templates/project_detail.html:16
@@ -163,11 +184,11 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: flosstalks_app/templates/resource_detail.html:23
+#: flosstalks_app/templates/resource_detail.html:25
 msgid "This resource is not associated to any project yet."
 msgstr ""
 
-#: flosstalks_app/templates/resource_detail.html:25
+#: flosstalks_app/templates/resource_detail.html:27
 #, python-format
 msgid "There is one project associated with this resource:"
 msgid_plural ""
@@ -175,11 +196,11 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: flosstalks_app/templates/resource_detail.html:35
+#: flosstalks_app/templates/resource_detail.html:38
 msgid "There are no known downloads yet."
 msgstr ""
 
-#: flosstalks_app/templates/resource_detail.html:37
+#: flosstalks_app/templates/resource_detail.html:40
 #, python-format
 msgid "There is one download available:"
 msgid_plural "There are %(num_downloads)s downloads available:"

@@ -3,9 +3,16 @@
 
 {% block container %}
       <div class="hero-unit">
-        <h1>FLOSS Talks</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-large" href="{% url about %}">{%trans "Learn more"%} &raquo;</a></p>
+        <h1>
+            FLOSS Talks
+            <small>{%trans "Videos, talks and podcasts about your favorite free, libre and open source projects"%}</small>
+        </h1>
+        <p>
+            {%trans "The place where you'll find audio and video resources about the FLOSS projects you are interested in."%}
+            <br>
+            {%trans "Select one of the projects below, or search for you favorite one in the search bar on top."%}
+        </p>
+        <p><a class="btn btn-primary btn-large" href="{% url about %}">{%trans "Learn more about FLOSS Talks"%} <i class="icon-chevron-right icon-white"></i></a></p>
       </div>
 
       <div class="row">
