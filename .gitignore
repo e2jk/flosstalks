@@ -4,6 +4,5 @@ data/*
 .project
 .pydevproject
 .settings
-flosstalks/static/*
 locale
 flosstalks/DO_NOT_SHARE.py
