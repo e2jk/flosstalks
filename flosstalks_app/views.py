@@ -43,6 +43,7 @@ class TemplateView(generic_views.TemplateView):
         if "index.html" == self.template_name:
             # Highlight 3 projects on the home page
             context['highlighted_projects'] = Project.objects.exclude(status="HD").order_by('?')[:3]
+
         return context
 
 class ListView(generic_views.ListView):
@@ -57,6 +58,11 @@ class DetailView(generic_views.DetailView):
         # Call the base implementation first to get a context
         context = super(DetailView, self).get_context_data(**kwargs)
         context['this_page'] = self.template_name.split(".html")[0]
+
+        if "resource_detail.html" == self.template_name:
+            # List all the active projects associated with this resource
+            context['active_projects'] = context['resource'].projects.exclude(status="HD")
+
         return context
 
 def search(request):

@@ -22,12 +22,12 @@
         
         <div class="row">
             <div class="span6">
-                {%if not resource.projects.all%}
-                <p>{%trans "This resource is not associated to any project yet."%}</p>
+                {%if not active_projects%}
+                <p>{%trans "This resource is not associated to any project."%}</p>
                 {% else %}
-                <p>{%blocktrans count num_projects=resource.projects.all.count%}There is one project associated with this resource:{%plural%}There are {{num_projects}} projects associated with this resource:{%endblocktrans%}</p>
+                <p>{%blocktrans count num_projects=active_projects.count%}There is one project associated with this resource:{%plural%}There are {{num_projects}} projects associated with this resource:{%endblocktrans%}</p>
                 <ul>
-                    {% for p in resource.projects.all %}
+                    {% for p in active_projects %}
                     <li><a href="{%url project p.pk%}">{{p.name}}</a></li>
                     {% endfor %}
                 </ul>
