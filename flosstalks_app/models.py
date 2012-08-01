@@ -22,6 +22,9 @@ class Project(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     url = models.URLField("Website", null=True, blank=True)
+    #TODO: Create a mechanism to retrieve a copy of the logo on the server
+    # to prevent depending on external websites
+    logo_url = models.URLField(null=True, blank=True)
     #TODO: use ohloh_id
     ohloh_id = models.IntegerField("Ohloh ID", null=True, blank=True)
     STATUSES = (

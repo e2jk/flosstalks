@@ -4,48 +4,58 @@
 {% block title %}{%if project.status != "HD"%}{{project.name}}{% else %}{%trans "Deactivated project"%}{%endif%} - FLOSS Talks{% endblock %}
 
 {% block container %}
+        {%if project.status = "HD"%}
         <div class="page-header">
-        {%if project.status != "HD"%}
-            <h1>{{project.name}}</h1>
-        </div>
-        <div>
-            <p>{{project.description}}</p>
-            <p>{%if project.url%}
-            <a class="btn btn-primary btn-large" href="{{project.url}}">{%trans "Learn more"%} <i class="icon-info-sign icon-white"></i></a>
-            {% else %}
-            {%trans "The project's website is currently unknown."%}
-            {% endif %}</p>
-            <hr>
-            {%if not project.resource_set.all%}
-            <p>{%trans "There are no known resources yet."%}</p>
-            {% else %}
-            <p>{%blocktrans count num_resources=project.resource_set.all.count%}There is one resource:{%plural%}There are {{num_resources}} resources:{%endblocktrans%}</p>
-            <ul>
-                {% for r in project.resource_set.all %}
-                <li>
-                    {% url series r.series.id as series_url %}
-                    {% url resource r.pk as resource_url %}
-                    {%if r.series%}
-                    {%blocktrans with resource_name=r.name series_name=r.series.name%}<a href="{{resource_url}}">{{resource_name}}</a> (from the <a href="{{series_url}}">{{series_name}}</a> series){%endblocktrans%}
-                    {% else %}
-                    <a href="{{resource_url}}">{{r.name}}</a>
-                    {% endif %}
-                    <ul>
-                        {% for u in r.resourcedownloadurl_set.all %}
-                        <li>
-                            <a href="{{u.url}}"><i class="icon-{% if u.media_type|slice:":2" == "AU" %}headphones{%else%}film{%endif%}" title="{{u.get_media_type_display}}"></i></a> 
-                            <a href="{{u.url}}">{{u}} ({{u.get_format_display}})</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-        {% else %}
             <h1>{%trans "Deactivated project"%}</h1>
         </div>
         <div>
             <p>{%trans "This project is no longer available."%}</p>
-        {%endif%}
-        </div>{% endblock %}
+        </div>
+        {% else %}
+        <div class="row">
+            <div class="span{%if project.logo_url%}9{%else%}12{%endif%}">
+                <div class="page-header">
+                    <h1>{{project.name}}</h1>
+                </div>
+                <p>{{project.description}}</p>
+                <p>{%if project.url%}
+                <a class="btn btn-primary btn-large" href="{{project.url}}">{%trans "Learn more"%} <i class="icon-info-sign icon-white"></i></a>
+                {% else %}
+                {%trans "The project's website is currently unknown."%}
+                {% endif %}</p>
+                
+                <hr>
+                {%if not project.resource_set.all%}
+                <p>{%trans "There are no known resources yet."%}</p>
+                {% else %}
+                <p>{%blocktrans count num_resources=project.resource_set.all.count%}There is one resource:{%plural%}There are {{num_resources}} resources:{%endblocktrans%}</p>
+                <ul>
+                    {% for r in project.resource_set.all %}
+                    <li>
+                        {% url series r.series.id as series_url %}
+                        {% url resource r.pk as resource_url %}
+                        {%if r.series%}
+                        {%blocktrans with resource_name=r.name series_name=r.series.name%}<a href="{{resource_url}}">{{resource_name}}</a> (from the <a href="{{series_url}}">{{series_name}}</a> series){%endblocktrans%}
+                        {% else %}
+                        <a href="{{resource_url}}">{{r.name}}</a>
+                        {% endif %}
+                        <ul>
+                            {% for u in r.resourcedownloadurl_set.all %}
+                            <li>
+                                <a href="{{u.url}}"><i class="icon-{% if u.media_type|slice:":2" == "AU" %}headphones{%else%}film{%endif%}" title="{{u.get_media_type_display}}"></i></a> 
+                                <a href="{{u.url}}">{{u}} ({{u.get_format_display}})</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {%if project.logo_url%}
+            <div class="span3 pagination-right">
+                <p><img src="{{project.logo_url}}" alt="{%blocktrans with project_name=project.name%}{{project_name}}'s logo{%endblocktrans%}"></p>
+            </div>
+            {%endif%}
+        </div>
+        {%endif%}{% endblock %}
