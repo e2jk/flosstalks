@@ -60,7 +60,7 @@ class Resource(models.Model):
     description = models.TextField()
     url = models.URLField("Web page", null=True, blank=True)
     projects = models.ManyToManyField(Project)
-    series = models.ForeignKey(Series)
+    series = models.ForeignKey(Series, null=True, blank=True)
     STATUSES = (
         ('NW', 'New'),
         ('VF', 'Verified'),

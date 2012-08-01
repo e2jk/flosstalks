@@ -25,7 +25,11 @@
                 <li>
                     {% url series r.series.id as series_url %}
                     {% url resource r.pk as resource_url %}
+                    {%if r.series%}
                     {%blocktrans with resource_name=r.name series_name=r.series.name%}<a href="{{resource_url}}">{{resource_name}}</a> (from the <a href="{{series_url}}">{{series_name}}</a> series){%endblocktrans%}
+                    {% else %}
+                    <a href="{{resource_url}}">{{r.name}}</a>
+                    {% endif %}
                     <ul>
                         {% for u in r.resourcedownloadurl_set.all %}
                         <li>
