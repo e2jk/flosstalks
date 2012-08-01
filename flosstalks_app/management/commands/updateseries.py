@@ -32,10 +32,16 @@ class GenericSeries(object):
             i += 1
 
     def get_entry_link(self, entry):
-        print "NOT IMPLEMENTED"
+        print "NOT IMPLEMENTED: get_entry_link"
+        return None
 
     def get_project_name_and_entry_id(self, series, feed, entry):
-        print "NOT IMPLEMENTED"
+        print "NOT IMPLEMENTED: get_project_name_and_entry_id"
+        return None
+
+    def get_resource_link(self, entry):
+        print "NOT IMPLEMENTED: get_resource_link"
+        return None
 
 
 class FLOSSWeekly(GenericSeries):
@@ -57,6 +63,9 @@ class FLOSSWeekly(GenericSeries):
                 # resource's ID instead of the feed's base URI
                 entry.id.replace(feed.url.rsplit("/", 1)[0], series.url))
 
+    def get_resource_link(self, entry):
+        return entry.comments
+
 
 class Sourcetrunk(GenericSeries):
     sample_feeds = [
@@ -75,6 +84,9 @@ class Sourcetrunk(GenericSeries):
                 # Create a unique resource ID, since there's none
                 # specified in Sourcetrunk's feed
                 "%s%s" % (series.url, rep.match(entry.title).groups()[0]))
+
+    def get_resource_link(self, entry):
+        return entry.feedburner_origlink
 
 
 class Command(BaseCommand):
@@ -132,6 +144,7 @@ class Command(BaseCommand):
                         self.stdout.write(" R")
                     r = Resource(name=e.title,
                                  description=e.subtitle_detail.value,
+                                 url=ss.get_resource_link(e),
                                  series=s,
                                  status="NW",
                                  external_id=entry_id,

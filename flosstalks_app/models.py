@@ -58,6 +58,7 @@ class Series(models.Model):
 class Resource(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
+    url = models.URLField("Web page", null=True, blank=True)
     projects = models.ManyToManyField(Project)
     series = models.ForeignKey(Series)
     STATUSES = (
