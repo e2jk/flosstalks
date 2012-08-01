@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-01 18:48+0200\n"
+"POT-Creation-Date: 2012-08-01 18:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -109,8 +109,9 @@ msgid ""
 msgstr ""
 
 #: flosstalks_app/templates/index.html:11
+#, python-format
 msgid ""
-"The place where you'll find audio and video resources about the FLOSS "
+"The place where you'll find audio and video resources about the %(FLOSS)s "
 "projects you are interested in."
 msgstr ""
 
