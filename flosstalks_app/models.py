@@ -22,6 +22,7 @@ class Project(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     url = models.URLField("Website", null=True, blank=True)
+    #TODO: use ohloh_id
     ohloh_id = models.IntegerField("Ohloh ID", null=True, blank=True)
     STATUSES = (
         ('NW', 'New'),
@@ -69,7 +70,9 @@ class Resource(models.Model):
     )
     status = models.CharField(max_length=2, choices=STATUSES, default="VF")
     external_id = models.CharField(max_length=200)
+    #TODO: use length
     length = models.CharField(max_length=10, null=True, blank=True)
+    #TODO: use pub_date
     pub_date = models.DateTimeField("Date published"
                                     , default=datetime.datetime.now())
 
