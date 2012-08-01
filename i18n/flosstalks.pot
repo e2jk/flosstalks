@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-01 17:07+0200\n"
+"POT-Creation-Date: 2012-08-01 17:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,6 +124,12 @@ msgstr ""
 msgid "Learn more about FLOSS Talks"
 msgstr ""
 
+#: flosstalks_app/templates/index.html:23
+#: flosstalks_app/templates/projects_list.html:25
+#, python-format
+msgid "Learn more about %(project_name)s"
+msgstr ""
+
 #: flosstalks_app/templates/project_detail.html:4
 #: flosstalks_app/templates/project_detail.html:42
 msgid "Deactivated project"
@@ -164,11 +170,6 @@ msgstr ""
 
 #: flosstalks_app/templates/projects_list.html:11
 msgid "Choose one of the following projects:"
-msgstr ""
-
-#: flosstalks_app/templates/projects_list.html:25
-#, python-format
-msgid "Learn more about %(project_name)s"
 msgstr ""
 
 #: flosstalks_app/templates/projects_list.html:35

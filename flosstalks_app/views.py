@@ -39,6 +39,11 @@ class TemplateView(generic_views.TemplateView):
         # Call the base implementation first to get a context
         context = super(TemplateView, self).get_context_data(**kwargs)
         context['this_page'] = self.template_name.split(".html")[0]
+
+        if "index.html" == self.template_name:
+            # Highlight 3 projects on the home page
+            #TODO: make this random
+            context['highlighted_projects'] = Project.objects.all()[:3]
         return context
 
 class ListView(generic_views.ListView):
