@@ -14,6 +14,10 @@
         {% else %}
         {%trans "The resource's web page is currently unknown."%}
         {% endif %}</p>
+        {%if resource.series%}<p>
+        {% url series resource.series.id as series_url %}
+        {%blocktrans with series_name=resource.series.name%}See all the resources from the <a href="{{series_url}}">{{series_name}}</a> series.{%endblocktrans%}
+        </p>{% endif %}
         <hr>
         
         <div class="row">
