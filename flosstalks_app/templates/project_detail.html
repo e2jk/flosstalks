@@ -13,7 +13,7 @@
         </div>
         {% else %}
         <div class="row">
-            <div class="span{%if project.logo_url%}9{%else%}12{%endif%}">
+            <div class="span{%if project.logo_url or project.ohloh_id%}7{%else%}12{%endif%}">
                 <div class="page-header">
                     <h1>{{project.name}}</h1>
                 </div>
@@ -52,9 +52,17 @@
                 </ul>
                 {% endif %}
             </div>
-            {%if project.logo_url%}
-            <div class="span3 pagination-right">
-                <p><img src="{{project.logo_url}}" alt="{%blocktrans with project_name=project.name%}{{project_name}}'s logo{%endblocktrans%}"></p>
+            {%if project.logo_url or project.ohloh_id%}
+            <div class="span5">
+                {%if project.logo_url%}
+                <p class="pagination-centered"><img src="{{project.logo_url}}" alt="{%blocktrans with project_name=project.name%}{{project_name}}'s logo{%endblocktrans%}"></p>
+                {%endif%}
+                {%if project.ohloh_id%}
+                <br>
+                <script type="text/javascript" src="http://www.ohloh.net/p/{{project.ohloh_id}}/widgets/project_languages.js"></script>
+                <br>
+                <script type="text/javascript" src="http://www.ohloh.net/p/{{project.ohloh_id}}/widgets/project_factoids_stats.js"></script>
+                {%endif%}
             </div>
             {%endif%}
         </div>
