@@ -17,6 +17,19 @@
         {% endif %}</p>
         {%endcomment%}
         <hr>
+        
+        {%if not resource.projects.all%}
+        <p>{%trans "This resource is not associated to any project yet."%}</p>
+        {% else %}
+        <p>{%blocktrans count num_projects=resource.projects.all.count%}There is one project associated with this resource:{%plural%}There are {{num_projects}} projects associated with this resource:{%endblocktrans%}</p>
+        <ul>
+            {% for p in resource.projects.all %}
+            <li><a href="{%url project p.pk%}">{{p.name}}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <hr>
+        
         {%if not resource.resourcedownloadurl_set.all%}
         <p>{%trans "There are no known downloads yet."%}</p>
         {% else %}
