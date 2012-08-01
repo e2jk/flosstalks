@@ -23,4 +23,13 @@
             <a href="{%url project p.pk%}" class="btn">{%blocktrans with project_name=p.name%}Learn more about {{project_name}}{%endblocktrans%} <i class="icon-share-alt"></i></a>
         </div>
         {% endfor %}
-      </div>{% endblock %}
+      </div>
+      
+      <div class="row">
+        <p class="pull-right">
+            <a href="{%url projects%}">{%trans "Browse through all the projects"%}</a>
+            -
+            <a href="{%url home%}">{%trans "Show other random projects"%}</a>
+        </p>
+      </div>
+      {% endblock %}
