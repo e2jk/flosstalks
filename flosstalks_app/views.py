@@ -42,8 +42,7 @@ class TemplateView(generic_views.TemplateView):
 
         if "index.html" == self.template_name:
             # Highlight 3 projects on the home page
-            #TODO: make this random
-            context['highlighted_projects'] = Project.objects.all()[:3]
+            context['highlighted_projects'] = Project.objects.exclude(status="HD").order_by('?')[:3]
         return context
 
 class ListView(generic_views.ListView):
