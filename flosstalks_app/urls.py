@@ -16,7 +16,7 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with FLOSS Talks.  If not, see <http://www.gnu.org/licenses/>.
 from django.conf.urls import patterns, include, url
-from flosstalks_app.models import Project, Series
+from flosstalks_app.models import Project, Series, Resource
 from flosstalks_app.views import TemplateView, ListView, DetailView
 
 urlpatterns = patterns('',
@@ -46,6 +46,11 @@ urlpatterns = patterns('',
             model=Series,
             template_name='series_detail.html'),
         name='series'),
+    url(r'^r/(?P<pk>\d+)/$',
+        DetailView.as_view(
+            model=Resource,
+            template_name='resource_detail.html'),
+        name='resource'),
     url(r'^search$', 'flosstalks_app.views.search'),
     url(r'^search-values.json$', 'flosstalks_app.views.get_search_values'),
 )

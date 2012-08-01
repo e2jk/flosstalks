@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-31 22:34+0200\n"
+"POT-Creation-Date: 2012-08-01 11:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -109,7 +109,7 @@ msgid "Learn more"
 msgstr ""
 
 #: flosstalks_app/templates/project_detail.html:4
-#: flosstalks_app/templates/project_detail.html:38
+#: flosstalks_app/templates/project_detail.html:42
 msgid "Deactivated project"
 msgstr ""
 
@@ -130,14 +130,14 @@ msgid_plural "There are %(num_resources)s resources:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: flosstalks_app/templates/project_detail.html:27
+#: flosstalks_app/templates/project_detail.html:28
 #, python-format
 msgid ""
-"%(resource_name)s (from the <a href=\"%(series_url)s\">%(series_name)s</a> "
-"series)"
+"<a href=\"%(resource_url)s\">%(resource_name)s</a> (from the <a href="
+"\"%(series_url)s\">%(series_name)s</a> series)"
 msgstr ""
 
-#: flosstalks_app/templates/project_detail.html:41
+#: flosstalks_app/templates/project_detail.html:45
 msgid "This project is no longer available."
 msgstr ""
 
@@ -162,6 +162,17 @@ msgstr ""
 #: flosstalks_app/templates/projects_list.html:43
 msgid "Next"
 msgstr ""
+
+#: flosstalks_app/templates/resource_detail.html:22
+msgid "There are no known downloads yet."
+msgstr ""
+
+#: flosstalks_app/templates/resource_detail.html:24
+#, python-format
+msgid "There is one download available:"
+msgid_plural "There are %(num_downloads)s downloads available:"
+msgstr[0] ""
+msgstr[1] ""
 
 #: flosstalks_app/templates/search.html:4
 #: flosstalks_app/templates/search.html:9
