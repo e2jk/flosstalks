@@ -18,29 +18,34 @@
         {%endcomment%}
         <hr>
         
-        {%if not resource.projects.all%}
-        <p>{%trans "This resource is not associated to any project yet."%}</p>
-        {% else %}
-        <p>{%blocktrans count num_projects=resource.projects.all.count%}There is one project associated with this resource:{%plural%}There are {{num_projects}} projects associated with this resource:{%endblocktrans%}</p>
-        <ul>
-            {% for p in resource.projects.all %}
-            <li><a href="{%url project p.pk%}">{{p.name}}</a></li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        <hr>
-        
-        {%if not resource.resourcedownloadurl_set.all%}
-        <p>{%trans "There are no known downloads yet."%}</p>
-        {% else %}
-        <p>{%blocktrans count num_downloads=resource.resourcedownloadurl_set.all.count%}There is one download available:{%plural%}There are {{num_downloads}} downloads available:{%endblocktrans%}</p>
-        <ul>
-            {% for u in resource.resourcedownloadurl_set.all %}
-            <li>
-                <a href="{{u.url}}"><i class="icon-{% if u.media_type|slice:":2" == "AU" %}headphones{%else%}film{%endif%}" title="{{u.get_media_type_display}}"></i></a> 
-                <a href="{{u.url}}">{{u}} ({{u.get_format_display}})</a>
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+        <div class="row">
+            <div class="span6">
+                {%if not resource.projects.all%}
+                <p>{%trans "This resource is not associated to any project yet."%}</p>
+                {% else %}
+                <p>{%blocktrans count num_projects=resource.projects.all.count%}There is one project associated with this resource:{%plural%}There are {{num_projects}} projects associated with this resource:{%endblocktrans%}</p>
+                <ul>
+                    {% for p in resource.projects.all %}
+                    <li><a href="{%url project p.pk%}">{{p.name}}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            
+            <div class="span6">
+                {%if not resource.resourcedownloadurl_set.all%}
+                <p>{%trans "There are no known downloads yet."%}</p>
+                {% else %}
+                <p>{%blocktrans count num_downloads=resource.resourcedownloadurl_set.all.count%}There is one download available:{%plural%}There are {{num_downloads}} downloads available:{%endblocktrans%}</p>
+                <ul>
+                    {% for u in resource.resourcedownloadurl_set.all %}
+                    <li>
+                        <a href="{{u.url}}"><i class="icon-{% if u.media_type|slice:":2" == "AU" %}headphones{%else%}film{%endif%}" title="{{u.get_media_type_display}}"></i></a> 
+                        <a href="{{u.url}}">{{u}} ({{u.get_format_display}})</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
       </div>{% endblock %}
