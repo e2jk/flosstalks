@@ -19,6 +19,7 @@ import feedparser
 import re
 from time import strftime
 from django.core.management.base import BaseCommand, CommandError
+from django.utils.http import urlquote
 from flosstalks_app.models import Series, Project, Resource, ResourceDownloadURL
 
 class GenericSeries(object):
@@ -42,6 +43,10 @@ class GenericSeries(object):
     def get_resource_link(self, entry):
         print "NOT IMPLEMENTED: get_resource_link"
         return None
+
+    def get_nice_url(self, value):
+        # Return a string that is safe to use as a nice url
+        return urlquote(value[:99].lower().replace(" ", "-"))
 
 
 class FLOSSWeekly(GenericSeries):
@@ -165,6 +170,7 @@ class Command(BaseCommand):
                         self.stdout.write(" P")
                         # Project does not exist, create it
                         p = Project(name=project_name,
+                                    nice_url=ss.get_nice_url(project_name),
                                     description=e.subtitle_detail.value,
                                     status="NW")
                         p.save()

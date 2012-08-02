@@ -18,7 +18,7 @@
 import django.views.generic as generic_views
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.core.urlresolvers import reverse
 from flosstalks_app.models import Project, Series
 import json
@@ -77,3 +77,13 @@ def search(request):
         'series': series,
     })
     return render_to_response('search.html', c)
+
+def nice_url(request, requested_value):
+    try:
+        project = Project.objects.get(nice_url=requested_value)
+        c = RequestContext(request, {
+            'project': project,
+        })
+        return render_to_response('project_detail.html', c)
+    except Project.DoesNotExist:
+        raise Http404

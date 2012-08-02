@@ -20,6 +20,7 @@ from django.db import models
 
 class Project(models.Model):
     name = models.CharField(max_length=100)
+    nice_url = models.CharField(max_length=100, null=True, blank=True)
     description = models.TextField()
     url = models.URLField("Website", null=True, blank=True)
     #TODO: Create a mechanism to retrieve a copy of the logo on the server
