@@ -42,6 +42,7 @@ class Project(models.Model):
 
 class Series(models.Model):
     name = models.CharField(max_length=100)
+    nice_url = models.CharField(max_length=100, null=True, blank=True)
     description = models.TextField()
     url = models.URLField("Website", null=True, blank=True)
     MODES = (

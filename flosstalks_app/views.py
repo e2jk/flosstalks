@@ -57,7 +57,7 @@ class DetailView(generic_views.DetailView):
     def get(self, request, **kwargs):
         orig = super(DetailView, self).get(request, **kwargs)
 
-        if "project_detail.html" == self.template_name:
+        if self.template_name in ("project_detail.html", "series_detail.html"):
             # Redirect to this project's nice url if it's defined
             if self.object.nice_url:
                 return HttpResponsePermanentRedirect("/%s" % self.object.nice_url)
@@ -90,10 +90,21 @@ def search(request):
 
 def nice_url(request, requested_value):
     try:
+        # Nice url of a project?
         project = Project.objects.get(nice_url=requested_value)
         c = RequestContext(request, {
             'project': project,
         })
         return render_to_response('project_detail.html', c)
     except Project.DoesNotExist:
-        raise Http404
+        try:
+            # Nice url of a series?
+            series = Series.objects.get(nice_url=requested_value)
+            c = RequestContext(request, {
+                'series': series,
+            })
+            return render_to_response('series_detail.html', c)
+        except Series.DoesNotExist:
+            # Not a valid nice url
+            #TODO: This breaks Django's automatic redirect from /r/22 to /r/22/
+            raise Http404
