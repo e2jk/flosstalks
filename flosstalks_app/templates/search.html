@@ -20,7 +20,7 @@
         <div class="span6">
             <h2>{%trans "Series"%}</h2>
             {%if series%}<ul>{% for s in series %}
-                <li><a href="{%url series s.pk%}">{{s}}</a></li>
+                <li><a href="{%if s.nice_url%}/{{s.nice_url}}{%else%}{%url series s.pk%}{%endif%}">{{s}}</a></li>
             {% endfor %}</ul>{%else%}
             <p>{%blocktrans%}No series have been found while searching for {{search_term}}.{%endblocktrans%}</p>
             {%endif%}

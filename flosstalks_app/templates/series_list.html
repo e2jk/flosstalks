@@ -11,7 +11,7 @@
         <p>{%trans "Choose one of the following series:"%}</p>
         <ul>
             {% for s in series_list %}
-            <li><a href="{%url series s.pk%}">{{s.name}}</a></li>
+            <li><a href="{%if s.nice_url%}/{{s.nice_url}}{%else%}{%url series s.pk%}{%endif%}">{{s.name}}</a></li>
             {% endfor %}
         </ul>
       </div>{% endblock %}
