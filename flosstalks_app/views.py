@@ -18,7 +18,7 @@
 import django.views.generic as generic_views
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponsePermanentRedirect
 from django.core.urlresolvers import reverse
 from flosstalks_app.models import Project, Series
 import json
@@ -54,6 +54,16 @@ class ListView(generic_views.ListView):
         return context
 
 class DetailView(generic_views.DetailView):
+    def get(self, request, **kwargs):
+        orig = super(DetailView, self).get(request, **kwargs)
+
+        if "project_detail.html" == self.template_name:
+            # Redirect to this project's nice url if it's defined
+            if self.object.nice_url:
+                return HttpResponsePermanentRedirect("/%s" % self.object.nice_url)
+
+        return orig
+
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super(DetailView, self).get_context_data(**kwargs)
