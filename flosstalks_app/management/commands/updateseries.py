@@ -45,8 +45,13 @@ class GenericSeries(object):
         return None
 
     def get_nice_url(self, value):
-        # Return a string that is safe to use as a nice url
-        return urlquote(value[:99].lower().replace(" ", "-"))
+        # Returns a string that is safe to use as a nice url
+        return urlquote(value[:99] # nice_url fields have max_length=100
+                        .lower()
+                        .replace(" ", "-")
+                        .replace("/", "-")
+                        .replace("---", "-")
+                        .replace("--", "-"))
 
 
 class FLOSSWeekly(GenericSeries):
