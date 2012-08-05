@@ -175,9 +175,16 @@ class Command(BaseCommand):
                         self.stdout.write(" P")
                         # Project does not exist, create it
                         p = Project(name=project_name,
-                                    nice_url=ss.get_nice_url(project_name),
                                     description=e.subtitle_detail.value,
                                     status="NW")
+                        # Give this project a nice URL only if not yet used
+                        # for either a project or a series
+                        nu = ss.get_nice_url(project_name)
+                        if 0 == Project.objects.filter(nice_url=nu).count() and \
+                           0 == Series.objects.filter(nice_url=nu).count():
+                            p.nice_url = nu
+                        else:
+                            self.stdout.write("\nWarning: nice url '/%s' already in use!\n" % nu)
                         p.save()
                         # Link the resource to the project
                         r.projects.add(p)
