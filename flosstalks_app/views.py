@@ -20,6 +20,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse, Http404, HttpResponsePermanentRedirect
 from django.core.urlresolvers import reverse
+from django.utils.http import urlquote
 from flosstalks_app.models import Project, Series
 import json
 
@@ -93,6 +94,11 @@ def search(request):
     return render_to_response('search.html', c)
 
 def nice_url(request, requested_value):
+    # The nice url is stored in urlquote-encoded form, so make sure that
+    # this is what gets used to search.
+    # Example: commas are stored as %2C in the database, but are provided
+    # as , in requested_value.
+    requested_value = urlquote(requested_value)
     try:
         # Nice url of a project?
         project = Project.objects.get(nice_url=requested_value)
