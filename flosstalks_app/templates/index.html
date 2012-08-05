@@ -20,7 +20,7 @@
         <div class="span4">
             <h2>{{p.name}}</h2>
             <p>{{p.description}}</p>
-            <a href="{%url project p.pk%}" class="btn">{%blocktrans with project_name=p.name%}Learn more about {{project_name}}{%endblocktrans%} <i class="icon-share-alt"></i></a>
+            <a href="{%if p.nice_url%}/{{p.nice_url}}{%else%}{%url project p.pk%}{%endif%}" class="btn">{%blocktrans with project_name=p.name%}Learn more about {{project_name}}{%endblocktrans%} <i class="icon-share-alt"></i></a>
         </div>
         {% endfor %}
       </div>
