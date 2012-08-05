@@ -37,7 +37,7 @@
         </div>
         
         {%if is_paginated%}
-        <div class="pagination pagination-centered">
+        <div class="pagination pagination-centered hidden-phone">
             <ul>
                 <li{% if not page_obj.has_previous%} class="disabled"{%endif%}><a href="{% if page_obj.has_previous%}?page={{page_obj.previous_page_number}}{%else%}#{%endif%}"><i class="icon-chevron-left"></i> {%trans "Prev"%}</a></li>
             {% for p in paginator.page_range %}
@@ -48,6 +48,12 @@
                 {%endif%}
             {% endfor %}
                 <li{% if not page_obj.has_next%} class="disabled"{%endif%}><a href="{% if page_obj.has_next%}?page={{page_obj.next_page_number}}{%else%}#{%endif%}">{%trans "Next"%} <i class="icon-chevron-right"></i></a></li>
+            </ul>
+        </div>
+        <div class="visible-phone">
+            <ul class="pager">
+                <li{% if not page_obj.has_previous%} class="hidden"{%endif%}><a href="{% if page_obj.has_previous%}?page={{page_obj.previous_page_number}}{%else%}#{%endif%}"><i class="icon-chevron-left"></i> {%trans "Prev"%}</a></li>
+                <li{% if not page_obj.has_next%} class="hidden"{%endif%}><a href="{% if page_obj.has_next%}?page={{page_obj.next_page_number}}{%else%}#{%endif%}">{%trans "Next"%} <i class="icon-chevron-right"></i></a></li>
             </ul>
         </div>
         {%endif%}
