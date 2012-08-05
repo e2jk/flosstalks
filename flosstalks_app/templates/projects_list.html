@@ -9,24 +9,28 @@
       </div>
       <div>
         <p>{%trans "Choose one of the following projects:"%}</p>
-        
-        <div class="accordion" id="projectlist">
-            {% for p in projects_list %}
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#projectlist" href="#project{{forloop.counter0}}">
-                  <h2>{{p.name}}</h2>
-                </a>
-              </div>
-              <div id="project{{forloop.counter0}}" class="accordion-body collapse{%if forloop.first%} in{%endif%}">
-                <div class="accordion-inner">
-                  {{p.description}}
-                  <br/>
-                  <a href="{%if p.nice_url%}/{{p.nice_url}}{%else%}{%url project p.pk%}{%endif%}" class="btn">{%blocktrans with project_name=p.name%}Learn more about {{project_name}}{%endblocktrans%} <i class="icon-share-alt"></i></a>
-                </div>
-              </div>
+
+        <div class="row">
+            <div class="span6">
+                <ul class="unstyled">
+                    {% for p in projects_list %}
+                    {%if forloop.counter0 = new_column_index%}
+                </ul>
             </div>
-            {% endfor %}
+            <div class="span6">
+                <ul class="unstyled">
+                    {%endif%}
+                    <li>
+                      <h2>{{p.name}}</h2>
+                      <p>
+                        {{p.description}}
+                        <br/>
+                        <a href="{%if p.nice_url%}/{{p.nice_url}}{%else%}{%url project p.pk%}{%endif%}">{%blocktrans with project_name=p.name%}Learn more about {{project_name}}{%endblocktrans%} <i class="icon-share-alt"></i></a>
+                      </p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
         
         {%if is_paginated%}

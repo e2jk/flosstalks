@@ -56,6 +56,11 @@ class ListView(generic_views.ListView):
         # Call the base implementation first to get a context
         context = super(ListView, self).get_context_data(**kwargs)
         context['this_page'] = self.template_name.split(".html")[0]
+
+        if "projects_list.html" == self.template_name:
+            # Calculate when to start the new column
+            context['new_column_index'] = ((len(context['projects_list']) + 1) / 2)
+
         return context
 
 class DetailView(generic_views.DetailView):
