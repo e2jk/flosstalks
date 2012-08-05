@@ -27,9 +27,13 @@ def get_search_values(request):
     #TODO: Keep these values in cache for performance reasons
     search_values = []
     for p in Project.objects.exclude(status="HD"):
-        search_values.append({"value": p.name, "url": reverse('project', args=[p.pk])})
+        nice_url = "/%s" % p.nice_url if p.nice_url else \
+                   reverse('project', args=[p.pk])
+        search_values.append({"value": p.name, "url": nice_url})
     for s in Series.objects.all():
-        search_values.append({"value": s.name, "url": reverse('series', args=[s.pk])})
+        nice_url = "/%s" % s.nice_url if s.nice_url else \
+                   reverse('series', args=[s.pk])
+        search_values.append({"value": s.name, "url": nice_url})
     json_response = json.dumps(sorted(search_values))
     return HttpResponse(json_response, mimetype='application/json')
 
