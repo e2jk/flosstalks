@@ -112,12 +112,14 @@ class Command(BaseCommand):
         self.stdout.write("Updating all series:\n")
         for s in Series.objects.all():
             feeds = s.seriesfeedurl_set.all()
+            ss = None
             if "FLOSS Weekly" == s.name:
                 ss = FLOSSWeekly(feeds)
             elif "Sourcetrunk" == s.name:
                 ss = Sourcetrunk(feeds)
             else:
-                self.stdout.write("Series not supported yet")
+                self.stdout.write("\n\nWarning: Series %s not supported yet!\n" % s.name)
+                continue
             if testmode:
                 # In test mode, use the sample RSS feeds instead of the real ones
                 ss.testmode()
