@@ -18,6 +18,7 @@
 import feedparser
 import re
 from time import strftime
+from operator import neg
 from django.core.management.base import BaseCommand, CommandError
 from django.utils.http import urlquote
 from flosstalks_app.models import Series, Project, Resource, ResourceDownloadURL
@@ -99,6 +100,40 @@ class Sourcetrunk(GenericSeries):
         return entry.feedburner_origlink
 
 
+class TheChangelog(GenericSeries):
+    sample_feeds = [
+        "file:///home/emilien/devel/flosstalks/data/samples/thechangelog.rss",
+    ]
+    def __init__(self, feeds):
+        super(TheChangelog, self).__init__(feeds)
+
+    def get_entry_link(self, entry):
+        return entry.link
+
+    def get_project_name_and_entry_id(self, series, feed, entry):
+        base_regex = "Episode [\d\.]+ - (.+)"
+        rep = re.compile("%s with .+" % base_regex)
+        if rep.match(entry.title):
+            title = rep.match(entry.title).groups()[0]
+        else:
+            # The episode title does not contain " with YYY"
+            rep = re.compile(base_regex)
+            if rep.match(entry.title):
+                title = rep.match(entry.title).groups()[0]
+            else:
+                # No episode number (probably not a project's resource...)
+                title = entry.title
+        # Strip the following bits if the name ends in it
+        for s in (", and more", " and more", ","):
+            if title.endswith(s):
+                title = title[:neg(len(s))]
+        title = title.strip()
+        return (title, entry.id)
+
+    def get_resource_link(self, entry):
+        return entry.link
+
+
 class Command(BaseCommand):
     help = 'Updates all series'
 
@@ -117,6 +152,8 @@ class Command(BaseCommand):
                 ss = FLOSSWeekly(feeds)
             elif "Sourcetrunk" == s.name:
                 ss = Sourcetrunk(feeds)
+            elif "The Changelog" == s.name:
+                ss = TheChangelog(feeds)
             else:
                 self.stdout.write("\n\nWarning: Series %s not supported yet!\n" % s.name)
                 continue
