@@ -29,6 +29,7 @@ class Project(models.Model):
     ohloh_id = models.IntegerField("Ohloh ID", null=True, blank=True)
     STATUSES = (
         ('NW', 'New'),
+        ('PD', 'Pending'),
         ('VF', 'Verified'),
         ('HD', 'Hidden'),
     )
