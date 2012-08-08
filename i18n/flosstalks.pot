@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-02 01:50+0200\n"
+"POT-Creation-Date: 2012-08-08 14:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,20 +31,73 @@ msgstr ""
 msgid "About %(name)s"
 msgstr ""
 
-#: flosstalks_app/templates/about.html:13
-#: flosstalks_app/templates/base.html:64
-msgid "FLOSS Talks itself is FLOSS... So start contributing!"
+#: flosstalks_app/templates/about.html:12
+#, python-format
+msgid ""
+"There are so many interesting projects out there that it can sometimes be "
+"difficult to discover new ones. By providing a central place to get audio "
+"and video content about %(FLOSS)s projects, we hope to contribute to the "
+"promotion of these projects."
 msgstr ""
 
 #: flosstalks_app/templates/about.html:14
+msgid "Contributing to FLOSS Talks"
+msgstr ""
+
+#: flosstalks_app/templates/about.html:15
 #, python-format
-msgid "Icons by %(glyphiconslink)s."
+msgid ""
+"FLOSS Talks is itself %(FLOSS)s... So start contributing! You can do that in "
+"several ways:"
+msgstr ""
+
+#: flosstalks_app/templates/about.html:18
+#, python-format
+msgid ""
+"By <a href=\"%(contactlink)s\">suggesting to us</a> new projects or series/"
+"podcasts."
+msgstr ""
+
+#: flosstalks_app/templates/about.html:19
+#, python-format
+msgid "By translating FLOSS Talks in your language on %(translationlink)s."
 msgstr ""
 
 #. Translators: "Fork the code on GitHub" in English - "Fork" will be replaced by a button, and "GitHub" will be a link, so don't translate any of these terms
-#: flosstalks_app/templates/about.html:16
+#: flosstalks_app/templates/about.html:21
 #, python-format
-msgid "%(forklink)s the code on %(githublink)s."
+msgid "By helping with development: %(forklink)s the code on %(githublink)s."
+msgstr ""
+
+#: flosstalks_app/templates/about.html:24
+msgid "Technical information"
+msgstr ""
+
+#: flosstalks_app/templates/about.html:26
+#, python-format
+msgid ""
+"The website is created using %(djangolink)s. It is mainly written in "
+"%(pythonlink)s and uses %(h5bplink)s / %(initializrlink)s / "
+"%(bootstraplink)s."
+msgstr ""
+
+#: flosstalks_app/templates/about.html:27
+#, python-format
+msgid ""
+"The icons used on the site are graciously provided by %(glyphiconslink)s."
+msgstr ""
+
+#: flosstalks_app/templates/about.html:30
+msgid "History of FLOSS Talks"
+msgstr ""
+
+#: flosstalks_app/templates/about.html:31
+#, python-format
+msgid ""
+"FLOSS Talks was started by %(emilienklein)s. While preparing a presentation "
+"about %(freenaslink)s for our monthly %(denboschluglink)s meeting, I "
+"searched for a list of podcasts that would present that same project. As I "
+"didn't encounter it, I decided to create it ;)"
 msgstr ""
 
 #: flosstalks_app/templates/base.html:41
@@ -79,6 +132,14 @@ msgstr ""
 
 #: flosstalks_app/templates/base.html:51
 msgid "Contact"
+msgstr ""
+
+#: flosstalks_app/templates/base.html:64
+msgid "Start contributing!"
+msgstr ""
+
+#: flosstalks_app/templates/base.html:64
+msgid "Translate FLOSS Talks in your language"
 msgstr ""
 
 #: flosstalks_app/templates/base.html:64
@@ -126,7 +187,7 @@ msgid "Learn more about FLOSS Talks"
 msgstr ""
 
 #: flosstalks_app/templates/index.html:23
-#: flosstalks_app/templates/projects_list.html:25
+#: flosstalks_app/templates/projects_list.html:28
 #, python-format
 msgid "Learn more about %(project_name)s"
 msgstr ""
@@ -187,16 +248,19 @@ msgstr ""
 msgid "Choose one of the following projects:"
 msgstr ""
 
-#: flosstalks_app/templates/projects_list.html:35
+#: flosstalks_app/templates/projects_list.html:42
+#: flosstalks_app/templates/projects_list.html:55
 msgid "Prev"
 msgstr ""
 
-#: flosstalks_app/templates/projects_list.html:38
+#: flosstalks_app/templates/projects_list.html:45
+#: flosstalks_app/templates/projects_list.html:58
 #, python-format
 msgid "Page %(num)s of %(num_pages)s"
 msgstr ""
 
-#: flosstalks_app/templates/projects_list.html:43
+#: flosstalks_app/templates/projects_list.html:50
+#: flosstalks_app/templates/projects_list.html:56
 msgid "Next"
 msgstr ""
 
