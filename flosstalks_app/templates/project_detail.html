@@ -17,6 +17,13 @@
                 <div class="page-header">
                     <h1>{{project.name}}</h1>
                 </div>
+
+                {%if project.status = "NW"%}
+                    <div class="alert">
+                        <strong>{%trans "Warning!"%}</strong> {%trans "This project has not been reviewed yet."%}
+                    </div>
+                {%endif%}
+
                 <p>{{project.description}}</p>
                 <p>{%if project.url%}
                 <a class="btn btn-primary btn-large" href="{{project.url}}">{%trans "Learn more"%} <i class="icon-info-sign icon-white"></i></a>

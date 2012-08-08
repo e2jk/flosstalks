@@ -27,7 +27,7 @@ import json
 def get_search_values(request):
     #TODO: Keep these values in cache for performance reasons
     search_values = []
-    for p in Project.objects.exclude(status="HD"):
+    for p in Project.objects.exclude(status="HD").exclude(status="NW"):
         nice_url = "/%s" % p.nice_url if p.nice_url else \
                    reverse('project', args=[p.pk])
         search_values.append({"value": p.name, "url": nice_url})
@@ -47,7 +47,10 @@ class TemplateView(generic_views.TemplateView):
 
         if "index.html" == self.template_name:
             # Highlight 3 projects on the home page
-            context['highlighted_projects'] = Project.objects.exclude(status="HD").order_by('?')[:3]
+            context['highlighted_projects'] = Project.objects\
+                                                .exclude(status="HD")\
+                                                .exclude(status="NW")\
+                                                .order_by('?')[:3]
 
         return context
 
