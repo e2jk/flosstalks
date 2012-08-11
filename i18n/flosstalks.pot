@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-08 20:23+0200\n"
+"POT-Creation-Date: 2012-08-11 19:35+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,13 +151,16 @@ msgstr ""
 msgid "Contact us"
 msgstr ""
 
-#: flosstalks_app/templates/contact.html:11
-#, python-format
-msgid "Get in touch with us by sending us an email at %(email_address)s."
+#: flosstalks_app/templates/contact.html:12
+msgid "Get in touch with us:"
+msgstr ""
+
+#: flosstalks_app/templates/contact.html:13
+msgid "click on this link to reveal the e-mail address"
 msgstr ""
 
 #. Translators:  %(githubissuelink)s will be replaced with a link that says "GitHub"
-#: flosstalks_app/templates/contact.html:13
+#: flosstalks_app/templates/contact.html:16
 #, python-format
 msgid ""
 "If you'd like to report a bug, please file an issue on %(githubissuelink)s."
