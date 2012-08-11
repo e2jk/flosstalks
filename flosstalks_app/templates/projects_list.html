@@ -22,9 +22,10 @@
                     {%endif%}
                     <li class="hidden-phone">
                       <h2>{{p.name}}</h2>
+                      <div>
+                        {{p.description|striptags|linebreaks}}
+                      </div>
                       <p>
-                        {{p.description}}
-                        <br/>
                         <a href="{%if p.nice_url%}/{{p.nice_url}}{%else%}{%url project p.pk%}{%endif%}">{%blocktrans with project_name=p.name%}Learn more about {{project_name}}{%endblocktrans%}</a>
                       </p>
                     </li>

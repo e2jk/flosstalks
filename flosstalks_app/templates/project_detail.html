@@ -24,7 +24,9 @@
                     </div>
                 {%endif%}
 
-                <p>{{project.description}}</p>
+                <div>
+                    {{project.description|striptags|linebreaks}}
+                </div>
                 <p>{%if project.url%}
                 <a class="btn btn-primary btn-large" href="{{project.url}}">{%trans "Learn more"%} <i class="icon-info-sign icon-white"></i></a>
                 {% else %}
