@@ -27,6 +27,16 @@
                 <div>
                     {{project.description|striptags|linebreaks}}
                 </div>
+
+                {%if project.description_source%}<p>
+                    {% comment %}Translators: Indicates the source of the project's description{% endcomment %}
+                    <small>{%trans "Source:"%}
+                    <a href="{{project.description_source}}">
+                        {%if "ohloh.net" in project.description_source%}Ohloh
+                        {%else%}{{project.description_source}}{%endif%}
+                    </a></small>
+                </p>{%endif%}
+
                 <p>{%if project.url%}
                 <a class="btn btn-primary btn-large" href="{{project.url}}">{%trans "Learn more"%} <i class="icon-info-sign icon-white"></i></a>
                 {% else %}
