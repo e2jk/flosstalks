@@ -8,7 +8,7 @@
         <h1>{{resource.name}}</h1>
       </div>
       <div>
-        <p>{{resource.description}}</p>
+        <p>{{resource.description|striptags|linebreaks}}</p>
         <p>{%if resource.url%}
         <a class="btn btn-primary btn-large" href="{{resource.url}}">{%trans "Learn more"%} <i class="icon-info-sign icon-white"></i></a>
         {% else %}
