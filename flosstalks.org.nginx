@@ -1,0 +1,23 @@
+server {
+    listen 80;
+    server_name     flosstalks.org;
+    access_log      /var/log/nginx/flosstalks.org.access_log;
+    error_log       /var/log/nginx/flosstalks.org.error_log warn;
+
+    # https://docs.djangoproject.com/en/dev/howto/static-files/#serving-static-files-in-production
+    location /static/ { # STATIC_URL
+        alias /var/www/flosstalks.org/flosstalks_app/static/; # STATIC_ROOT
+        expires 30d;
+    }
+
+#    location /media/ { # MEDIA_URL
+#        alias /home/www/myhostname/static/; # MEDIA_ROOT
+#        expires 30d;
+#    }
+
+    location / {
+        include fastcgi_params;
+        fastcgi_pass 127.0.0.1:8080;
+        fastcgi_split_path_info ^()(.*)$;
+    }
+}
