@@ -28,6 +28,7 @@ class Project(models.Model):
     # to prevent depending on external websites
     logo_url = models.URLField(null=True, blank=True)
     ohloh_id = models.IntegerField("Ohloh ID", null=True, blank=True)
+    skip_ohloh = models.NullBooleanField("Skip looking on Ohloh")
     STATUSES = (
         ('NW', 'New'),
         ('PD', 'Pending'),

@@ -34,7 +34,7 @@ admin.site.register(Series, SeriesAdmin)
 # Project-related admin
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ("name", "status", "number_of_resources")
-    list_filter = ["status"]
+    list_filter = ["status", "skip_ohloh"]
     search_fields = ["name", "description"]
 
 admin.site.register(Project, ProjectAdmin)

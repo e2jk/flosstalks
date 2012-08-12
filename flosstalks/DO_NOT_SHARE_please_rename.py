@@ -7,3 +7,6 @@
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'this is a secret key'
+
+# Ohloh API key to retrieve information about new projects
+OHLOH_API_KEY = "please get yours at https://www.ohloh.net/accounts/me/api_keys/new"
