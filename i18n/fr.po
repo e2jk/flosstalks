@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flosstalks\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-08-08 20:23+0200\n"
-"PO-Revision-Date: 2012-08-10 16:21+0000\n"
+"POT-Creation-Date: 2012-08-11 23:40+0200\n"
+"PO-Revision-Date: 2012-08-12 16:27+0000\n"
 "Last-Translator: Emilien Klein <emilien+ubuntu@klein.st>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-08-10 16:24+0000\n"
+"X-Launchpad-Export-Date: 2012-08-12 16:28+0000\n"
 "X-Generator: Launchpad (build 15780)\n"
 
 #: flosstalks/templates/admin/base_site.html:4
@@ -170,13 +170,16 @@ msgstr "Obtenez le code !"
 msgid "Contact us"
 msgstr "Nous contacter"
 
-#: flosstalks_app/templates/contact.html:11
-#, python-format
-msgid "Get in touch with us by sending us an email at %(email_address)s."
-msgstr "Contactez-nous par email à %(email_address)s."
+#: flosstalks_app/templates/contact.html:12
+msgid "Get in touch with us:"
+msgstr "Contactez-nous :"
 
-#. Translators:  %(githubissuelink)s will be replaced with a link that says "GitHub"
 #: flosstalks_app/templates/contact.html:13
+msgid "click on this link to reveal the e-mail address"
+msgstr "cliquez sur ce lien pour révéler l'adresse e-mail"
+
+#. Translators: %(githubissuelink)s will be replaced with a link that says "GitHub"
+#: flosstalks_app/templates/contact.html:16
 #, python-format
 msgid ""
 "If you'd like to report a bug, please file an issue on %(githubissuelink)s."
@@ -214,7 +217,7 @@ msgid "Learn more about FLOSS Talks"
 msgstr "En savoir plus sur FLOSS Talks"
 
 #: flosstalks_app/templates/index.html:23
-#: flosstalks_app/templates/projects_list.html:28
+#: flosstalks_app/templates/projects_list.html:30
 #, python-format
 msgid "Learn more about %(project_name)s"
 msgstr "En savoir plus sur %(project_name)s"
@@ -244,22 +247,27 @@ msgstr "Attention !"
 msgid "This project has not been reviewed yet."
 msgstr "Ce projet n'a pas encore été vérifié."
 
-#: flosstalks_app/templates/project_detail.html:29
+#. Translators: Indicates the source of the project's description
+#: flosstalks_app/templates/project_detail.html:33
+msgid "Source:"
+msgstr "Source :"
+
+#: flosstalks_app/templates/project_detail.html:41
 #: flosstalks_app/templates/resource_detail.html:13
 #: flosstalks_app/templates/series_detail.html:12
 msgid "Learn more"
 msgstr "En savoir plus"
 
-#: flosstalks_app/templates/project_detail.html:31
+#: flosstalks_app/templates/project_detail.html:43
 msgid "The project's website is currently unknown."
 msgstr "Le site web de ce projet est actuellement inconnu."
 
-#: flosstalks_app/templates/project_detail.html:36
+#: flosstalks_app/templates/project_detail.html:48
 #: flosstalks_app/templates/series_detail.html:15
 msgid "There are no known resources yet."
 msgstr "Il n'y a pas encore de ressources connues."
 
-#: flosstalks_app/templates/project_detail.html:38
+#: flosstalks_app/templates/project_detail.html:50
 #: flosstalks_app/templates/series_detail.html:17
 #, python-format
 msgid "There is one resource:"
@@ -267,7 +275,7 @@ msgid_plural "There are %(num_resources)s resources:"
 msgstr[0] "Il y a une ressource :"
 msgstr[1] "Il y a %(num_resources)s ressources :"
 
-#: flosstalks_app/templates/project_detail.html:45
+#: flosstalks_app/templates/project_detail.html:57
 #, python-format
 msgid ""
 "<a href=\"%(resource_url)s\">%(resource_name)s</a> (from the <a "
@@ -276,7 +284,7 @@ msgstr ""
 "<a href=\"%(resource_url)s\">%(resource_name)s</a> (de la série <a "
 "href=\"%(series_url)s\">%(series_name)s</a>)"
 
-#: flosstalks_app/templates/project_detail.html:65
+#: flosstalks_app/templates/project_detail.html:77
 #, python-format
 msgid "%(project_name)s's logo"
 msgstr "logo de %(project_name)s"
@@ -285,19 +293,19 @@ msgstr "logo de %(project_name)s"
 msgid "Choose one of the following projects:"
 msgstr "Choisissez l'un des projets suivants :"
 
-#: flosstalks_app/templates/projects_list.html:42
-#: flosstalks_app/templates/projects_list.html:55
+#: flosstalks_app/templates/projects_list.html:44
+#: flosstalks_app/templates/projects_list.html:57
 msgid "Prev"
 msgstr "Préc."
 
-#: flosstalks_app/templates/projects_list.html:45
-#: flosstalks_app/templates/projects_list.html:58
+#: flosstalks_app/templates/projects_list.html:47
+#: flosstalks_app/templates/projects_list.html:60
 #, python-format
 msgid "Page %(num)s of %(num_pages)s"
 msgstr "Page %(num)s sur %(num_pages)s"
 
-#: flosstalks_app/templates/projects_list.html:50
-#: flosstalks_app/templates/projects_list.html:56
+#: flosstalks_app/templates/projects_list.html:52
+#: flosstalks_app/templates/projects_list.html:58
 msgid "Next"
 msgstr "Suiv."
 
