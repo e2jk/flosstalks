@@ -9,6 +9,7 @@
   <div>
     {{original_project.description|striptags|linebreaks}}
   </div>
+  <p><a href="/admin/flosstalks_app/project/{{original_project.id}}/">Edit the project</a></p>
   
   <form method="post" action="">
     {% csrf_token %}
