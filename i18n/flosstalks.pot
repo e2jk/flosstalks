@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-11 23:40+0200\n"
+"POT-Creation-Date: 2012-08-14 01:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: flosstalks/templates/admin/base_site.html:4
+#: flosstalks_app/templates/admin/projects/deduplicate.html:4
 msgid "FLOSS Talks admin"
 msgstr ""
 
@@ -88,10 +89,16 @@ msgid ""
 msgstr ""
 
 #: flosstalks_app/templates/about.html:30
+msgid ""
+"For a large number of projects, the content (such as project description, "
+"logo, url) has been retrieved from Ohloh:"
+msgstr ""
+
+#: flosstalks_app/templates/about.html:34
 msgid "History of FLOSS Talks"
 msgstr ""
 
-#: flosstalks_app/templates/about.html:31
+#: flosstalks_app/templates/about.html:35
 #, python-format
 msgid ""
 "FLOSS Talks was started by %(emilienklein)s. While preparing a presentation "

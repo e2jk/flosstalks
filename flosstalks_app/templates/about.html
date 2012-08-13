@@ -26,6 +26,10 @@
             {%blocktrans with djangolink='<a href="https://www.djangoproject.com/">Django</a>' pythonlink='<a href="http://python.org/">Python</a>' bootstraplink='<a href="http://twitter.github.com/bootstrap/">Bootstrap</a>' h5bplink='<a href="http://html5boilerplate.com/">HTML5 Boilerplate</a>' initializrlink='<a href="http://initializr.com/">Initializr</a>'%}The website is created using {{djangolink}}. It is mainly written in {{pythonlink}} and uses {{h5bplink}} / {{initializrlink}} / {{bootstraplink}}.{% endblocktrans %}
             {%blocktrans with glyphiconslink='<a href="http://glyphicons.com">Glyphicons</a>'%}The icons used on the site are graciously provided by {{glyphiconslink}}.{% endblocktrans %}
         </p>
+        <p>
+            {%trans "For a large number of projects, the content (such as project description, logo, url) has been retrieved from Ohloh:"%}
+            <a href ="http://www.ohloh.net"><img src="http://www.ohloh.net/images/badges/mini.gif" width="80" height="15" /></a>
+        </p>
 
         <h2>{%trans "History of FLOSS Talks"%}</h2>
         <p>{%blocktrans with emilienklein='<a href="http://emilien.klein.st/">Emilien Klein</a>' denboschluglink='<a href="http://lug.project073.nl/">Den Bosch LUG</a>' freenaslink='<a href="/freenas">FreeNAS</a>'%}FLOSS Talks was started by {{emilienklein}}. While preparing a presentation about {{freenaslink}} for our monthly {{denboschluglink}} meeting, I searched for a list of podcasts that would present that same project. As I didn't encounter it, I decided to create it ;){% endblocktrans %}</p>
