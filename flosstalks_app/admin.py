@@ -18,6 +18,12 @@
 from flosstalks_app.models import Series, SeriesFeedURL, Project, \
         Resource, ResourceDownloadURL
 from django.contrib import admin
+from django.conf.urls import patterns
+from django.shortcuts import render_to_response, get_object_or_404
+from django.template import RequestContext
+from django.http import HttpResponseRedirect
+from django import forms
+from django.forms.formsets import formset_factory
 
 # Series-related admin
 class SeriesFeedURLInline(admin.TabularInline):
@@ -32,7 +38,94 @@ admin.site.register(Series, SeriesAdmin)
 
 
 # Project-related admin
-class ProjectAdmin(admin.ModelAdmin):
+class DeduplicateProjectForm(forms.Form):
+    name = forms.CharField(max_length=100)
+
+class ProjectModelAdmin(admin.ModelAdmin):
+    def get_urls(self):
+        urls = super(ProjectModelAdmin, self).get_urls()
+        my_urls = patterns('',
+            (r'^deduplicate/(?P<project_id>\d+)/$', self.admin_site.admin_view(self.deduplicate_project))
+        )
+        return my_urls + urls
+
+    def deduplicate_project(self, request, project_id):
+        # Allows to split a project into multiple that are linked to the
+        # same resources
+        original_project = get_object_or_404(Project, pk=project_id)
+
+        if request.method == 'POST': # If the form has been submitted...
+            # Get a formset bound to the POST data
+            ProjectFormSet = formset_factory(DeduplicateProjectForm)
+            formset = ProjectFormSet(request.POST)
+            if formset.is_valid():
+                # All validation rules pass, retrieve the list of resources
+                # that were linked to the original project
+                resources = original_project.resource_set.all()
+                success = False
+                # Process the data in formset.cleaned_data
+                for cleaned_data in formset.cleaned_data:
+                    if cleaned_data:
+                        project_name = cleaned_data["name"].strip()
+                        try:
+                            # Check if it's an already-known project
+                            p = Project.objects.get(name=project_name)
+                            if "VF" == p.status:
+                                 # If the project was already verified,
+                                 # bump it back to Pending
+                                 p.status = "PD"
+                                 p.save()
+                        except Project.DoesNotExist:
+                            # Create a new project
+                            p = Project(name=project_name,
+                                        description=u"Empty description",
+                                        status="NW")
+                            p.save()
+                        # Link the [new] project to all the resources of
+                        # the original project
+                        for r in resources:
+                            r.projects.add(p)
+                        success = True
+                    else:
+                        # An empty string, nothing to do
+                        pass
+
+                if success:
+                    # Delete the original project if at least one new
+                    # project got created
+                    original_project.delete()
+                 # Redirect after POST
+                return HttpResponseRedirect("/admin/flosstalks_app/project/")
+        else:
+            # This is a GET
+            # Try to split the names of the projects
+            new_projects_names = [original_project.name]
+            if ", " in original_project.name:
+                # Split the project names on ", "
+                new_projects_names = original_project.name.split(", ")
+            if " and " in new_projects_names[-1]:
+                # Split the last 2 project names on " and "
+                new_projects_names.extend(new_projects_names[-1].split(" and "))
+                # Remove the one containing " and " since it's now split
+                new_projects_names.pop(-3)
+
+            new_projects = []
+            for p in new_projects_names:
+                new_projects.append({'name': p})
+
+            ProjectFormSet = formset_factory(DeduplicateProjectForm, extra=3)
+            formset = ProjectFormSet(initial=new_projects)
+
+        return render_to_response(
+            "admin/projects/deduplicate.html",
+            {
+             "original_project" : original_project,
+             "formset": formset,
+            },
+            RequestContext(request, {}),
+        )
+
+class ProjectAdmin(ProjectModelAdmin):
     list_display = ("name", "status", "number_of_resources")
     list_filter = ["status", "skip_ohloh"]
     search_fields = ["name", "description"]

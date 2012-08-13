@@ -1,0 +1,18 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block title %}Deduplicate project {{original_project.id}} - {{original_project.name}} | {% trans 'FLOSS Talks admin' %}{% endblock %}
+
+{% block content %}
+<div id="content-main">
+  <h1>Deduplicate project {{original_project.id}} - {{original_project.name}}</h1>
+  
+  <form method="post" action="">
+    {% csrf_token %}
+    <table>
+        {{ formset }}
+    </table>
+    <input type="submit" value="Deduplicate" />
+  </form>
+</div>
+{% endblock %}
