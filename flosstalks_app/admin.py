@@ -112,8 +112,8 @@ class ProjectModelAdmin(admin.ModelAdmin):
                     # Delete the original project if at least one new
                     # project got created
                     original_project.delete()
-                 # Redirect after POST
-                return HttpResponseRedirect("/admin/flosstalks_app/project/")
+                # Redirect after POST
+                return HttpResponseRedirect("/admin/flosstalks_app/project/deduplicate/%d/" % (int(project_id) + 1))
         else:
             # This is a GET
             # Try to split the names of the projects
