@@ -11,6 +11,13 @@
   </div>
   <p><a href="/admin/flosstalks_app/project/{{original_project.id}}/">Edit the project</a></p>
   
+  <p>Associated resources:</p>
+  <ul>
+    {% for r in original_project.resource_set.all %}
+    <li><a href="/admin/flosstalks_app/resource/{{r.id}}/">{{r.name}}</a></li>
+    {% endfor %}
+  </ul>
+
   <form method="post" action="">
     {% csrf_token %}
     <table>
