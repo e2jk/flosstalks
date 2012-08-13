@@ -6,6 +6,9 @@
 {% block content %}
 <div id="content-main">
   <h1>Deduplicate project {{original_project.id}} - {{original_project.name}}</h1>
+  <div>
+    {{original_project.description|striptags|linebreaks}}
+  </div>
   
   <form method="post" action="">
     {% csrf_token %}
