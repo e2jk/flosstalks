@@ -22,6 +22,7 @@ from django.conf.urls import patterns
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
+from django.utils.http import urlquote
 from django import forms
 from django.forms.formsets import formset_factory
 
@@ -40,6 +41,7 @@ admin.site.register(Series, SeriesAdmin)
 # Project-related admin
 class DeduplicateProjectForm(forms.Form):
     name = forms.CharField(max_length=100)
+    nice_url = forms.SlugField(max_length=100)
 
 class ProjectModelAdmin(admin.ModelAdmin):
     def get_urls(self):
@@ -48,6 +50,16 @@ class ProjectModelAdmin(admin.ModelAdmin):
             (r'^deduplicate/(?P<project_id>\d+)/$', self.admin_site.admin_view(self.deduplicate_project))
         )
         return my_urls + urls
+
+    def slugify(self, value):
+        #TODO: copied from updateseries. This should be in a unique place
+        # Returns a string that is safe to use as a nice url
+        return urlquote(value[:99] # nice_url fields have max_length=100
+                        .lower()
+                        .replace(" ", "-")
+                        .replace("/", "-")
+                        .replace("---", "-")
+                        .replace("--", "-"))
 
     def deduplicate_project(self, request, project_id):
         # Allows to split a project into multiple that are linked to the
@@ -80,6 +92,12 @@ class ProjectModelAdmin(admin.ModelAdmin):
                             p = Project(name=project_name,
                                         description=u"Empty description",
                                         status="NW")
+                            # Check if the nice url is not already in use
+                            nu = cleaned_data["nice_url"].strip()
+                            if 0 == Project.objects.filter(nice_url=nu).count() and \
+                               0 == Series.objects.filter(nice_url=nu).count():
+                                p.nice_url = nu
+                            # Save the newly created project
                             p.save()
                         # Link the [new] project to all the resources of
                         # the original project
@@ -111,7 +129,8 @@ class ProjectModelAdmin(admin.ModelAdmin):
 
             new_projects = []
             for p in new_projects_names:
-                new_projects.append({'name': p})
+                new_projects.append({"name": p.strip(),
+                                     "nice_url": self.slugify(p.strip())})
 
             ProjectFormSet = formset_factory(DeduplicateProjectForm, extra=3)
             formset = ProjectFormSet(initial=new_projects)
