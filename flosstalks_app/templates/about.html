@@ -6,10 +6,17 @@
 
 {% block container %}
     <div class="row">
-      <div class="span6">
+      <div class="span4">
         <h2>{%blocktrans with name="FLOSS Talks"%}About {{name}}{% endblocktrans %}</h2>
         <p>{%blocktrans with FLOSS='<abbr class="initialism" title="Free/Libre/Open-Source Software">FLOSS</abbr>'%}There are so many interesting projects out there that it can sometimes be difficult to discover new ones. By providing a central place to get audio and video content about {{FLOSS}} projects, we hope to contribute to the promotion of these projects.{%endblocktrans%}</p>
+        
+        <p>
+            {%trans "For a large number of projects, the content (such as project description, logo, url) has been retrieved from Ohloh:"%}
+            <a href ="http://www.ohloh.net"><img src="http://www.ohloh.net/images/badges/mini.gif" width="80" height="15" /></a>
+        </p>
+      </div>
 
+      <div class="span4">
         <h2>{%trans "Contributing to FLOSS Talks"%}</h2>
         <p>{%blocktrans with FLOSS='<abbr class="initialism" title="Free/Libre/Open-Source Software">FLOSS</abbr>'%}FLOSS Talks is itself {{FLOSS}}... So start contributing! You can do that in several ways:{%endblocktrans%}</p>
         <ul>
@@ -20,19 +27,27 @@
             <li>{%blocktrans with forklink='<a href="https://github.com/e2jk/flosstalks" class="gitforked-button">Fork</a>' githublink='<a href="https://github.com/e2jk/flosstalks">GitHub</a>'%}By helping with development: {{forklink}} the code on {{githublink}}.{% endblocktrans %}</li>
         </ul>
       </div>
-      <div class="span6">
-        <h2>{%trans "Technical information"%}</h2>
-        <p>
-            {%blocktrans with djangolink='<a href="https://www.djangoproject.com/">Django</a>' pythonlink='<a href="http://python.org/">Python</a>' bootstraplink='<a href="http://twitter.github.com/bootstrap/">Bootstrap</a>' h5bplink='<a href="http://html5boilerplate.com/">HTML5 Boilerplate</a>' initializrlink='<a href="http://initializr.com/">Initializr</a>'%}The website is created using {{djangolink}}. It is mainly written in {{pythonlink}} and uses {{h5bplink}} / {{initializrlink}} / {{bootstraplink}}.{% endblocktrans %}
-            {%blocktrans with glyphiconslink='<a href="http://glyphicons.com">Glyphicons</a>'%}The icons used on the site are graciously provided by {{glyphiconslink}}.{% endblocktrans %}
-        </p>
-        <p>
-            {%trans "For a large number of projects, the content (such as project description, logo, url) has been retrieved from Ohloh:"%}
-            <a href ="http://www.ohloh.net"><img src="http://www.ohloh.net/images/badges/mini.gif" width="80" height="15" /></a>
-        </p>
 
+      <div class="span4">
         <h2>{%trans "History of FLOSS Talks"%}</h2>
         <p>{%blocktrans with emilienklein='<a href="http://emilien.klein.st/">Emilien Klein</a>' denboschluglink='<a href="http://lug.project073.nl/">Den Bosch LUG</a>' freenaslink='<a href="/freenas">FreeNAS</a>'%}FLOSS Talks was started by {{emilienklein}}. While preparing a presentation about {{freenaslink}} for our monthly {{denboschluglink}} meeting, I searched for a list of podcasts that would present that same project. As I didn't encounter it, I decided to create it ;){% endblocktrans %}</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <h2>{%trans "Technical information"%}</h2>
+    <p>
+        {%blocktrans with djangolink='<a href="https://www.djangoproject.com/">Django</a>' pythonlink='<a href="http://python.org/">Python</a>' bootstraplink='<a href="http://twitter.github.com/bootstrap/">Bootstrap</a>' h5bplink='<a href="http://html5boilerplate.com/">HTML5 Boilerplate</a>' initializrlink='<a href="http://initializr.com/">Initializr</a>'%}The website is created using {{djangolink}}. It is mainly written in {{pythonlink}} and uses {{h5bplink}} / {{initializrlink}} / {{bootstraplink}}.{% endblocktrans %}
+        {%blocktrans with glyphiconslink='<a href="http://glyphicons.com">Glyphicons</a>'%}The icons used on the site are graciously provided by {{glyphiconslink}}.{% endblocktrans %}
+    </p>
+
+    <div class="row">
+      <div class="span6">
+        <script type="text/javascript" src="http://www.ohloh.net/p/603012/widgets/project_languages.js"></script>
+      </div>
+      <div class="span6">
+        <script type="text/javascript" src="http://www.ohloh.net/p/603012/widgets/project_factoids_stats.js"></script>
       </div>
     </div>
       

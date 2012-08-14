@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-14 01:11+0200\n"
+"POT-Creation-Date: 2012-08-14 20:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,12 +27,13 @@ msgid "FLOSS Talks administration"
 msgstr ""
 
 #. Translators: "About FLOSS Talks" in English
-#: flosstalks_app/templates/about.html:5 flosstalks_app/templates/about.html:9
+#: flosstalks_app/templates/about.html:5
+#: flosstalks_app/templates/about.html:10
 #, python-format
 msgid "About %(name)s"
 msgstr ""
 
-#: flosstalks_app/templates/about.html:12
+#: flosstalks_app/templates/about.html:11
 #, python-format
 msgid ""
 "There are so many interesting projects out there that it can sometimes be "
@@ -42,39 +43,58 @@ msgid ""
 msgstr ""
 
 #: flosstalks_app/templates/about.html:14
+msgid ""
+"For a large number of projects, the content (such as project description, "
+"logo, url) has been retrieved from Ohloh:"
+msgstr ""
+
+#: flosstalks_app/templates/about.html:20
 msgid "Contributing to FLOSS Talks"
 msgstr ""
 
-#: flosstalks_app/templates/about.html:15
+#: flosstalks_app/templates/about.html:21
 #, python-format
 msgid ""
 "FLOSS Talks is itself %(FLOSS)s... So start contributing! You can do that in "
 "several ways:"
 msgstr ""
 
-#: flosstalks_app/templates/about.html:18
+#: flosstalks_app/templates/about.html:24
 #, python-format
 msgid ""
 "By <a href=\"%(contactlink)s\">suggesting to us</a> new projects or series/"
 "podcasts."
 msgstr ""
 
-#: flosstalks_app/templates/about.html:19
+#: flosstalks_app/templates/about.html:25
 #, python-format
 msgid "By translating FLOSS Talks in your language on %(translationlink)s."
 msgstr ""
 
 #. Translators: "Fork the code on GitHub" in English - "Fork" will be replaced by a button, and "GitHub" will be a link, so don't translate any of these terms
-#: flosstalks_app/templates/about.html:21
+#: flosstalks_app/templates/about.html:27
 #, python-format
 msgid "By helping with development: %(forklink)s the code on %(githublink)s."
 msgstr ""
 
-#: flosstalks_app/templates/about.html:24
+#: flosstalks_app/templates/about.html:32
+msgid "History of FLOSS Talks"
+msgstr ""
+
+#: flosstalks_app/templates/about.html:33
+#, python-format
+msgid ""
+"FLOSS Talks was started by %(emilienklein)s. While preparing a presentation "
+"about %(freenaslink)s for our monthly %(denboschluglink)s meeting, I "
+"searched for a list of podcasts that would present that same project. As I "
+"didn't encounter it, I decided to create it ;)"
+msgstr ""
+
+#: flosstalks_app/templates/about.html:39
 msgid "Technical information"
 msgstr ""
 
-#: flosstalks_app/templates/about.html:26
+#: flosstalks_app/templates/about.html:41
 #, python-format
 msgid ""
 "The website is created using %(djangolink)s. It is mainly written in "
@@ -82,29 +102,10 @@ msgid ""
 "%(bootstraplink)s."
 msgstr ""
 
-#: flosstalks_app/templates/about.html:27
+#: flosstalks_app/templates/about.html:42
 #, python-format
 msgid ""
 "The icons used on the site are graciously provided by %(glyphiconslink)s."
-msgstr ""
-
-#: flosstalks_app/templates/about.html:30
-msgid ""
-"For a large number of projects, the content (such as project description, "
-"logo, url) has been retrieved from Ohloh:"
-msgstr ""
-
-#: flosstalks_app/templates/about.html:34
-msgid "History of FLOSS Talks"
-msgstr ""
-
-#: flosstalks_app/templates/about.html:35
-#, python-format
-msgid ""
-"FLOSS Talks was started by %(emilienklein)s. While preparing a presentation "
-"about %(freenaslink)s for our monthly %(denboschluglink)s meeting, I "
-"searched for a list of podcasts that would present that same project. As I "
-"didn't encounter it, I decided to create it ;)"
 msgstr ""
 
 #: flosstalks_app/templates/base.html:41
@@ -141,15 +142,15 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: flosstalks_app/templates/base.html:64
+#: flosstalks_app/templates/base.html:66 flosstalks_app/templates/base.html:67
 msgid "Start contributing!"
 msgstr ""
 
-#: flosstalks_app/templates/base.html:64
+#: flosstalks_app/templates/base.html:66
 msgid "Translate FLOSS Talks in your language"
 msgstr ""
 
-#: flosstalks_app/templates/base.html:64
+#: flosstalks_app/templates/base.html:67
 msgid "Get the code!"
 msgstr ""
 
