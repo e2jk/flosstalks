@@ -90,8 +90,9 @@ class DetailView(generic_views.DetailView):
 
 def search(request):
     search_term = request.GET.get("q")
-    projects = Project.objects.filter(name__icontains=search_term) if \
-                        search_term else None
+    projects = Project.objects.filter(name__icontains=search_term) \
+                              .exclude(status="HD") \
+                              if search_term else None
     series = Series.objects.filter(name__icontains=search_term) if \
                         search_term else None
     c = RequestContext(request, {
