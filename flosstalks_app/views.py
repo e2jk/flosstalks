@@ -86,6 +86,11 @@ class DetailView(generic_views.DetailView):
             # List all the active projects associated with this resource
             context['active_projects'] = context['resource'].projects.exclude(status="HD")
 
+        if "series_detail.html" == self.template_name:
+            series_list = context['series'].resource_set.exclude(status="IG")
+            context['series_list'] = series_list
+            context['new_column_index'] = (len(series_list) + 1) / 2
+
         return context
 
 def search(request):
@@ -119,8 +124,12 @@ def nice_url(request, requested_value):
         try:
             # Nice url of a series?
             series = Series.objects.get(nice_url=requested_value)
+
+            series_list = series.resource_set.exclude(status="IG")
             c = RequestContext(request, {
                 'series': series,
+                "series_list": series_list,
+                "new_column_index": (len(series_list) + 1) / 2,
             })
             return render_to_response('series_detail.html', c)
         except Series.DoesNotExist:

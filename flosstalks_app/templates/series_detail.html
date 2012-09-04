@@ -11,14 +11,29 @@
         <p>{{series.description}}</p>
         <p><a class="btn btn-primary btn-large" href="{{series.url}}">{%trans "Learn more"%} <i class="icon-info-sign icon-white"></i></a></p>
         <hr>
-        {%if not series.resource_set.all%}
+        {%if not series_list%}
         <p>{%trans "There are no known resources yet."%}</p>
         {% else %}
-        <p>{%blocktrans count num_resources=series.resource_set.all.count%}There is one resource:{%plural%}There are {{num_resources}} resources:{%endblocktrans%}</p>
-        <ul>
-            {% for r in series.resource_set.all %}
-            {%if r.status != "IG"%}<li><a href="{%url resource r.pk%}">{{r.name}}</a></li>{%endif%}
-            {% endfor %}
-        </ul>
+        <p>{%blocktrans count num_resources=series_list.count%}There is one resource:{%plural%}There are {{num_resources}} resources:{%endblocktrans%}</p>
+        <div class="row">
+            <div class="span6">
+                <ul class="unstyled">
+                    {% for r in series_list %}
+                    {%if forloop.counter0 = new_column_index%}
+                </ul>
+            </div>
+            <div class="span6">
+                <ul class="unstyled">
+                    {%endif%}
+                    <li>
+                      <h2><a href="{%url resource r.pk%}">{{r.name}}</a></h2>
+                      <div>
+                        {{r.description|striptags|truncatewords_html:40|linebreaks}} {%comment%}Need to use truncatewords_html instead of just truncatewords to preserve the newlines{%endcomment%}
+                      </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
         {% endif %}
       </div>{% endblock %}
