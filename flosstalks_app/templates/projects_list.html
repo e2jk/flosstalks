@@ -8,7 +8,7 @@
         <h1>{%trans "Projects"%}</h1>
       </div>
       <div>
-        <p>{%trans "Choose one of the following projects:"%}</p>
+        <p class="hidden-phone">{%trans "Choose one of the following projects:"%}</p>
 
         <div class="row">
             <div class="span6">
@@ -20,17 +20,11 @@
             <div class="span6">
                 <ul class="unstyled">
                     {%endif%}
-                    <li class="hidden-phone">
-                      <h2>{{p.name}}</h2>
-                      <div>
+                    <li>
+                      <h2><a href="{%if p.nice_url%}/{{p.nice_url}}{%else%}{%url project p.pk%}{%endif%}">{{p.name}}</a></h2>
+                      <div class="hidden-phone">
                         {{p.description|striptags|truncatewords_html:40|linebreaks}} {%comment%}Need to use truncatewords_html instead of just truncatewords to preserve the newlines{%endcomment%}
                       </div>
-                      <p>
-                        <a href="{%if p.nice_url%}/{{p.nice_url}}{%else%}{%url project p.pk%}{%endif%}">{%blocktrans with project_name=p.name%}Learn more about {{project_name}}{%endblocktrans%}</a>
-                      </p>
-                    </li>
-                    <li class="visible-phone">
-                      <a href="{%if p.nice_url%}/{{p.nice_url}}{%else%}{%url project p.pk%}{%endif%}"><h2>{{p.name}}</h2></a>
                     </li>
                     {% endfor %}
                 </ul>
