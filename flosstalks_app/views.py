@@ -64,6 +64,30 @@ class ListView(generic_views.ListView):
             # Calculate when to start the new column
             context['new_column_index'] = ((len(context[self.template_name[:-5]]) + 1) / 2)
 
+        if "projects_list.html" == self.template_name:
+            pages = []
+            num_pages = context['paginator'].num_pages
+            current_page = context['page_obj'].number
+            print current_page
+            if current_page > 1:
+                pages.append(1)
+            if current_page > 4:
+                pages.append("...")
+            if current_page > 3:
+                pages.append(current_page - 2)
+            if current_page > 2:
+                pages.append(current_page - 1)
+            pages.append(current_page)
+            if current_page + 1 < num_pages:
+                pages.append(current_page + 1)
+            if current_page + 2 < num_pages:
+                pages.append(current_page + 2)
+            if current_page + 3 < num_pages:
+                pages.append("...")
+            if current_page < num_pages:
+                pages.append(num_pages)
+            context['pages_list'] = pages
+
         return context
 
 class DetailView(generic_views.DetailView):
