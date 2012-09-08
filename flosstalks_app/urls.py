@@ -16,11 +16,16 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with FLOSS Talks.  If not, see <http://www.gnu.org/licenses/>.
 from django.conf.urls import patterns, include, url
+from django.views.decorators.cache import cache_page
 from flosstalks_app.models import Project, Series, Resource
 from flosstalks_app.views import TemplateView, ListView, DetailView
 
 urlpatterns = patterns('',
-    url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
+    url(r'^$',
+        cache_page(300)(# Cache the home page only for 5 minutes
+            TemplateView.as_view(template_name='index.html')
+        ),
+        name='home'),
     url(r'^projects$',
         ListView.as_view(
             queryset=Project.objects.exclude(status="HD")\

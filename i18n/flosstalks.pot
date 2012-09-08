@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-14 20:08+0200\n"
+"POT-Creation-Date: 2012-09-08 11:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -198,17 +198,12 @@ msgid "Learn more about FLOSS Talks"
 msgstr ""
 
 #: flosstalks_app/templates/index.html:23
-#: flosstalks_app/templates/projects_list.html:30
 #, python-format
 msgid "Learn more about %(project_name)s"
 msgstr ""
 
 #: flosstalks_app/templates/index.html:30
 msgid "Browse through all the projects"
-msgstr ""
-
-#: flosstalks_app/templates/index.html:32
-msgid "Show other random projects"
 msgstr ""
 
 #: flosstalks_app/templates/project_detail.html:4
@@ -272,19 +267,19 @@ msgstr ""
 msgid "Choose one of the following projects:"
 msgstr ""
 
-#: flosstalks_app/templates/projects_list.html:44
-#: flosstalks_app/templates/projects_list.html:57
+#: flosstalks_app/templates/projects_list.html:38
+#: flosstalks_app/templates/projects_list.html:51
 msgid "Prev"
 msgstr ""
 
-#: flosstalks_app/templates/projects_list.html:47
-#: flosstalks_app/templates/projects_list.html:60
+#: flosstalks_app/templates/projects_list.html:41
+#: flosstalks_app/templates/projects_list.html:54
 #, python-format
 msgid "Page %(num)s of %(num_pages)s"
 msgstr ""
 
+#: flosstalks_app/templates/projects_list.html:46
 #: flosstalks_app/templates/projects_list.html:52
-#: flosstalks_app/templates/projects_list.html:58
 msgid "Next"
 msgstr ""
 

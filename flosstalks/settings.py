@@ -7,6 +7,8 @@ PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+# Do not use caching in the development environment
+DEACTIVATE_CACHE = True
 
 ADMINS = (
     ('Emilien Klein', 'emilien@flosstalks.org'),
@@ -26,6 +28,26 @@ DATABASES = {
 }
 
 FIXTURE_DIRS = ("data",)
+
+# Caching setup
+CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
+CACHE_MIDDLEWARE_SECONDS = 864000 # 10 days
+if DEACTIVATE_CACHE:
+    cache_backend = 'django.core.cache.backends.dummy.DummyCache'
+else:
+    cache_backend = 'django.core.cache.backends.filebased.FileBasedCache'
+CACHES = {
+    'default': {
+        # Use Filesystem caching for running on a low-memory server
+        'BACKEND': cache_backend,
+        'LOCATION': '/var/cache/django_cache/flosstalks',
+        'TIMEOUT': CACHE_MIDDLEWARE_SECONDS,
+        'OPTIONS': {
+            'MAX_ENTRIES': 1000
+        },
+        'CULL_FREQUENCY': 5,
+    }
+}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -114,12 +136,14 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.cache.UpdateCacheMiddleware', # For caching
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware', # For caching
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
