@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{%if project.status != "HD"%}{%blocktrans with project_name=project.name%}Add a resource to {{project_name}}{%endblocktrans%}{% else %}{%trans "Deactivated project"%}{%endif%} - FLOSS Talks{% endblock %}
+
+{% block container %}
+        {%if project.status = "HD"%}
+        <div class="page-header">
+            <h1>{%trans "Deactivated project"%}</h1>
+        </div>
+        <div>
+            <p>{%trans "This project is no longer available."%}</p>
+        </div>
+        {% else %}
+        <div class="page-header">
+          <h1>{%blocktrans with project_name=project.name%}Add a resource to {{project_name}}{%endblocktrans%}</h1>
+        </div>
+        <p>{%blocktrans with project_name=project.name%}By suggesting a new resource for {{project_name}} you are helping us provider better information on the site!{%endblocktrans%}</p>
+
+        <form action="{%url project_add_resource project.pk%}" method="post">{% csrf_token %}
+            {%comment%}TODO: Improve the appearance of the form{%endcomment%}
+            {%comment%}TODO: Better display error messages{%endcomment%}
+            {{ resource_form.as_p }}
+            {{ resource_download_url_form.as_p }}
+            <input type="submit" value="{%trans "Suggest new resource"%}" />
+        </form>
+        {%endif%}{% endblock %}

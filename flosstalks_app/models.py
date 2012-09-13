@@ -71,6 +71,7 @@ class Resource(models.Model):
     series = models.ForeignKey(Series, null=True, blank=True)
     STATUSES = (
         ('NW', 'New'),
+        ('SG', 'Suggested'),
         ('VF', 'Verified'),
         ('PD', 'Pending'),
         ('IG', 'Ignored'),
@@ -123,7 +124,7 @@ class GenericURL(models.Model):
         ),
     )
     format = models.CharField(max_length=3, choices=FORMATS)
-    url = models.URLField()
+    url = models.URLField("Resource download URL")
 
 class SeriesFeedURL(GenericURL):
     series = models.ForeignKey(Series)

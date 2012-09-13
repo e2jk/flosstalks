@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-08 11:07+0200\n"
+"POT-Creation-Date: 2012-09-13 09:11-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -206,16 +206,40 @@ msgstr ""
 msgid "Browse through all the projects"
 msgstr ""
 
+#: flosstalks_app/templates/project_add_resource.html:4
+#: flosstalks_app/templates/project_add_resource.html:16
+#, python-format
+msgid "Add a resource to %(project_name)s"
+msgstr ""
+
+#: flosstalks_app/templates/project_add_resource.html:4
+#: flosstalks_app/templates/project_add_resource.html:9
 #: flosstalks_app/templates/project_detail.html:4
 #: flosstalks_app/templates/project_detail.html:9
+#: flosstalks_app/templates/project_resource_added.html:4
+#: flosstalks_app/templates/project_resource_added.html:9
 msgid "Deactivated project"
 msgstr ""
 
+#: flosstalks_app/templates/project_add_resource.html:12
 #: flosstalks_app/templates/project_detail.html:12
+#: flosstalks_app/templates/project_resource_added.html:12
 msgid "This project is no longer available."
 msgstr ""
 
+#: flosstalks_app/templates/project_add_resource.html:18
+#, python-format
+msgid ""
+"By suggesting a new resource for %(project_name)s you are helping us "
+"provider better information on the site!"
+msgstr ""
+
+#: flosstalks_app/templates/project_add_resource.html:27
+msgid "Suggest new resource"
+msgstr ""
+
 #: flosstalks_app/templates/project_detail.html:23
+#: flosstalks_app/templates/resource_detail.html:13
 msgid "Warning!"
 msgstr ""
 
@@ -229,7 +253,7 @@ msgid "Source:"
 msgstr ""
 
 #: flosstalks_app/templates/project_detail.html:41
-#: flosstalks_app/templates/resource_detail.html:13
+#: flosstalks_app/templates/resource_detail.html:19
 #: flosstalks_app/templates/series_detail.html:12
 msgid "Learn more"
 msgstr ""
@@ -258,9 +282,41 @@ msgid ""
 "\"%(series_url)s\">%(series_name)s</a> series)"
 msgstr ""
 
-#: flosstalks_app/templates/project_detail.html:77
+#: flosstalks_app/templates/project_detail.html:61
+msgid "Not yet verified"
+msgstr ""
+
+#: flosstalks_app/templates/project_detail.html:61
+msgid "NEW!"
+msgstr ""
+
+#: flosstalks_app/templates/project_detail.html:75
+#, python-format
+msgid ""
+"Help us improving by <a href=\"%(resource_add_url)s\">suggesting new audio "
+"or video resources</a> for %(project_name)s."
+msgstr ""
+
+#: flosstalks_app/templates/project_detail.html:80
 #, python-format
 msgid "%(project_name)s's logo"
+msgstr ""
+
+#: flosstalks_app/templates/project_resource_added.html:4
+#: flosstalks_app/templates/project_resource_added.html:16
+msgid "Thank you!"
+msgstr ""
+
+#: flosstalks_app/templates/project_resource_added.html:18
+#, python-format
+msgid ""
+"The new resource you've just suggested for %(project_name)s has been added. "
+"Thanks for your help!"
+msgstr ""
+
+#: flosstalks_app/templates/project_resource_added.html:19
+#, python-format
+msgid "Go back to %(project_name)s's project page."
 msgstr ""
 
 #: flosstalks_app/templates/projects_list.html:11
@@ -283,22 +339,26 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: flosstalks_app/templates/resource_detail.html:15
+#: flosstalks_app/templates/resource_detail.html:13
+msgid "This resource has not been reviewed yet."
+msgstr ""
+
+#: flosstalks_app/templates/resource_detail.html:21
 msgid "The resource's web page is currently unknown."
 msgstr ""
 
-#: flosstalks_app/templates/resource_detail.html:19
+#: flosstalks_app/templates/resource_detail.html:25
 #, python-format
 msgid ""
 "See all the resources from the <a href=\"%(series_url)s\">%(series_name)s</"
 "a> series."
 msgstr ""
 
-#: flosstalks_app/templates/resource_detail.html:26
+#: flosstalks_app/templates/resource_detail.html:32
 msgid "This resource is not associated to any project."
 msgstr ""
 
-#: flosstalks_app/templates/resource_detail.html:28
+#: flosstalks_app/templates/resource_detail.html:34
 #, python-format
 msgid "There is one project associated with this resource:"
 msgid_plural ""
@@ -306,11 +366,11 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: flosstalks_app/templates/resource_detail.html:39
+#: flosstalks_app/templates/resource_detail.html:45
 msgid "There are no known downloads yet."
 msgstr ""
 
-#: flosstalks_app/templates/resource_detail.html:41
+#: flosstalks_app/templates/resource_detail.html:47
 #, python-format
 msgid "There is one download available:"
 msgid_plural "There are %(num_downloads)s downloads available:"

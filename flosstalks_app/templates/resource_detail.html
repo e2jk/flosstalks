@@ -7,6 +7,12 @@
       <div class="page-header">
         <h1>{{resource.name}}</h1>
       </div>
+
+      {%if resource.status = "SG"%}
+        <div class="alert">
+            <strong>{%trans "Warning!"%}</strong> {%trans "This resource has not been reviewed yet."%}
+        </div>
+      {%endif%}
       <div>
         <p>{{resource.description|striptags|linebreaks}}</p>
         <p>{%if resource.url%}

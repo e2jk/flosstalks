@@ -58,6 +58,7 @@
                         {% else %}
                         <a href="{{resource_url}}">{{r.name}}</a>
                         {% endif %}
+                        {%if r.status = "SG"%}<span title="{%trans "Not yet verified"%}"><i class="icon-star-empty"></i> {%trans "NEW!"%}</span>{% endif %}
                         <ul>
                             {% for u in r.resourcedownloadurl_set.all %}
                             <li>
@@ -70,6 +71,8 @@
                     {% endfor %}
                 </ul>
                 {% endif %}
+                {%url project_add_resource project.pk as resource_add_url%}
+                <p>{%blocktrans with project_name=project.name%}Help us improving by <a href="{{resource_add_url}}">suggesting new audio or video resources</a> for {{project_name}}.{%endblocktrans%}</p>
             </div>
             {%if project.logo_url or project.ohloh_id%}
             <div class="span5">

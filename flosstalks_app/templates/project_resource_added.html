@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{%if project.status != "HD"%}{%trans "Thank you!"%}{% else %}{%trans "Deactivated project"%}{%endif%} - FLOSS Talks{% endblock %}
+
+{% block container %}
+        {%if project.status = "HD"%}
+        <div class="page-header">
+            <h1>{%trans "Deactivated project"%}</h1>
+        </div>
+        <div>
+            <p>{%trans "This project is no longer available."%}</p>
+        </div>
+        {% else %}
+        <div class="page-header">
+          <h1>{%trans "Thank you!"%}</h1>
+        </div>
+        <p>{%blocktrans with project_name=project.name%}The new resource you've just suggested for {{project_name}} has been added. Thanks for your help!{%endblocktrans%}</p>
+        <p><a href="{%if project.nice_url%}/{{project.nice_url}}{%else%}{%url project project.pk%}{%endif%}">{%blocktrans with project_name=project.name%}Go back to {{project_name}}'s project page.{%endblocktrans%}</a></p>
+        {%endif%}{% endblock %}

@@ -16,12 +16,13 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with FLOSS Talks.  If not, see <http://www.gnu.org/licenses/>.
 import django.views.generic as generic_views
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.http import HttpResponse, Http404, HttpResponsePermanentRedirect
+from django.http import HttpResponse, Http404, HttpResponseRedirect, HttpResponsePermanentRedirect
 from django.core.urlresolvers import reverse
 from django.utils.http import urlquote
-from flosstalks_app.models import Project, Series
+from django.forms import ModelForm
+from flosstalks_app.models import Project, Series, Resource, ResourceDownloadURL
 import json
 
 def get_search_values(request):
@@ -68,7 +69,6 @@ class ListView(generic_views.ListView):
             pages = []
             num_pages = context['paginator'].num_pages
             current_page = context['page_obj'].number
-            print current_page
             if current_page > 1:
                 pages.append(1)
             if current_page > 4:
@@ -118,6 +118,66 @@ class DetailView(generic_views.DetailView):
             context['new_column_index'] = (len(series_list) + 1) / 2
 
         return context
+
+class NewResourceForm(ModelForm):
+    class Meta:
+        model = Resource
+        exclude = ('projects', 'series', 'status', 'external_id', 'length', 'pub_date')
+
+class ResourceDownloadURLForm(ModelForm):
+    class Meta:
+        model = ResourceDownloadURL
+        exclude = ('resource')
+
+def project_add_resource(request, pk):
+    project = get_object_or_404(Project, pk=pk)
+    if request.method == 'POST': # If the form has been submitted...
+        resource_form = NewResourceForm(request.POST, prefix="resource")
+        resource_download_url_form = ResourceDownloadURLForm(request.POST, prefix="download")
+        if resource_form.is_valid():
+            # All NewResourceForm validation rules pass
+            success = True
+            # Process the data in resource_form.cleaned_data
+            new_resource = Resource(name=resource_form.cleaned_data["name"],
+                                    description=resource_form.cleaned_data["description"],
+                                    url=resource_form.cleaned_data["url"],
+                                    status="SG"
+            )
+            # We've got our new resource, now let's check if the download
+            # information provided is valid. If the download URL is filled
+            # and there is an error, show the error messages.
+            # If the download URL is empty, just ignore it.
+            u = None
+            if resource_download_url_form.is_valid():
+                # All ResourceDownloadURLForm validation rules pass
+                u = ResourceDownloadURL(media_type=resource_download_url_form.cleaned_data["media_type"],
+                                        format=resource_download_url_form.cleaned_data["format"],
+                                        url=resource_download_url_form.cleaned_data["url"])
+            elif resource_download_url_form.data["download-url"]:
+                # The download URL is populated, yet some of the info related
+                # to the download URL is not valid, so show the error message
+                success = False
+            if success:
+                # Create the new resource
+                new_resource.save()
+                new_resource.projects.add(project)
+                if u:
+                    # Create the new download URL
+                    u.resource = new_resource
+                    u.save()
+                # Redirect after POST to show success message
+                return HttpResponseRedirect('/p/%d/resource-added' % project.pk)
+    else:
+        # Unbound forms
+        resource_form = NewResourceForm(prefix="resource")
+        resource_download_url_form = ResourceDownloadURLForm(prefix="download")
+
+    c = RequestContext(request, {
+        'resource_form': resource_form,
+        "resource_download_url_form": resource_download_url_form,
+        'project': project,
+    })
+    return render_to_response('project_add_resource.html', c)
 
 def search(request):
     search_term = request.GET.get("q")
