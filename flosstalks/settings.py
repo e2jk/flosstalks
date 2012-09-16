@@ -76,6 +76,7 @@ LANGUAGE_CODE = 'en-us'
 LANGUAGES = (
   ('en', 'English'),
   ('fr', 'French'),
+  ('ru', 'Russian'),
 )
 
 LOCALE_PATHS = (

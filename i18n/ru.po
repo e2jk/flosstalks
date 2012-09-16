@@ -1,0 +1,430 @@
+# Russian translation for flosstalks
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the flosstalks package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: flosstalks\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-09-13 09:11-0500\n"
+"PO-Revision-Date: 2012-09-13 12:02+0000\n"
+"Last-Translator: Aleksey Kabanov <Unknown>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Launchpad-Export-Date: 2012-09-16 15:44+0000\n"
+"X-Generator: Launchpad (build 15944)\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-Language: Russian\n"
+
+#: flosstalks/templates/admin/base_site.html:4
+#: flosstalks_app/templates/admin/projects/deduplicate.html:4
+msgid "FLOSS Talks admin"
+msgstr ""
+
+#: flosstalks/templates/admin/base_site.html:7
+msgid "FLOSS Talks administration"
+msgstr ""
+
+#. Translators: "About FLOSS Talks" in English
+#: flosstalks_app/templates/about.html:5
+#: flosstalks_app/templates/about.html:10
+#, python-format
+msgid "About %(name)s"
+msgstr "О %(name)s"
+
+#: flosstalks_app/templates/about.html:11
+#, python-format
+msgid ""
+"There are so many interesting projects out there that it can sometimes be "
+"difficult to discover new ones. By providing a central place to get audio "
+"and video content about %(FLOSS)s projects, we hope to contribute to the "
+"promotion of these projects."
+msgstr ""
+"Существует так много интересных проектов, что иногда бывает трудно найти "
+"среди них новые. Предоставляя централизованное место для получения аудио- и "
+"видеоинформации о проектах %(FLOSS)s, мы надеемся помочь в продвижении этих "
+"проектов."
+
+#: flosstalks_app/templates/about.html:14
+msgid ""
+"For a large number of projects, the content (such as project description, "
+"logo, url) has been retrieved from Ohloh:"
+msgstr ""
+"Для многих проектов информация (описание проекта, логотип, URL и т.п.) "
+"получены с Ohloh:"
+
+#: flosstalks_app/templates/about.html:20
+msgid "Contributing to FLOSS Talks"
+msgstr "Участие в FLOSS Talks"
+
+#: flosstalks_app/templates/about.html:21
+#, python-format
+msgid ""
+"FLOSS Talks is itself %(FLOSS)s... So start contributing! You can do that in "
+"several ways:"
+msgstr ""
+"FLOSS Talks сам по себе — %(FLOSS)s... Так что внесите свой вклад! Вы можете "
+"сделать следующее:"
+
+#: flosstalks_app/templates/about.html:24
+#, python-format
+msgid ""
+"By <a href=\"%(contactlink)s\">suggesting to us</a> new projects or "
+"series/podcasts."
+msgstr ""
+"<a href=\"%(contactlink)s\">Предложить нам</a> новые проекты или "
+"серии/подкасты."
+
+#: flosstalks_app/templates/about.html:25
+#, python-format
+msgid "By translating FLOSS Talks in your language on %(translationlink)s."
+msgstr "Перевести FLOSS Talks на ваш родной язык на %(translationlink)s."
+
+#. Translators: "Fork the code on GitHub" in English - "Fork" will be replaced by a button, and "GitHub" will be a link, so don't translate any of these terms
+#: flosstalks_app/templates/about.html:27
+#, python-format
+msgid "By helping with development: %(forklink)s the code on %(githublink)s."
+msgstr "Помочь в разработке: %(forklink)s код на %(githublink)s."
+
+#: flosstalks_app/templates/about.html:32
+msgid "History of FLOSS Talks"
+msgstr "История FLOSS Talks"
+
+#: flosstalks_app/templates/about.html:33
+#, python-format
+msgid ""
+"FLOSS Talks was started by %(emilienklein)s. While preparing a presentation "
+"about %(freenaslink)s for our monthly %(denboschluglink)s meeting, I "
+"searched for a list of podcasts that would present that same project. As I "
+"didn't encounter it, I decided to create it ;)"
+msgstr ""
+"FLOSS Talks создал %(emilienklein)s. При подготовке презентации о "
+"%(freenaslink)s для нашего ежемесячного собрания %(denboschluglink)s, я "
+"искал список подкастов об этом проекте. Так как я не нашёл его, я решил его "
+"создать ;)"
+
+#: flosstalks_app/templates/about.html:39
+msgid "Technical information"
+msgstr "Техническая информация"
+
+#: flosstalks_app/templates/about.html:41
+#, python-format
+msgid ""
+"The website is created using %(djangolink)s. It is mainly written in "
+"%(pythonlink)s and uses %(h5bplink)s / %(initializrlink)s / "
+"%(bootstraplink)s."
+msgstr ""
+"Веб-сайт создан с помощью %(djangolink)s. Он в основном написан на "
+"%(pythonlink)s и использует %(h5bplink)s / %(initializrlink)s / "
+"%(bootstraplink)s."
+
+#: flosstalks_app/templates/about.html:42
+#, python-format
+msgid ""
+"The icons used on the site are graciously provided by %(glyphiconslink)s."
+msgstr ""
+"Используемые на сайте значки любезно предоставлены %(glyphiconslink)s."
+
+#: flosstalks_app/templates/base.html:41
+msgid "Home"
+msgstr "Домашняя"
+
+#: flosstalks_app/templates/base.html:42
+#: flosstalks_app/templates/projects_list.html:4
+#: flosstalks_app/templates/projects_list.html:8
+#: flosstalks_app/templates/search.html:13
+msgid "Projects"
+msgstr "Проекты"
+
+#: flosstalks_app/templates/base.html:43
+#: flosstalks_app/templates/search.html:21
+#: flosstalks_app/templates/series_list.html:4
+#: flosstalks_app/templates/series_list.html:8
+msgid "Series"
+msgstr ""
+
+#: flosstalks_app/templates/base.html:46
+#: flosstalks_app/templates/search.html:4
+#: flosstalks_app/templates/search.html:31
+#: flosstalks_app/templates/search.html:36
+#: flosstalks_app/templates/search.html:37
+msgid "Search"
+msgstr "Поиск"
+
+#: flosstalks_app/templates/base.html:49
+msgid "About"
+msgstr "О сайте"
+
+#: flosstalks_app/templates/base.html:51
+msgid "Contact"
+msgstr "Контакты"
+
+#: flosstalks_app/templates/base.html:66 flosstalks_app/templates/base.html:67
+msgid "Start contributing!"
+msgstr ""
+
+#: flosstalks_app/templates/base.html:66
+msgid "Translate FLOSS Talks in your language"
+msgstr "Переведите FLOSS Talks на ваш язык"
+
+#: flosstalks_app/templates/base.html:67
+msgid "Get the code!"
+msgstr "Получить код!"
+
+#: flosstalks_app/templates/contact.html:4
+#: flosstalks_app/templates/contact.html:8
+msgid "Contact us"
+msgstr "Свяжитесь с нами"
+
+#: flosstalks_app/templates/contact.html:12
+msgid "Get in touch with us:"
+msgstr "Свяжитесь с нами:"
+
+#: flosstalks_app/templates/contact.html:13
+msgid "click on this link to reveal the e-mail address"
+msgstr "щёлкните на этой ссылке, чтобы увидеть адрес электронной почты"
+
+#. Translators: %(githubissuelink)s will be replaced with a link that says "GitHub"
+#: flosstalks_app/templates/contact.html:16
+#, python-format
+msgid ""
+"If you'd like to report a bug, please file an issue on %(githubissuelink)s."
+msgstr ""
+"Если вы обнаружили ошибку, пожалуйста, отправьте отчёт о ней на "
+"%(githubissuelink)s."
+
+#: flosstalks_app/templates/index.html:8
+msgid ""
+"Videos, talks and podcasts about your favorite free, libre and open source "
+"projects"
+msgstr ""
+
+#: flosstalks_app/templates/index.html:11
+#, python-format
+msgid ""
+"The place where you'll find audio and video resources about the %(FLOSS)s "
+"projects you are interested in."
+msgstr ""
+"Место, где вы найдёте аудио- и видеоресурсы об интересущих вас проектах "
+"%(FLOSS)s."
+
+#: flosstalks_app/templates/index.html:13
+msgid ""
+"Select one of the projects below, or search for you favorite one in the "
+"search bar on top."
+msgstr ""
+"Выберите один из проектов или найдите нужный с помощью поля поиска наверху."
+
+#: flosstalks_app/templates/index.html:15
+msgid "Learn more about FLOSS Talks"
+msgstr "Узнать больше о FLOSS Talks"
+
+#: flosstalks_app/templates/index.html:23
+#, python-format
+msgid "Learn more about %(project_name)s"
+msgstr "Узнать больше о %(project_name)s"
+
+#: flosstalks_app/templates/index.html:30
+msgid "Browse through all the projects"
+msgstr "Просмотреть все проекты"
+
+#: flosstalks_app/templates/project_add_resource.html:4
+#: flosstalks_app/templates/project_add_resource.html:16
+#, python-format
+msgid "Add a resource to %(project_name)s"
+msgstr ""
+
+#: flosstalks_app/templates/project_add_resource.html:4
+#: flosstalks_app/templates/project_add_resource.html:9
+#: flosstalks_app/templates/project_detail.html:4
+#: flosstalks_app/templates/project_detail.html:9
+#: flosstalks_app/templates/project_resource_added.html:4
+#: flosstalks_app/templates/project_resource_added.html:9
+msgid "Deactivated project"
+msgstr "Неактивный проект"
+
+#: flosstalks_app/templates/project_add_resource.html:12
+#: flosstalks_app/templates/project_detail.html:12
+#: flosstalks_app/templates/project_resource_added.html:12
+msgid "This project is no longer available."
+msgstr "Этот проект больше недоступен."
+
+#: flosstalks_app/templates/project_add_resource.html:18
+#, python-format
+msgid ""
+"By suggesting a new resource for %(project_name)s you are helping us "
+"provider better information on the site!"
+msgstr ""
+
+#: flosstalks_app/templates/project_add_resource.html:27
+msgid "Suggest new resource"
+msgstr ""
+
+#: flosstalks_app/templates/project_detail.html:23
+#: flosstalks_app/templates/resource_detail.html:13
+msgid "Warning!"
+msgstr "Внимание!"
+
+#: flosstalks_app/templates/project_detail.html:23
+msgid "This project has not been reviewed yet."
+msgstr ""
+
+#. Translators: Indicates the source of the project's description
+#: flosstalks_app/templates/project_detail.html:33
+msgid "Source:"
+msgstr "Источник:"
+
+#: flosstalks_app/templates/project_detail.html:41
+#: flosstalks_app/templates/resource_detail.html:19
+#: flosstalks_app/templates/series_detail.html:12
+msgid "Learn more"
+msgstr "Узнать больше"
+
+#: flosstalks_app/templates/project_detail.html:43
+msgid "The project's website is currently unknown."
+msgstr "Веб-сайт проекта в настоящее время неизвестен."
+
+#: flosstalks_app/templates/project_detail.html:48
+#: flosstalks_app/templates/series_detail.html:15
+msgid "There are no known resources yet."
+msgstr ""
+
+#: flosstalks_app/templates/project_detail.html:50
+#: flosstalks_app/templates/series_detail.html:17
+#, python-format
+msgid "There is one resource:"
+msgid_plural "There are %(num_resources)s resources:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: flosstalks_app/templates/project_detail.html:57
+#, python-format
+msgid ""
+"<a href=\"%(resource_url)s\">%(resource_name)s</a> (from the <a "
+"href=\"%(series_url)s\">%(series_name)s</a> series)"
+msgstr ""
+
+#: flosstalks_app/templates/project_detail.html:61
+msgid "Not yet verified"
+msgstr ""
+
+#: flosstalks_app/templates/project_detail.html:61
+msgid "NEW!"
+msgstr ""
+
+#: flosstalks_app/templates/project_detail.html:75
+#, python-format
+msgid ""
+"Help us improving by <a href=\"%(resource_add_url)s\">suggesting new audio "
+"or video resources</a> for %(project_name)s."
+msgstr ""
+
+#: flosstalks_app/templates/project_detail.html:80
+#, python-format
+msgid "%(project_name)s's logo"
+msgstr "Логотип %(project_name)s"
+
+#: flosstalks_app/templates/project_resource_added.html:4
+#: flosstalks_app/templates/project_resource_added.html:16
+msgid "Thank you!"
+msgstr ""
+
+#: flosstalks_app/templates/project_resource_added.html:18
+#, python-format
+msgid ""
+"The new resource you've just suggested for %(project_name)s has been added. "
+"Thanks for your help!"
+msgstr ""
+
+#: flosstalks_app/templates/project_resource_added.html:19
+#, python-format
+msgid "Go back to %(project_name)s's project page."
+msgstr ""
+
+#: flosstalks_app/templates/projects_list.html:11
+msgid "Choose one of the following projects:"
+msgstr "Выберите один из следующих проектов:"
+
+#: flosstalks_app/templates/projects_list.html:38
+#: flosstalks_app/templates/projects_list.html:51
+msgid "Prev"
+msgstr "Назад"
+
+#: flosstalks_app/templates/projects_list.html:41
+#: flosstalks_app/templates/projects_list.html:54
+#, python-format
+msgid "Page %(num)s of %(num_pages)s"
+msgstr "Стр. %(num)s из %(num_pages)s"
+
+#: flosstalks_app/templates/projects_list.html:46
+#: flosstalks_app/templates/projects_list.html:52
+msgid "Next"
+msgstr "Далее"
+
+#: flosstalks_app/templates/resource_detail.html:13
+msgid "This resource has not been reviewed yet."
+msgstr ""
+
+#: flosstalks_app/templates/resource_detail.html:21
+msgid "The resource's web page is currently unknown."
+msgstr "Веб-страница ресурса в настоящее время неизвестна."
+
+#: flosstalks_app/templates/resource_detail.html:25
+#, python-format
+msgid ""
+"See all the resources from the <a "
+"href=\"%(series_url)s\">%(series_name)s</a> series."
+msgstr ""
+
+#: flosstalks_app/templates/resource_detail.html:32
+msgid "This resource is not associated to any project."
+msgstr "Этот ресурс не связан ни с каким проектом."
+
+#: flosstalks_app/templates/resource_detail.html:34
+#, python-format
+msgid "There is one project associated with this resource:"
+msgid_plural ""
+"There are %(num_projects)s projects associated with this resource:"
+msgstr[0] "С этим ресурсом связан один проект:"
+msgstr[1] "С этим ресурсом связано %(num_projects)s проекта:"
+msgstr[2] "С этим ресурсом связано %(num_projects)s проектов:"
+
+#: flosstalks_app/templates/resource_detail.html:45
+msgid "There are no known downloads yet."
+msgstr ""
+
+#: flosstalks_app/templates/resource_detail.html:47
+#, python-format
+msgid "There is one download available:"
+msgid_plural "There are %(num_downloads)s downloads available:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: flosstalks_app/templates/search.html:4
+#: flosstalks_app/templates/search.html:9
+#, python-format
+msgid "Searching for %(search_term)s"
+msgstr ""
+
+#: flosstalks_app/templates/search.html:17
+#, python-format
+msgid "No projects have been found while searching for %(search_term)s."
+msgstr ""
+
+#: flosstalks_app/templates/search.html:25
+#, python-format
+msgid "No series have been found while searching for %(search_term)s."
+msgstr ""
+
+#: flosstalks_app/templates/search.html:34
+msgid "Please enter the name of the project or series you are looking for:"
+msgstr ""
+
+#: flosstalks_app/templates/series_list.html:11
+msgid "Choose one of the following series:"
+msgstr ""
