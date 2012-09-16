@@ -68,5 +68,6 @@ urlpatterns = patterns('',
         name='resource'),
     url(r'^search$', 'flosstalks_app.views.search'),
     url(r'^search-values.json$', 'flosstalks_app.views.get_search_values'),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^(?P<requested_value>.+)$', 'flosstalks_app.views.nice_url'),
 )

@@ -67,6 +67,17 @@
             <a href="https://github.com/e2jk/flosstalks" title="{%trans "Start contributing!"%}">{%trans "Get the code!"%}</a> -
             <a href="http://flattr.com/thing/842107/FLOSS-Talks"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr FLOSS Talks" title="Flattr FLOSS Talks" border="0" /></a>
         </p>
+        <p>
+            <form action="/i18n/setlang/" method="post" class="form-inline">
+                {% csrf_token %}
+                <select name="language" class="span2">
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                    <option value="{{ language.code }}">{{ language.name_local }} ({{ language.code }})</option>{% endfor %}
+                </select>
+                <input type="submit" value="{%trans "Change language"%}" class="btn" />
+            </form>
+        </p>
       </footer>
 
     </div> <!-- /container -->
