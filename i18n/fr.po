@@ -7,18 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flosstalks\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-08-11 23:40+0200\n"
-"PO-Revision-Date: 2012-08-12 16:27+0000\n"
+"POT-Creation-Date: 2012-09-13 09:11-0500\n"
+"PO-Revision-Date: 2012-09-16 15:42+0000\n"
 "Last-Translator: Emilien Klein <emilien+ubuntu@klein.st>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-08-12 16:28+0000\n"
-"X-Generator: Launchpad (build 15780)\n"
+"X-Launchpad-Export-Date: 2012-09-16 15:44+0000\n"
+"X-Generator: Launchpad (build 15944)\n"
 
 #: flosstalks/templates/admin/base_site.html:4
+#: flosstalks_app/templates/admin/projects/deduplicate.html:4
 msgid "FLOSS Talks admin"
 msgstr "FLOSS Talks admin"
 
@@ -27,12 +28,13 @@ msgid "FLOSS Talks administration"
 msgstr "Administration de FLOSS Talks"
 
 #. Translators: "About FLOSS Talks" in English
-#: flosstalks_app/templates/about.html:5 flosstalks_app/templates/about.html:9
+#: flosstalks_app/templates/about.html:5
+#: flosstalks_app/templates/about.html:10
 #, python-format
 msgid "About %(name)s"
 msgstr "À propos de %(name)s"
 
-#: flosstalks_app/templates/about.html:12
+#: flosstalks_app/templates/about.html:11
 #, python-format
 msgid ""
 "There are so many interesting projects out there that it can sometimes be "
@@ -46,10 +48,18 @@ msgstr ""
 "contribuer à la promotion de ces projets."
 
 #: flosstalks_app/templates/about.html:14
+msgid ""
+"For a large number of projects, the content (such as project description, "
+"logo, url) has been retrieved from Ohloh:"
+msgstr ""
+"Pour un grand nombre de projets, le contenu (tel que description du projet, "
+"logo, site) a été récupéré à partir d'Ohloh :"
+
+#: flosstalks_app/templates/about.html:20
 msgid "Contributing to FLOSS Talks"
 msgstr "Contribuer à FLOSS Talks"
 
-#: flosstalks_app/templates/about.html:15
+#: flosstalks_app/templates/about.html:21
 #, python-format
 msgid ""
 "FLOSS Talks is itself %(FLOSS)s... So start contributing! You can do that in "
@@ -58,7 +68,7 @@ msgstr ""
 "FLOSS Talks est soi-même %(FLOSS)s... Donc, commencez à contribuer! Vous "
 "pouvez le faire de plusieurs manières :"
 
-#: flosstalks_app/templates/about.html:18
+#: flosstalks_app/templates/about.html:24
 #, python-format
 msgid ""
 "By <a href=\"%(contactlink)s\">suggesting to us</a> new projects or "
@@ -67,46 +77,23 @@ msgstr ""
 "En <a href=\"%(contactlink)s\">nous suggérant</a> de nouveaux projets ou "
 "séries/podcasts."
 
-#: flosstalks_app/templates/about.html:19
+#: flosstalks_app/templates/about.html:25
 #, python-format
 msgid "By translating FLOSS Talks in your language on %(translationlink)s."
 msgstr "En traduisant FLOSS Talks dans votre langue sur %(translationlink)s."
 
 #. Translators: "Fork the code on GitHub" in English - "Fork" will be replaced by a button, and "GitHub" will be a link, so don't translate any of these terms
-#: flosstalks_app/templates/about.html:21
+#: flosstalks_app/templates/about.html:27
 #, python-format
 msgid "By helping with development: %(forklink)s the code on %(githublink)s."
 msgstr ""
 "En aidant au développement : %(forklink)s le code sur %(githublink)s."
 
-#: flosstalks_app/templates/about.html:24
-msgid "Technical information"
-msgstr "Informations techniques"
-
-#: flosstalks_app/templates/about.html:26
-#, python-format
-msgid ""
-"The website is created using %(djangolink)s. It is mainly written in "
-"%(pythonlink)s and uses %(h5bplink)s / %(initializrlink)s / "
-"%(bootstraplink)s."
-msgstr ""
-"Le site est créé en utilisant %(djangolink)s. Il est principalement écrit en "
-"%(pythonlink)s et utilise %(h5bplink)s / %(initializrlink)s / "
-"%(bootstraplink)s."
-
-#: flosstalks_app/templates/about.html:27
-#, python-format
-msgid ""
-"The icons used on the site are graciously provided by %(glyphiconslink)s."
-msgstr ""
-"Les icônes utilisées sur le site sont gracieusement fournies par "
-"%(glyphiconslink)s."
-
-#: flosstalks_app/templates/about.html:30
+#: flosstalks_app/templates/about.html:32
 msgid "History of FLOSS Talks"
 msgstr "Histoire de FLOSS Talks"
 
-#: flosstalks_app/templates/about.html:31
+#: flosstalks_app/templates/about.html:33
 #, python-format
 msgid ""
 "FLOSS Talks was started by %(emilienklein)s. While preparing a presentation "
@@ -118,6 +105,29 @@ msgstr ""
 "sur %(freenaslink)s pour notre réunion mensuelle du %(denboschluglink)s, "
 "j'ai cherché une liste de podcasts qui présentaient ce même projet. Comme je "
 "ne l'ai pas trouvé, j'ai décidé de le créer ;)"
+
+#: flosstalks_app/templates/about.html:39
+msgid "Technical information"
+msgstr "Informations techniques"
+
+#: flosstalks_app/templates/about.html:41
+#, python-format
+msgid ""
+"The website is created using %(djangolink)s. It is mainly written in "
+"%(pythonlink)s and uses %(h5bplink)s / %(initializrlink)s / "
+"%(bootstraplink)s."
+msgstr ""
+"Le site est créé en utilisant %(djangolink)s. Il est principalement écrit en "
+"%(pythonlink)s et utilise %(h5bplink)s / %(initializrlink)s / "
+"%(bootstraplink)s."
+
+#: flosstalks_app/templates/about.html:42
+#, python-format
+msgid ""
+"The icons used on the site are graciously provided by %(glyphiconslink)s."
+msgstr ""
+"Les icônes utilisées sur le site sont gracieusement fournies par "
+"%(glyphiconslink)s."
 
 #: flosstalks_app/templates/base.html:41
 msgid "Home"
@@ -153,15 +163,15 @@ msgstr "À propos"
 msgid "Contact"
 msgstr "Nous contacter"
 
-#: flosstalks_app/templates/base.html:64
+#: flosstalks_app/templates/base.html:66 flosstalks_app/templates/base.html:67
 msgid "Start contributing!"
 msgstr "Commencez à contribuer !"
 
-#: flosstalks_app/templates/base.html:64
+#: flosstalks_app/templates/base.html:66
 msgid "Translate FLOSS Talks in your language"
 msgstr "Traduire FLOSS Talks dans votre langue"
 
-#: flosstalks_app/templates/base.html:64
+#: flosstalks_app/templates/base.html:67
 msgid "Get the code!"
 msgstr "Obtenez le code !"
 
@@ -217,7 +227,6 @@ msgid "Learn more about FLOSS Talks"
 msgstr "En savoir plus sur FLOSS Talks"
 
 #: flosstalks_app/templates/index.html:23
-#: flosstalks_app/templates/projects_list.html:30
 #, python-format
 msgid "Learn more about %(project_name)s"
 msgstr "En savoir plus sur %(project_name)s"
@@ -226,20 +235,42 @@ msgstr "En savoir plus sur %(project_name)s"
 msgid "Browse through all the projects"
 msgstr "Feuilleter à travers tous les projets"
 
-#: flosstalks_app/templates/index.html:32
-msgid "Show other random projects"
-msgstr "Voir d'autres projets au hasard"
+#: flosstalks_app/templates/project_add_resource.html:4
+#: flosstalks_app/templates/project_add_resource.html:16
+#, python-format
+msgid "Add a resource to %(project_name)s"
+msgstr "Ajouter une ressource à %(project_name)s"
 
+#: flosstalks_app/templates/project_add_resource.html:4
+#: flosstalks_app/templates/project_add_resource.html:9
 #: flosstalks_app/templates/project_detail.html:4
 #: flosstalks_app/templates/project_detail.html:9
+#: flosstalks_app/templates/project_resource_added.html:4
+#: flosstalks_app/templates/project_resource_added.html:9
 msgid "Deactivated project"
 msgstr "Projet désactivé"
 
+#: flosstalks_app/templates/project_add_resource.html:12
 #: flosstalks_app/templates/project_detail.html:12
+#: flosstalks_app/templates/project_resource_added.html:12
 msgid "This project is no longer available."
 msgstr "Ce projet n'est plus disponible."
 
+#: flosstalks_app/templates/project_add_resource.html:18
+#, python-format
+msgid ""
+"By suggesting a new resource for %(project_name)s you are helping us "
+"provider better information on the site!"
+msgstr ""
+"En proposant une nouvelle ressource pour %(project_name)s vous nous aidez à "
+"fournir de meilleures information sur le site !"
+
+#: flosstalks_app/templates/project_add_resource.html:27
+msgid "Suggest new resource"
+msgstr "Suggérer une nouvelle ressource"
+
 #: flosstalks_app/templates/project_detail.html:23
+#: flosstalks_app/templates/resource_detail.html:13
 msgid "Warning!"
 msgstr "Attention !"
 
@@ -253,7 +284,7 @@ msgid "Source:"
 msgstr "Source :"
 
 #: flosstalks_app/templates/project_detail.html:41
-#: flosstalks_app/templates/resource_detail.html:13
+#: flosstalks_app/templates/resource_detail.html:19
 #: flosstalks_app/templates/series_detail.html:12
 msgid "Learn more"
 msgstr "En savoir plus"
@@ -284,36 +315,76 @@ msgstr ""
 "<a href=\"%(resource_url)s\">%(resource_name)s</a> (de la série <a "
 "href=\"%(series_url)s\">%(series_name)s</a>)"
 
-#: flosstalks_app/templates/project_detail.html:77
+#: flosstalks_app/templates/project_detail.html:61
+msgid "Not yet verified"
+msgstr "Pas encore vérifiée"
+
+#: flosstalks_app/templates/project_detail.html:61
+msgid "NEW!"
+msgstr "NOUVEAU !"
+
+#: flosstalks_app/templates/project_detail.html:75
+#, python-format
+msgid ""
+"Help us improving by <a href=\"%(resource_add_url)s\">suggesting new audio "
+"or video resources</a> for %(project_name)s."
+msgstr ""
+"Aidez-nous à nous améliorer en <a href=\"%(resource_add_url)s\">suggérant de "
+"nouvelles ressources audio ou vidéo</a> pour %(project_name)s."
+
+#: flosstalks_app/templates/project_detail.html:80
 #, python-format
 msgid "%(project_name)s's logo"
 msgstr "logo de %(project_name)s"
+
+#: flosstalks_app/templates/project_resource_added.html:4
+#: flosstalks_app/templates/project_resource_added.html:16
+msgid "Thank you!"
+msgstr "Merci !"
+
+#: flosstalks_app/templates/project_resource_added.html:18
+#, python-format
+msgid ""
+"The new resource you've just suggested for %(project_name)s has been added. "
+"Thanks for your help!"
+msgstr ""
+"La nouvelle ressource que vous venez de suggérer pour %(project_name)s a été "
+"ajoutée. Merci pour votre aide !"
+
+#: flosstalks_app/templates/project_resource_added.html:19
+#, python-format
+msgid "Go back to %(project_name)s's project page."
+msgstr "Retourner à la page du projet %(project_name)s."
 
 #: flosstalks_app/templates/projects_list.html:11
 msgid "Choose one of the following projects:"
 msgstr "Choisissez l'un des projets suivants :"
 
-#: flosstalks_app/templates/projects_list.html:44
-#: flosstalks_app/templates/projects_list.html:57
+#: flosstalks_app/templates/projects_list.html:38
+#: flosstalks_app/templates/projects_list.html:51
 msgid "Prev"
 msgstr "Préc."
 
-#: flosstalks_app/templates/projects_list.html:47
-#: flosstalks_app/templates/projects_list.html:60
+#: flosstalks_app/templates/projects_list.html:41
+#: flosstalks_app/templates/projects_list.html:54
 #, python-format
 msgid "Page %(num)s of %(num_pages)s"
 msgstr "Page %(num)s sur %(num_pages)s"
 
+#: flosstalks_app/templates/projects_list.html:46
 #: flosstalks_app/templates/projects_list.html:52
-#: flosstalks_app/templates/projects_list.html:58
 msgid "Next"
 msgstr "Suiv."
 
-#: flosstalks_app/templates/resource_detail.html:15
+#: flosstalks_app/templates/resource_detail.html:13
+msgid "This resource has not been reviewed yet."
+msgstr "Cette ressource n'a pas encore été vérifiée."
+
+#: flosstalks_app/templates/resource_detail.html:21
 msgid "The resource's web page is currently unknown."
 msgstr "Le site web de cette ressource est actuellement inconnu."
 
-#: flosstalks_app/templates/resource_detail.html:19
+#: flosstalks_app/templates/resource_detail.html:25
 #, python-format
 msgid ""
 "See all the resources from the <a "
@@ -322,11 +393,11 @@ msgstr ""
 "Voir toutes les ressources de la série <a "
 "href=\"%(series_url)s\">%(series_name)s</a>."
 
-#: flosstalks_app/templates/resource_detail.html:26
+#: flosstalks_app/templates/resource_detail.html:32
 msgid "This resource is not associated to any project."
 msgstr "Cette ressource n'est associée à aucun projet."
 
-#: flosstalks_app/templates/resource_detail.html:28
+#: flosstalks_app/templates/resource_detail.html:34
 #, python-format
 msgid "There is one project associated with this resource:"
 msgid_plural ""
@@ -334,11 +405,11 @@ msgid_plural ""
 msgstr[0] "Il y a un projet associé à cette ressource :"
 msgstr[1] "Il y a %(num_projects)s projets associés à cette ressource :"
 
-#: flosstalks_app/templates/resource_detail.html:39
+#: flosstalks_app/templates/resource_detail.html:45
 msgid "There are no known downloads yet."
 msgstr "Il n'y a pas encore de téléchargement connu."
 
-#: flosstalks_app/templates/resource_detail.html:41
+#: flosstalks_app/templates/resource_detail.html:47
 #, python-format
 msgid "There is one download available:"
 msgid_plural "There are %(num_downloads)s downloads available:"
