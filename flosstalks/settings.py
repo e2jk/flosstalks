@@ -4,11 +4,24 @@
 import os
 
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
+ROOT_PATH = os.path.realpath("%s/.." % PROJECT_PATH)
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-# Do not use caching in the development environment
-DEACTIVATE_CACHE = True
+try:
+    # Determines if we're in a production or development environment
+    # Create a file called settings_production.py to indicate that this is PRD
+    import settings_production
+    # Production settings
+    DEBUG = False
+    TEMPLATE_DEBUG = DEBUG
+    # Use caching in the production environment
+    DEACTIVATE_CACHE = False
+except ImportError:
+    # The development environment does not contain a settings_production.py file
+    # Development settings
+    DEBUG = True
+    TEMPLATE_DEBUG = DEBUG
+    # Do not use caching in the development environment
+    DEACTIVATE_CACHE = True
 
 ADMINS = (
     ('Emilien Klein', 'emilien@flosstalks.org'),
@@ -18,12 +31,8 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'data/flosstalks.sqlite', # Or path to database file if using sqlite3.
-        'USER': '', # Not used with sqlite3.
-        'PASSWORD': '', # Not used with sqlite3.
-        'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '', # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(ROOT_PATH, 'data/flosstalks.sqlite'),
     }
 }
 
@@ -69,9 +78,8 @@ LANGUAGES = (
   ('fr', 'French'),
 )
 
-# The Django documentation says it should be an absolute path...
 LOCALE_PATHS = (
-    'locale',
+    os.path.join(ROOT_PATH, 'locale'),
 )
 
 SITE_ID = 1
