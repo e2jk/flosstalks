@@ -16,5 +16,5 @@
           <h1>{%trans "Thank you!"%}</h1>
         </div>
         <p>{%blocktrans with project_name=project.name%}The new resource you've just suggested for {{project_name}} has been added. Thanks for your help!{%endblocktrans%}</p>
-        <p><a href="{%if project.nice_url%}/{{project.nice_url}}{%else%}{%url project project.pk%}{%endif%}">{%blocktrans with project_name=project.name%}Go back to {{project_name}}'s project page.{%endblocktrans%}</a></p>
+        <p><a href="{%if project.nice_url%}/{{project.nice_url}}{%else%}{%url flosstalks:project project.pk%}{%endif%}">{%blocktrans with project_name=project.name%}Go back to {{project_name}}'s project page.{%endblocktrans%}</a></p>
         {%endif%}{% endblock %}

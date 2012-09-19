@@ -51,8 +51,8 @@
                 <ul>
                     {% for r in project.resource_set.all %}
                     <li>
-                        {% url series r.series.id as series_url %}
-                        {% url resource r.pk as resource_url %}
+                        {% url flosstalks:series r.series.id as series_url %}
+                        {% url flosstalks:resource r.pk as resource_url %}
                         {%if r.series%}
                         {%blocktrans with resource_name=r.name series_name=r.series.name%}<a href="{{resource_url}}">{{resource_name}}</a> (from the <a href="{{series_url}}">{{series_name}}</a> series){%endblocktrans%}
                         {% else %}
@@ -71,7 +71,7 @@
                     {% endfor %}
                 </ul>
                 {% endif %}
-                {%url project_add_resource project.pk as resource_add_url%}
+                {%url flosstalks:project_add_resource project.pk as resource_add_url%}
                 <p>{%blocktrans with project_name=project.name%}Help us improving by <a href="{{resource_add_url}}">suggesting new audio or video resources</a> for {{project_name}}.{%endblocktrans%}</p>
             </div>
             {%if project.logo_url or project.ohloh_id%}

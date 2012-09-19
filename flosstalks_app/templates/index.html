@@ -12,7 +12,7 @@
             <br>
             {%trans "Select one of the projects below, or search for you favorite one in the search bar on top."%}
         </p>
-        <p><a class="btn btn-primary btn-large" href="{% url about %}">{%trans "Learn more about FLOSS Talks"%} <i class="icon-chevron-right icon-white"></i></a></p>
+        <p><a class="btn btn-primary btn-large" href="{%url flosstalks:about%}">{%trans "Learn more about FLOSS Talks"%} <i class="icon-chevron-right icon-white"></i></a></p>
       </div>
 
       <div class="row">
@@ -20,14 +20,14 @@
         <div class="span4">
             <h2>{{p.name}}</h2>
             <p>{{p.description|striptags|truncatewords_html:30}}</p>
-            <a href="{%if p.nice_url%}/{{p.nice_url}}{%else%}{%url project p.pk%}{%endif%}" class="btn">{%blocktrans with project_name=p.name%}Learn more about {{project_name}}{%endblocktrans%} <i class="icon-share-alt"></i></a>
+            <a href="{%if p.nice_url%}/{{p.nice_url}}{%else%}{%url flosstalks:project p.pk%}{%endif%}" class="btn">{%blocktrans with project_name=p.name%}Learn more about {{project_name}}{%endblocktrans%} <i class="icon-share-alt"></i></a>
         </div>
         {% endfor %}
       </div>
       
       <div class="row">
         <p class="pull-right">
-            <a href="{%url projects%}">{%trans "Browse through all the projects"%}</a>
+            <a href="{%url flosstalks:projects%}">{%trans "Browse through all the projects"%}</a>
         </p>
       </div>
       {% endblock %}

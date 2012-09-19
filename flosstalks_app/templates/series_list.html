@@ -21,7 +21,7 @@
                 <ul class="unstyled">
                     {%endif%}
                     <li>
-                      <h2><a href="{%if s.nice_url%}/{{s.nice_url}}{%else%}{%url series s.pk%}{%endif%}">{{s.name}}</a></h2>
+                      <h2><a href="{%if s.nice_url%}/{{s.nice_url}}{%else%}{%url flosstalks:series s.pk%}{%endif%}">{{s.name}}</a></h2>
                       <div class="hidden-phone">
                         {{s.description|striptags|truncatewords_html:40|linebreaks}} {%comment%}Need to use truncatewords_html instead of just truncatewords to preserve the newlines{%endcomment%}
                       </div>

@@ -20,7 +20,7 @@
         <h2>{%trans "Contributing to FLOSS Talks"%}</h2>
         <p>{%blocktrans with FLOSS='<abbr class="initialism" title="Free/Libre/Open-Source Software">FLOSS</abbr>'%}FLOSS Talks is itself {{FLOSS}}... So start contributing! You can do that in several ways:{%endblocktrans%}</p>
         <ul>
-            {%url contact as contactlink%}
+            {%url flosstalks:contact as contactlink%}
             <li>{%blocktrans%}By <a href="{{contactlink}}">suggesting to us</a> new projects or series/podcasts.{% endblocktrans %}</li>
             <li>{%blocktrans with translationlink='<a href="https://translations.launchpad.net/flosstalks">Launchpad</a>'%}By translating FLOSS Talks in your language on {{translationlink}}.{% endblocktrans %}</li>
             {% comment %}Translators: "Fork the code on GitHub" in English - "Fork" will be replaced by a button, and "GitHub" will be a link, so don't translate any of these terms{% endcomment %}

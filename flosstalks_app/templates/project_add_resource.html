@@ -17,7 +17,7 @@
         </div>
         <p>{%blocktrans with project_name=project.name%}By suggesting a new resource for {{project_name}} you are helping us provider better information on the site!{%endblocktrans%}</p>
 
-        <form action="{%url project_add_resource project.pk%}" method="post">{% csrf_token %}
+        <form action="{%url flosstalks:project_add_resource project.pk%}" method="post">{% csrf_token %}
             {%comment%}TODO: Improve the appearance of the form{%endcomment%}
             {%comment%}TODO: Better display error messages{%endcomment%}
             {{ resource_form.as_p }}

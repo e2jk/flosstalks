@@ -26,7 +26,7 @@
                 <ul class="unstyled">
                     {%endif%}
                     <li>
-                      <h2><a href="{%url resource r.pk%}">{{r.name}}</a></h2>
+                      <h2><a href="{%url flosstalks:resource r.pk%}">{{r.name}}</a></h2>
                       <div class="hidden-phone">
                         {{r.description|striptags|truncatewords_html:40|linebreaks}} {%comment%}Need to use truncatewords_html instead of just truncatewords to preserve the newlines{%endcomment%}
                       </div>
