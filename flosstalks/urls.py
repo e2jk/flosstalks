@@ -31,6 +31,7 @@ urlpatterns = patterns('',
     # Enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^search-values.json$', 'flosstalks_app.views.get_search_values'),
 )
 
 flosstalks_patterns = patterns('',
@@ -80,7 +81,6 @@ flosstalks_patterns = patterns('',
             template_name='resource_detail.html'),
         name='resource'),
     url(r'^search$', 'flosstalks_app.views.search'),
-    url(r'^search-values.json$', 'flosstalks_app.views.get_search_values'),
     url(r'^(?P<requested_value>.+)$', 'flosstalks_app.views.nice_url'),
 )
 
