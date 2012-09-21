@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-16 18:16+0200\n"
+"POT-Creation-Date: 2012-09-21 19:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -154,7 +154,7 @@ msgstr ""
 msgid "Get the code!"
 msgstr ""
 
-#: flosstalks_app/templates/base.html:78
+#: flosstalks_app/templates/base.html:79
 msgid "Change language"
 msgstr ""
 
@@ -238,7 +238,31 @@ msgid ""
 "provider better information on the site!"
 msgstr ""
 
-#: flosstalks_app/templates/project_add_resource.html:27
+#: flosstalks_app/templates/project_add_resource.html:25
+msgid "Name:"
+msgstr ""
+
+#: flosstalks_app/templates/project_add_resource.html:37
+msgid "Description:"
+msgstr ""
+
+#: flosstalks_app/templates/project_add_resource.html:49
+msgid "Resource web page:"
+msgstr ""
+
+#: flosstalks_app/templates/project_add_resource.html:63
+msgid "Media type:"
+msgstr ""
+
+#: flosstalks_app/templates/project_add_resource.html:75
+msgid "Format:"
+msgstr ""
+
+#: flosstalks_app/templates/project_add_resource.html:87
+msgid "Address to download the resource:"
+msgstr ""
+
+#: flosstalks_app/templates/project_add_resource.html:102
 msgid "Suggest new resource"
 msgstr ""
 

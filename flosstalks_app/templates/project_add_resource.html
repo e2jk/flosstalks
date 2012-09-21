@@ -17,11 +17,90 @@
         </div>
         <p>{%blocktrans with project_name=project.name%}By suggesting a new resource for {{project_name}} you are helping us provider better information on the site!{%endblocktrans%}</p>
 
-        <form action="{%url flosstalks:project_add_resource project.pk%}" method="post">{% csrf_token %}
-            {%comment%}TODO: Improve the appearance of the form{%endcomment%}
-            {%comment%}TODO: Better display error messages{%endcomment%}
-            {{ resource_form.as_p }}
-            {{ resource_download_url_form.as_p }}
-            <input type="submit" value="{%trans "Suggest new resource"%}" />
+        <form action="{%url flosstalks:project_add_resource project.pk%}" method="post" class="form-horizontal">
+            {% csrf_token %}
+            <div class="row">
+                <div class="span5">
+                    <div class="control-group{%if resource_form.name.errors%} error{%endif%}">
+                        <label class="control-label" for="id_resource-name">{%trans "Name:"%}</label>
+                        <div class="controls">
+                            {{resource_form.name}}
+                            {%if resource_form.name.errors%}
+                                <span class="help-inline">
+                                    <strong>{% for error in resource_form.name.errors %}{{ error|escape }}
+                                    {% endfor %}</strong>
+                                </span>
+                            {%endif%}
+                        </div>
+                    </div>
+                    <div class="control-group{%if resource_form.description.errors%} error{%endif%}">
+                        <label class="control-label" for="id_resource-description">{%trans "Description:"%}</label>
+                        <div class="controls">
+                            <textarea id="id_resource-description" rows="3" cols="40" name="resource-description">{%if resource_form.description.value%}{{resource_form.description.value}}{%endif%}</textarea>
+                            {%if resource_form.description.errors%}
+                                <span class="help-inline">
+                                    <strong>{% for error in resource_form.description.errors %}{{ error|escape }}
+                                    {% endfor %}</strong>
+                                </span>
+                            {%endif%}
+                        </div>
+                    </div>
+                    <div class="control-group{%if resource_form.url.errors%} error{%endif%}">
+                        <label class="control-label" for="id_resource-url">{%trans "Resource web page:"%}</label>
+                        <div class="controls">
+                            {{resource_form.url}}
+                            {%if resource_form.url.errors%}
+                                <span class="help-inline">
+                                    <strong>{% for error in resource_form.url.errors %}{{ error|escape }}
+                                    {% endfor %}</strong>
+                                </span>
+                            {%endif%}
+                        </div>
+                    </div>
+                </div>
+                <div class="span5">
+                    <div class="control-group{%if resource_download_url_form.media_type.errors and not resource_form.errors%} error{%endif%}">
+                        <label class="control-label" for="id_download-media_type">{%trans "Media type:"%}</label>
+                        <div class="controls">
+                            {{resource_download_url_form.media_type}}
+                            {%if resource_download_url_form.media_type.errors and not resource_form.errors%}
+                                <span class="help-inline">
+                                    <strong>{% for error in resource_download_url_form.media_type.errors %}{{ error|escape }}
+                                    {% endfor %}</strong>
+                                </span>
+                            {%endif%}
+                        </div>
+                    </div>
+                    <div class="control-group{%if resource_download_url_form.format.errors and not resource_form.errors%} error{%endif%}">
+                        <label class="control-label" for="id_download-format">{%trans "Format:"%}</label>
+                        <div class="controls">
+                            {{resource_download_url_form.format}}
+                            {%if resource_download_url_form.format.errors and not resource_form.errors%}
+                                <span class="help-inline">
+                                    <strong>{% for error in resource_download_url_form.format.errors %}{{ error|escape }}
+                                    {% endfor %}</strong>
+                                </span>
+                            {%endif%}
+                        </div>
+                    </div>
+                    <div class="control-group{%if resource_download_url_form.url.errors and not resource_form.errors%} error{%endif%}">
+                        <label class="control-label" for="id_download-url">{%trans "Address to download the resource:"%}</label>
+                        <div class="controls">
+                            {{resource_download_url_form.url}}
+                            {%if resource_download_url_form.url.errors and not resource_form.errors%}
+                                <span class="help-inline">
+                                    <strong>{% for error in resource_download_url_form.url.errors %}{{ error|escape }}
+                                    {% endfor %}</strong>
+                                </span>
+                            {%endif%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <input type="submit" value="{%trans "Suggest new resource"%}" class="btn btn-primary" />
+                </div>
+            </div>
         </form>
         {%endif%}{% endblock %}
