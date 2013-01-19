@@ -85,7 +85,9 @@ class Command(BaseCommand):
                     p.description = self.get_info_from_XML("description")
                     p.description_source = self.get_info_from_XML("html_url")
                     p.url = self.get_info_from_XML("homepage_url")
-                    p.logo_url = self.get_info_from_XML("medium_logo_url")
+                    if "no_logo.png" != self.get_info_from_XML("medium_logo_url"):
+                        # Only save the logo if there is a valid logo 
+                        p.logo_url = self.get_info_from_XML("medium_logo_url")
                     # Mark the project as Pending. This allows the project to directly
                     # be visible, but we can easily check if all seems fine.
                     p.status = "PD"
