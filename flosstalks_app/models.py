@@ -113,6 +113,7 @@ class GenericURL(models.Model):
         ('Audio', (
                 ('UNA', 'Unspecified audio format'),
                 ('OGA', 'Ogg'),
+                ('SPX', 'Speex'),
                 ('MP3', 'MP3'),
             )
         ),
