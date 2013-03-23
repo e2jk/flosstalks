@@ -6,3 +6,4 @@ data/*
 .settings
 locale
 flosstalks/DO_NOT_SHARE.py
+output/*
