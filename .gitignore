@@ -7,3 +7,5 @@ data/*
 locale
 flosstalks/DO_NOT_SHARE.py
 output/*
+pelican.pid
+srv.pid
