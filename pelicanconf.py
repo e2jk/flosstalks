@@ -9,6 +9,17 @@ TIMEZONE = 'Europe/Amsterdam'
 
 DEFAULT_LANG = u'en'
 
+PAGE_DIR = '.'
+
+PAGE_URL = '{slug}'
+PAGE_SAVE_AS = '{slug}/index.html'
+DIRECT_TEMPLATES = ('index',)
+
+FEED_ALL_ATOM = None
+THEME = 'simple'
+
+DISPLAY_PAGES_ON_MENU = False
+
 # Blogroll
 LINKS = (('Pelican', 'http://docs.notmyidea.org/alexis/pelican/'),
           ('Python.org', 'http://python.org'),
