@@ -13,7 +13,7 @@ PAGE_DIR = '.'
 
 PAGE_URL = '{slug}'
 PAGE_SAVE_AS = '{slug}/index.html'
-DIRECT_TEMPLATES = ('index',)
+DIRECT_TEMPLATES = ('index', 'about',)
 
 FEED_ALL_ATOM = None
 THEME = 'themes/flosstalks'
