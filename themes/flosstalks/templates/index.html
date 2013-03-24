@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block container %}
+      <div class="hero-unit">
+        <h1>
+            FLOSS Talks
+            <small>Videos, talks and podcasts about your favorite free, libre and open source projects</small>
+        </h1>
+        <p>
+            The place where you'll find audio and video resources about the <abbr class="initialism" title="Free/Libre/Open-Source Software">FLOSS</abbr> projects you are interested in.
+            <br>
+            Select one of the projects below, or search for you favorite one in the search bar on top.
+        </p>
+        <p><a class="btn btn-primary btn-large" href="/about">Learn more about FLOSS Talks <i class="icon-chevron-right icon-white"></i></a></p>
+      </div>
+
+      <div class="row">
+        {#
+        {% for p in highlighted_projects %}
+        <div class="span4">
+            <h2>{{p.name}}</h2>
+            <p>{{p.description|striptags|truncatewords_html:30}}</p>
+            <a href="/{{p.nice_url}}" class="btn">Learn more about {{p.name}} <i class="icon-share-alt"></i></a>
+        </div>
+        {% endfor %}
+        #}
+      </div>
+      
+      <div class="row">
+        <p class="pull-right">
+            <a href="/projects">Browse through all the projects</a>
+        </p>
+      </div>
+      {% endblock %}

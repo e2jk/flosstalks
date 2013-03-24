@@ -16,7 +16,9 @@ PAGE_SAVE_AS = '{slug}/index.html'
 DIRECT_TEMPLATES = ('index',)
 
 FEED_ALL_ATOM = None
-THEME = 'simple'
+THEME = 'themes/flosstalks'
+
+STATIC_URL = '/theme/'
 
 DISPLAY_PAGES_ON_MENU = False
 
