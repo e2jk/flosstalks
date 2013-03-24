@@ -9,7 +9,11 @@ TIMEZONE = 'Europe/Amsterdam'
 
 DEFAULT_LANG = u'en'
 
+# We're not creating a blog, so:
+# - Indicate that all pages are static
 PAGE_DIR = '.'
+# - Point Pelican to a non-existant folder for articles
+ARTICLE_DIR = 'dummy'
 
 PAGE_URL = '{slug}'
 PAGE_SAVE_AS = '{slug}/index.html'
