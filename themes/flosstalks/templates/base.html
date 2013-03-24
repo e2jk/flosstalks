@@ -38,9 +38,9 @@
           <a class="brand" href="/">FLOSS Talks</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="{%if this_page == "index"%}active{%endif%} visible-desktop"><a href="/">Home</a></li>
-              <li{%if this_page == "projects_list" or this_page == "project_detail"%} class="active"{%endif%}><a href="/projects">Projects</a></li>
-              <li{%if this_page == "series_list" or this_page == "series_detail"%} class="active"{%endif%}><a href="/series_list">Series</a></li>
+              <li class="{%if page_name == "index"%}active{%endif%} visible-desktop"><a href="/">Home</a></li>
+              <li{%if page_name == "projects_list" or page_name == "project_detail"%} class="active"{%endif%}><a href="/projects">Projects</a></li>
+              <li{%if page_name == "series_list" or page_name == "series_detail"%} class="active"{%endif%}><a href="/series_list">Series</a></li>
             </ul>
             <form class="navbar-search pull-left" method="get" action="/search">
                 <input name="q" type="text" class="search-query typeahead" placeholder="Search" autocomplete="off">
@@ -48,7 +48,7 @@
             <ul class="nav pull-right">
               <li{%if page_name == "about"%} class="active"{%endif%}><a href="/about.html">About</a></li>
               <li class="divider-vertical"></li>
-              <li{%if this_page == "contact"%} class="active"{%endif%}><a href="/contact">Contact</a></li>
+              <li{%if page_name == "contact"%} class="active"{%endif%}><a href="/contact">Contact</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
