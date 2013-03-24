@@ -3,7 +3,8 @@
 
 AUTHOR = u'Emilien Klein'
 SITENAME = u'FLOSS Talks'
-SITEURL = ''
+SITEURL = 'http://localhost:8000'
+FEED_DOMAIN = 'http://localhost:8000'
 
 TIMEZONE = 'Europe/Amsterdam'
 

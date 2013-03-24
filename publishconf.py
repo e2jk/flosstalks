@@ -6,6 +6,7 @@ sys.path.append('.')
 from pelicanconf import *
 
 SITEURL = 'http://flosstalks.org'
+FEED_DOMAIN = 'http://flosstalks.org'
 
 DELETE_OUTPUT_DIRECTORY = True
 
