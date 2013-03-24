@@ -18,7 +18,7 @@ ARTICLE_DIR = 'dummy'
 
 PAGE_URL = '{slug}'
 PAGE_SAVE_AS = '{slug}/index.html'
-DIRECT_TEMPLATES = ('index', 'about', 'contact',)
+DIRECT_TEMPLATES = ('index', 'about', 'contact', '404')
 
 FEED_ALL_ATOM = None
 THEME = 'themes/flosstalks'
